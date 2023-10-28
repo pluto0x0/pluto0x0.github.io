@@ -1,0 +1,57 @@
+---
+title: 一道极限题
+categories: 学习
+math: true
+toc: true
+---
+
+$$\lim\limits_{h \to 0}\frac{(x+h)^h-1}{h} =1$$
+
+
+
+## 引理
+
+$$ \lim\limits_{x \to 0}\frac{e^x-1}{x}=1 $$
+
+$$ proof. \; \lim\limits_{x \to 0}\frac{e^x-1}{x}=\lim\limits_{x\to 0}\frac{x}{\ln(x+1)}$$ 
+
+$$\begin{align}
+where \; \lim\limits_{x \to 0}\frac{\ln(x+1)}{x} &=  \lim\limits_{x \to 0}\ln(x+1)^{\frac{1}{x}}\\
+&= \ln\left (\lim\limits_{x \to 0}(x+1)^{\frac{1}{x}}\right) \\
+&= \ln e \\
+&= 1
+\end{align}$$
+
+## 证明
+
+$$\begin{align}
+\lim\limits_{h \to 0}\frac{(x+h)^h-1}{h} &= \lim\limits_{h\to 0}\frac{e^{h\ln(x+h)}-1}{h} \\
+&=\lim \limits _{h \to 0}\frac{e^{h \ln(x+h)}-1}{h\ln(x+h)} \lim\limits_{h \to 0}\ln(x+h) \\
+&=\lim\limits_{x\to 0}\frac{e^x-1}{x} \ln x \\
+&=\ln x
+\end{align}$$
+
+## 其他
+
+若求$$\lim\limits_{h \to 0}\frac{x^h-1}{h}$$，则直接使用导数定义求，答案相同。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
