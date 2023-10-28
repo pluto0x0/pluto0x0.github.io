@@ -1,7 +1,7 @@
 ---
 title: Linux迁移记录
 date: 2023-10-29 09:41
-categories: Linux
+categories: Linux 
 tags:
 - Linux 
 ---
