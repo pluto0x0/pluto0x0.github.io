@@ -19,7 +19,7 @@ Manjaro + i3wm是社区版，下载 `.iso` 镜像安装即可。
 
 ### 使用镜像源
 
-```
+```shell
 sudo pacman-mirrors -i -c China -m rank
 ```
 [参考](https://blog.csdn.net/qq_38883889/article/details/116722348)
@@ -28,7 +28,7 @@ sudo pacman-mirrors -i -c China -m rank
 
 ### 更新系统
 
-```
+```shell
 sudo pacman -Syyu
 ```
 [pacman用法](#pacman用法)  
@@ -36,12 +36,12 @@ sudo pacman -Syyu
 ### 设置时区
 
 列出所有时区
-```
+```shell
 timedatectl list-timezones
 ```
 
 设置时区
-```
+```shell
 timedatectl set-timezone Asia/Shanghai
 ```
 
@@ -51,7 +51,7 @@ timedatectl set-timezone Asia/Shanghai
 
 ### 安装基础工具
 
-```
+```shell
 sudo pacman -Sy git base-devel
 ```
 
@@ -59,7 +59,7 @@ sudo pacman -Sy git base-devel
 
 ### 安装 `yay`（Arch 用户软件仓库，AUR）
 
-```
+```shell
 sudo pacman -Sy yay
 ```
 
@@ -72,12 +72,12 @@ sudo pacman -Sy yay
 
 ### 解决桌面 `conky` 乱码（待定）
 
-```
+```shell
 sudo vim /usr/share/conky/conky_maia
 ```
 
 进行字体设置的替换
-```
+```shell
 # vim中
 ：%s/Bitstream Vera/anti/
 ```
@@ -87,23 +87,23 @@ sudo vim /usr/share/conky/conky_maia
 选择一种中文字体安装
 
 文泉驿
-```
+```shell
 sudo pacman -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei
 ```
 
 思源字体
-```
+```shell
 sudo pacman -S noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
 ```
 
 其他
-```
+```shell
 sudo pacman -S ttf-roboto noto-fonts ttf-dejavu
 ```
 
 ### 安装google chrome
 
-```
+```shell
 yay -Sy google-chorome-stable
 ```
 
@@ -113,7 +113,7 @@ yay -Sy google-chorome-stable
 
 采用`clash-for-windows`的Linux版
 
-```
+```shell
 yay -Sy clash-for-windows-bin
 ```
 
@@ -121,7 +121,7 @@ yay -Sy clash-for-windows-bin
 
 `~/.i3/config` 添加
 
-```
+```shell
 exec_always --no-startup-id cfw
 ```
 
@@ -130,7 +130,7 @@ exec_always --no-startup-id cfw
 
 ### 安装vscode
 
-```
+```shell
 yay -Sy visual-studio-code-bin
 ```
 
@@ -140,7 +140,7 @@ yay -Sy visual-studio-code-bin
 
 在包含 `touchpad` 的 `Section` 中
 
-``` 
+```shell
 Option "NaturalScrolling" "true"
 Option "TappingDragLock" "true"
 ```
@@ -154,7 +154,7 @@ Option "TappingDragLock" "true"
 
 ### 安装中文输入法
 
-```
+```shell
 pacman -S fcitx fcitx-im fcitx-configtool
 yay -S fcitx-sogoupinyin
 ```
@@ -163,7 +163,7 @@ yay -S fcitx-sogoupinyin
 
 `~/.i3/config` 添加
 
-```
+```shell
 exec_always --no-startup-id fcitx-autostart
 ```
 
@@ -171,7 +171,7 @@ exec_always --no-startup-id fcitx-autostart
 ### 文件管理器
 
 名称
-```
+```shell
 pcmanfm
 ```
 
@@ -180,7 +180,7 @@ pcmanfm
 
 ### `feh`设置壁纸
 
-```
+```shell
 sudo pacman -S feh
 ```
 
@@ -188,7 +188,7 @@ sudo pacman -S feh
 
 `~/.i3/config` 添加
 
-```
+```shell
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/*
 ```
 
@@ -198,19 +198,19 @@ exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/*
 
 ### svn
 
-```
+```shell
 sudo pacman -S subversion
 ```
 
 ### remmina 远程桌面连接
 
-```
+```shell
 sudo pacman -S remmina
 ```
 
 对于 RDP 支持，还要安装可选的 `freerdp`。
 
-```
+```shell
 sudo pacman -S freerdp
 ```
 可以设置sooth font和window drag等提高画面质量或者速度。
@@ -225,13 +225,13 @@ https://godliuyang.wang/2019/08/24/manjaro-i3wm-huan-jing-pei-zhi-pian/
 
 安装 `alacritty`
 
-```
+```shell
 sudo pacman -Sy alacritty
 ```
 
 编辑 `~/.config/alacritty/alacritty.yml`（需要创建文件）
 
-```
+```shell
 # 原来tabspaces是8
 tabspaces: 4
 # 字体使用Soure Code Pro
@@ -246,7 +246,7 @@ window:
 
 `~/.i3/config`：将`$mod+Return`的选项改为`alacritty`。
 
-```
+```shell
 # start a terminal
 #bindsym $mod+Return exec terminal
 bindsym $mod+Return exec alacritty
@@ -335,7 +335,7 @@ $ xinput set-prop 12 "libinput Accel Speed" -0.7
 
 问题：打开目录时（比如chrome）默认使用vscode
 
-```
+```shell
 xdg-mime default pcmanfm.desktop inode/directory
 ```
 将相应的`mime`格式的默认应用设置成`pcmanfm`或者其他。
@@ -352,7 +352,7 @@ xdg-mime default pcmanfm.desktop inode/directory
 
 ### pacman用法
 
-```
+```shell
 sudo pacman -S #安装软件
 sudo pacman -Sy #获取最新打软件情况，如果已经是最新了，直接会提示已经更新到最新了。
 sudo pacman -Syy #强行更新你的应用的软件库（源）
@@ -363,7 +363,7 @@ sudo pacman -Syyu #强行更新一遍，再更新软件
 
 多个（相似的）包：：
 
-```
+```shell
 pacman -S plasma-{desktop,mediacenter,nm}
 pacman -S plasma-{workspace{,-wallpapers},pa}
 ```
