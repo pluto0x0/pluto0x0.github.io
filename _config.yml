@@ -16,7 +16,7 @@ timezone:
 
 title: flayed's blog # the main title
 
-tagline: Shorter of breath, and one day closer to death. # it will display as the sub-title
+tagline: "Shorter of breath,\nand one day closer to death." # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   agian a blog
@@ -41,7 +41,7 @@ social:
     - https://twitter.com/username # change to your twitter homepage
     - https://github.com/username # change to your github homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
+    - https://www.facebook.com/profile.php?id=100090264566143
     # - https://www.linkedin.com/in/username
 
 google_site_verification: # fill in to your verification string
@@ -73,7 +73,7 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://s2.loli.net/2023/10/28/jGeYt5vz2nfpsC6.jpg
 
 # boolean type, the global switch for TOC in posts.
 toc: true
