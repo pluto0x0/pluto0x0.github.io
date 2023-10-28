@@ -85,7 +85,7 @@ comments:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo: pluto0x0/pluto0x0.github.io.backup # <gh-username>/<repo>
+    repo: pluto0x0/pluto0x0.github.io # <gh-username>/<repo>
     issue_term: title # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
