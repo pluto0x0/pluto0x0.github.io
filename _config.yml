@@ -14,9 +14,9 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Flayed # the main title
+title: flayed's blog # the main title
 
-tagline: A blog # it will display as the sub-title
+tagline: Shorter of breath, and one day closer to death. # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   agian a blog
@@ -79,14 +79,14 @@ avatar:
 toc: true
 
 comments:
-  active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: utterances # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo: # <gh-username>/<repo>
-    issue_term: # < url | pathname | title | ...>
+    repo: pluto0x0/pluto0x0.github.io.backup # <gh-username>/<repo>
+    issue_term: title # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
     repo: # <gh-username>/<repo>
