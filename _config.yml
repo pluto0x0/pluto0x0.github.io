@@ -16,7 +16,7 @@ timezone:
 
 title: flayed's blog # the main title
 
-tagline: "Shorter of breath,\nand one day closer to death." # it will display as the sub-title
+tagline: "Shorter of breath,<br>and one day closer to death." # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   agian a blog
