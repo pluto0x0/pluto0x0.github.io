@@ -1,4 +1,7 @@
-# icpc JiNan
+---
+title: icpc 济南区域赛
+math: true
+---
 
 ## Optimal Strategy
 
