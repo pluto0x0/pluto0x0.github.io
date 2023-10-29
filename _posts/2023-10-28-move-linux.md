@@ -1,6 +1,5 @@
 ---
 title: Linux迁移记录
-date: 2023-10-29
 categories: Linux 
 tags: Linux 
 ---
@@ -16,48 +15,51 @@ tags: Linux
 
 1. 同时挂载原硬盘和新硬盘，我这次是在原硬盘上的系统里挂载了新硬盘在`/mnt/`，并非使用live CD等，不过原理大同小异。
    这里原硬盘是`/dev/nvme1n1`，新硬盘是`/dev/nvme0n1`
+
 2. 分区。使用了图形化的`gparted`，仿照原硬盘在新硬盘上分出300MB的UEFI引导分区`/dev/nvme0n1p1`和剩余的 `/` 挂载点`/dev/nvme0n1p3`，注意要把引导区的`boot`标志勾选。
    ![忽略swap](https://s2.loli.net/2023/10/29/gsdNaP2FreuOxLB.png)
    ![image.png](https://s2.loli.net/2023/10/29/nXyuU9xJRLcfpe8.png)
+
 3. 复制原硬盘的 `/` 到新硬盘的 `/` 挂载点`/dev/nvme0n1p3`，注意要忽略：
-    ```shell
+	```shell
     '/dev/*','/proc/*','/sys/*','/tmp/*','/run/*','/mnt/*','/lost+found/*','/media/*'
     ```
+
     这些文件。
     我用的是`rsync`，具体命令见后面脚本。`dd`等命令更底层，还要涉及到文件系统resize的问题，`rsync`就不会。
-4. 挂载 `/dev` `/sys/` ... 等关键目录，否则无法进入新系统。这相当于新硬盘的系统和老硬盘的系统公用这些路径，为后面chroot准备。
-```shell
-mount --bind /dev/ /mnt/dev/
-mount --bind /sys/ /mnt/sys/
-...
-# 具体命令见后面脚本。
-```
-同时也要挂载新硬盘的引导分区到新硬盘的`/boot/efi`，从而能安装grub引导。
-```shell
-mount /dev/nvme0n1p1 /mnt/boot/efi
-```
-5. 进入chroot环境。
-chroot就是更改当前Linux的root目录，此时相当于在新硬盘的系统中执行命令。
-```shell
-chroot /mnt
-```
+
+5. 挂载 `/dev` `/sys/` ... 等关键目录，否则无法进入新系统。这相当于新硬盘的系统和老硬盘的系统公用这些路径，为后面chroot准备。
+	```shell
+	mount --bind /dev/ /mnt/dev/
+	mount --bind /sys/ /mnt/sys/
+	# 具体命令见后面脚本。
+	```
+	同时也要挂载新硬盘的引导分区到新硬盘的`/boot/efi`，从而能安装grub引导。
+	```shell
+	mount /dev/nvme0n1p1 /mnt/boot/efi
+	```
+6. 进入chroot环境。
+	chroot就是更改当前Linux的root目录，此时相当于在新硬盘的系统中执行命令。
+	```shell
+	chroot /mnt
+	```
 6. 修改`/etc/fstab`里的UUID为当前新盘的UUID。grub是靠UUID找对应的盘的，这也是全盘克隆无法启动的原因，因为两个盘的UUID不一样。
 
-```shell
-blkid /dev/nvme0n1p3 # 查看UUID
-```
+	```shell
+	blkid /dev/nvme0n1p3 # 查看UUID
+	```
 
 7. 修复grub引导
-```shell
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader=Manjaro --recheck
-```
-切记这是在chroot环境，因此路径是`/boot/efi`。
-最后写入grub
+	```shell
+	grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader=Manjaro --recheck
+	```
+	切记这是在chroot环境，因此路径是`/boot/efi`。
+	最后写入grub
 
-```shell
-grub-update
-```
-在执行`grub-update`前可以安装`os-prober`，这样`grub-update`能检测所有硬盘中的引导区。当然现在电脑里有两个一样的Linux，需要把老的硬盘卸载、插入新的硬盘（比如win10）的，再进入新的Linux安装一遍`os-prober`后执行`grub-update`。
+	```shell
+	grub-update
+	```
+	在执行`grub-update`前可以安装`os-prober`，这样`grub-update`能检测所有硬盘中的引导区。当然现在电脑里有两个一样的Linux，需要把老的硬盘卸载、插入新的硬盘（比如win10）的，再进入新的Linux安装一遍`os-prober`后执行`grub-update`。
 
 现在新的Linux就好了。
 
