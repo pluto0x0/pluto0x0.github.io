@@ -1,5 +1,5 @@
 ---
-title: Linux迁移记录
+title: 一次Linux迁移的记录
 categories: Linux 
 tags: Linux 
 ---
