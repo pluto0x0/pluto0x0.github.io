@@ -13,7 +13,7 @@ echo $filename
 
 cat << EOF > $filename
 ---
-titile: $title
+title: $title
 date: $(date '+%Y-%m-%d %H:%M:%S')
 math: true
 ---
