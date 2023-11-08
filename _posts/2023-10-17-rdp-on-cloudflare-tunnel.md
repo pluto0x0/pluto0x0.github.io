@@ -9,18 +9,18 @@ toc: true
 > 国内可能连接状况波动较大
 {: .prompt-tip }
 
-# 0.前置条件
+## 0.前置条件
 
 - 国外支付方式 （信用卡/paypal）
 - 域名
 
-# 1. 注册
+## 1. 注册
 
 https://one.dash.cloudflare.com/
 
 选择免费（$0）Plan，使用信用卡注册，验证信用卡用时比较长。
 
-# 2. 域名
+## 2. 域名
 
 进入 https://dash.cloudflare.com/
 
@@ -46,7 +46,7 @@ Cloudflare会给两个Nameserver，在域名服务商那里将域名的DNS服务
 
 <img width="1108" alt="image" src="https://github.com/pluto0x0/233/assets/54168673/b0095b4f-b3f9-4cbe-80cb-d47f666b06d9">
 
-# 3. 设置Tunnel
+## 3. 设置Tunnel
 
 左侧菜单选择 Zero Trust > Access > Tunnel
 
@@ -88,7 +88,7 @@ rdp://localhost:3389
 至此Tunnel设置完成，Tunnel列表中显示`HEALTHY`就表示已经连接并且网络良好，如图
 <img width="428" alt="image" src="https://github.com/pluto0x0/233/assets/54168673/5cfc240f-6a3c-4854-b1a5-d9d817340d15">
 
-# 4. 连接Tunnel
+## 4. 连接Tunnel
 
 根据[文档](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/rdp/#2-connect-as-a-user)
 在欲连接的设备上执行
@@ -104,7 +104,7 @@ cloudflared access rdp --hostname rdp.example.com --url rdp://localhost:3389
 
 
 ---
-# ref
+## ref
 
 https://sspai.com/post/79278
 

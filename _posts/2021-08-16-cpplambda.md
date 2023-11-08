@@ -13,7 +13,6 @@ sort(a + 1, a + 1 + n, [](int x, int y) -> bool { return x > y; });
 sort(a + 1, a + 1 + n, [](int x, int y) { return x > y; });
 ```
 
-# upd@2021.12.02
 
 ## 类型
 
@@ -48,5 +47,5 @@ auto f = [=] { cout << a << endl; };
 auto f = [&] { cout << a << endl; }; 
 ```
 
-# Reference
+## Reference
 <https://www.cnblogs.com/DswCnblog/p/5629165.html>
