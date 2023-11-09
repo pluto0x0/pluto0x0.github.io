@@ -15,6 +15,7 @@ cat << EOF > $filename
 ---
 title: $title
 date: $(date '+%Y-%m-%d %H:%M:%S')
+img_path: /_posts/
 math: true
 ---
 
