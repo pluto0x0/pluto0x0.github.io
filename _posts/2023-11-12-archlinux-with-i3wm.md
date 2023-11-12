@@ -349,7 +349,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 106+
 sudo pacman -S xf86-input-libinput
 ```
 
-把以下内容写入  `/etc/X11/xorg.conf.d/30-touchpad.conf` {： .filepath }
+把以下内容写入  `/etc/X11/xorg.conf.d/30-touchpad.conf`{: .filepath }
 
 ```ini
 Section "InputClass"
