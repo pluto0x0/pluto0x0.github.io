@@ -1,0 +1,480 @@
+---
+title: Archlinux + i3wm 从0配置指南
+date: 2023-11-12 01:03:06
+img_path: /_posts/
+math: true
+---
+
+## Intro
+
+之前用manjro+i3，勉强算是开箱即用，然而还是准备折腾arch。
+
+## 安装archlinux
+
+根据
+[中文安装指南](https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97)
+进行，只选择了重要的步骤。
+
+### 启动到 live 环境
+
+首先准备安装镜像、安装介质（U盘）
+
+### 连接互联网
+
+这里使用wifi连接，以太网请忽略这一步。
+
+连接wifi可以使用[iwd](https://archlinux.org/packages/?name=iwd)包的[iwctl](https://wiki.archlinuxcn.org/wiki/Iwd#iwctl)命令。
+
+> 列出所有 WiFi 设备： [iwd]# device list
+>
+> 开始扫描网络: [iwd]# station *device* scan
+>
+> 列出所有可用的网络: [iwd]# station *device* get-networks
+>
+> 连接到一个网络：[iwd]# station *device* connect *SSID*
+
+运行 `ping archlinux.org` 测试网络连接。
+
+### 创建硬盘分区
+
+```shell
+fdisk -l # 列出所有分区
+fdisk /dev/the_disk_to_be_partitioned #（要被分区的磁盘）进行分区。
+```
+
+参考[分区方案示例](https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97#%E5%88%86%E5%8C%BA%E6%96%B9%E6%A1%88%E7%A4%BA%E4%BE%8B)
+
+本次给EFI分了512M，给SWAP分了8G（8G内存），剩下给`/`挂载点。
+
+### 格式化分区
+
+[参考](https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%88%86%E5%8C%BA)，注意相应的文件系统
+
+### 挂载分区
+
+分别挂载主分区和EFI分区到`/mnt`和`/mnt/boot` 上。
+
+注意启用swap分区。
+
+### 开始安装系统
+
+运行
+
+```shell
+pacman -Sy pacman-mirrorlist
+```
+
+### 配置系统
+
+#### 生成fstab
+
+```shell
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+#### chroot 到新安装的系统
+
+```shell
+arch-chroot /mnt
+```
+
+注意是`arch-chroot`命令。
+
+#### 设置时区、区域和本地化设置
+
+注意语言要选择英语 `en_US.UTF-8`，中文无法显示。
+
+#### 创建 hostname 文件、设置 root 密码
+
+#### ！安装必要软软件包
+
+一般来说需要安装
+
+引导需要的包：
+
+- `grub`
+- `os-prober`, 探测其他安装的OS，显示在grub菜单中。
+- `efibootmgr`
+
+常用工具：
+
+- `nano` / `vi` / `vim`
+- `sudo` （注意可以新建一个非root用户并且将之加入sudoers列表中，要修改列表，请用`visudo`命令以防sudoers列表出现问题导致系统问题）
+
+网络连接
+
+- `iw`， `iwd` 连接wifi
+- 自动启动网络服务（否则DNS服务无法使用）：
+
+```
+systemctl enable systemd-networkd
+systemctl enable systemd-resolved
+```
+
+字体
+
+- 参见[wiki](https://wiki.archlinuxcn.org/wiki/%E4%B8%AD%E6%96%87%E6%9C%AC%E5%9C%B0%E5%8C%96#Fonts)， 我使用了思源简体无衬线字体。
+
+> 此时请为图形界面新建一个非root用户！
+{: .prompt-warning }
+
+#### 安装引导
+
+```shell
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader=Arch --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+`grub-mkconfig` 类似其他平台的`grub-update`的作用。
+
+接下来
+
+卸载挂载点，重启
+
+```shell
+umount -R /mnt
+reboot
+```
+
+此时一切顺利的话就可以引导进入新系统了。
+
+## 配置系统
+
+### 语言
+
+确保 `/etc/locale.gen` {: .filepath} 中的 `zh_CN.UTF-8` 项已经被取消注释。
+
+运行
+
+```shell
+locale-gen
+```
+
+然后在`/etc/locale.conf` {: .filepath}写入
+
+```ini
+LANG=zh_CN.UTF-8
+```
+
+> 此时重启后输入`locale`命令应该可以看到`LANG`变量已经被设置为中文，如果不是：
+{: .prompt-info }
+
+在`/etc/environment` {: .filepath}写入
+
+```ini
+LANG=zh_CN.UTF-8
+```
+
+### 网络连接
+
+此时有必要的软件包，可以在命令行连接wifi了，但是如果遇到了连接问题（`ping`出错），请检查：
+
+> 根据[这里](https://bbs.archlinux.org/viewtopic.php?pid=1973099#p1973099)，将以下内容写入 `/etc/iwd/main.conf` {: .filepath}。
+{： .prompt-tips }
+
+```ini
+[General]
+EnableNetworkConfiguration=true
+
+[Network]
+NameResolvingService=systemd
+```
+
+> 尝试启动网络服务
+
+```shell
+# 重启服务
+systemctl restart systemd-networkd
+systemctl restart systemd-resolved
+# 自动启动
+systemctl enable systemd-networkd
+systemctl enable systemd-resolved
+```
+
+### 安装图形界面：Xorg和i3相关包
+
+```shell
+sudo pacman -S xorg lightdm lightdm-gtk-greeter i3-wm i3lock i3status i3blocks dmenu
+```
+
+（其中`lightdm-gtk-greeter`）负责登录界面
+
+安装终端（自行选择）
+
+```shell
+sudo pacman -S alacritty
+```
+
+启动lightDM
+
+```shell
+sudo systemctl start lightdm.service
+sudo systemctl enable lightdm.service
+```
+
+此时进入图形界面，选择非root用户登录
+
+[参考](https://www.51cto.com/article/759235.html#%E5%9C%A8%20i3%20%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%A3%81%E7%BA%B8)
+
+### 配置系统
+
+#### 安装AUR
+
+使用`yay`包，这里我源码编译有点问题，直接使用了二进制包 <https://aur.archlinux.org/yay-bin.git>。
+
+#### feh，i3lock-color，主题，图标主题
+
+[参考](https://www.51cto.com/article/759235.html#%E5%9C%A8%20i3%20%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%A3%81%E7%BA%B8)
+
+#### 文件管理器
+
+```shell
+sudo pacman -S pcmanfm
+```
+
+设置为目录的默认打开方式
+
+```shell
+xdg-mime default pcmanfm.desktop inode/directory
+```
+
+#### 透明窗口混合器
+
+[参考](https://www.51cto.com/article/759235.html#%E5%9C%A8%20i3%20%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%A3%81%E7%BA%B8)
+
+### 其他配置
+
+#### zsh, oh-my-zsh
+
+<https://ohmyz.sh/#install>
+
+插件：
+
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+
+#### 网络托盘图标
+
+安装[networkmanager](https://archlinux.org/packages/?name=networkmanager)包
+
+其中`nm-applet`用于显示托盘图标
+
+启动服务：
+
+```shell
+sudo systemctl start NetworkManager
+sudo systemctl enable NetworkManager
+```
+
+i3的config已经包含了以下内容来启动`NetworkManager`：
+
+```shell
+exec --no-startup-id NetworkManager
+exec --no-startup-id nm-applet
+```
+
+#### 中文输入法
+
+使用搜狗
+
+```shell
+sudo pacman -S fcitx fcitx-im fcitx-configtool
+yay -S fcitx-sogoupinyin
+```
+
+i3配置中添加
+
+```
+exec_always --no-startup-id fcitx-autostart
+```
+
+
+此外在`/etc/environment` {: .filepath} 添加
+
+```shell
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+```
+
+> 输入法有托盘图标
+{: .prompt-tips }
+
+#### 音量托盘图标
+
+```shell
+pacman -S pulseaudio pavucontrol pasystray
+```
+
+`pavucontrol`控制音量
+
+`pasystray`托盘图标，在i3添加自启动
+
+i3里已经有了音量Fn的绑定。
+
+#### 亮度
+
+安装`xorg-xbacklight`或者`brightnessctl`包，效果基本相同。
+
+安装`xmodmap`支持Fn键。
+
+通过 `brightnessctl i` 得到最大亮度1060，
+在i3配置里添加
+
+```shell
+# @@backlight hotkey
+bindsym XF86KbdBrightnessDown exec --no-startup-id brightnessctl s 106-
+bindsym XF86KbdBrightnessUp exec --no-startup-id brightnessctl s 106+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 106-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 106+
+```
+
+其中按键的名称可以在`xmodmap -pke`的输出中查找。
+
+#### 状态栏
+
+使用 `polybar`，以及[第三方主题](https://github.com/adi1090x/polybar-themes/)，其中音量显示、亮度显示、电池显示、托盘图标的显示都需要额外配置。
+
+主题内支持设置壁纸的同时设置相应的主题色（包括zsh主题色）。
+
+> 鼠标放在滑块上滚动使用。
+{: .prompt-tips }
+
+#### 触摸板
+
+根据[参考](https://twor.me/posts/archlinux_gesture/)
+
+安装触摸板驱动
+
+```shell
+sudo pacman -S xf86-input-libinput
+```
+
+把以下内容写入 `/etc/X11/xorg.conf.d/30-touchpad.conf` {： filepath }
+
+```ini
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "Tapping" "on"
+    Option "TappingButtonMap" "lrm"
+EndSection
+```
+
+> 这里`"lrm"`指的是1，2，3指轻触分别表示左键、右键、中键点击。
+{: .prompt-tips }
+
+接下来设置触摸板手势：
+
+安装`fusuma`（AUR中[ruby-fusuma](https://aur.archlinux.org/packages/ruby-fusuma)）包和插件（AUR中[ruby-fusuma-plugin-sendkey](https://aur.archlinux.org/packages/ruby-fusuma-plugin-sendkey)）用来捕获手势和发送按键。
+
+这是我的配置 ：`~/.config/fusuma/config.yml`
+
+```yml
+swipe:
+  3: 
+    left: 
+      sendkey: 'LeftMeta+LeftShift+Left'
+    right: 
+      sendkey: 'LeftMeta+LeftShift+Right'
+    up: 
+      sendkey: 'LeftMeta+LeftShift+Up'
+    down: 
+      sendkey: 'LeftMeta+LeftShift+Down'
+  4: 
+    up: 
+      sendkey: 'LeftMeta+F'
+pinch:
+  in:
+    sendkey: 'LeftCtrl+Minus'
+  out:
+    sendkey: 'LeftCtrl+Equal'
+
+threshold:
+  swipe: 0.6
+  pinch: 0.2
+
+interval:
+  swipe: 0.3
+  pinch: 0.3
+```
+
+其中`3` `4` 表示几根手指，`swipe` `pinch` 表示 “扫” 和 “捏” 两个手势，至于按键绑定根据自己偏好，这里是用作切换窗口位置和放大/缩小。
+
+启动服务：
+
+```shell
+sudo systemctl start fusuma
+sudo systemctl enable fusuma
+```
+
+#### 功耗控制
+
+根据[参考](https://arch.icekylin.online/guide/advanced/power-ctl.html)
+
+安装 `TLP` 包和 ui
+
+```shell
+sudo pacman -S tlp tlp-rdw
+```
+
+```shell
+yay -S tlpui
+```
+
+启动服务
+
+```shell
+sudo systemctl enable tlp.service
+sudo systemctl enable NetworkManager-dispatcher.service
+sudo systemctl mask systemd-rfkill.service # 屏蔽以下服务以避免冲突，确保 TLP 无线设备的开关选项可以正确运行
+sudo systemctl mask systemd-rfkill.socket
+
+sudo tlp start
+```
+
+`tlpui` 打开UI控制台，我这里把 `CPU_MAX_PERF_ON_BAT` 设置为 `30` 提高续航，还有其他诸如降低cpu电压暂时没有搞。
+
+#### 系统快照
+
+根据[参考](https://aprilzz.com/archives/%E5%9C%A8arch%E4%B8%AD%E4%BD%BF%E7%94%A8timeshift%E4%BF%9D%E7%B3%BB%E7%BB%9F%E5%B9%B3%E5%AE%89)
+
+使用 [timeshift](https://archlinux.org/packages/extra/x86_64/timeshift/)
+
+```shell
+sudo pacman -S timeshift # 安装Timeshift
+sudo systemctl enable --now cronie.service # 启用Crond服务，启用该服务后Timeshift才能定期自动创建快照
+```
+
+运行 `timeshift-gtk` 启动UI，我选择了rsync备份，在1T的windows盘中分了128G的EXT4分区来备份。备份可以自动定时进行，每次仅仅占用1G左右，可以选择时时候复制用户文件。
+
+#### 截屏
+
+在i3配置中添加
+
+```shell
+# @@Screenshots
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
+# @@Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+```
+
+并且安装相应 `xclip`，`xdotool`，`maim`包
+
+分别作为**复制/保存 全屏/窗口/区域截图**的功能。
+
+#### 删除i3窗口边框
+
+在i3配置中添加
+
+```shell
+# @@remove border
+default_border none
+default_floating_border none
+```
