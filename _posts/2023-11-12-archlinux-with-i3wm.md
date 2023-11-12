@@ -477,3 +477,12 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 default_border none
 default_floating_border none
 ```
+
+#### 鼠标指针
+
+下载指针主题，在`lxappearance`中启用即可。
+如果无法正常显示鼠标指针：
+
+试着创建一个将`~/.icons/default/cursors`{: .filepath}(假设为指定用户安装)指向`.local/share/icons/cursor_theme_name/cursors`{: .filepath}的符号链接然后再次重启 X。
+
+[参考](https://wiki.archlinuxcn.org/wiki/%E5%85%89%E6%A0%87%E4%B8%BB%E9%A2%98)
