@@ -2,6 +2,7 @@
 title: Manjaro + i3wm 使用总结 [更新中]
 date: 2023-05-04
 categories: Linux
+tags: Linux
 ---
 
 

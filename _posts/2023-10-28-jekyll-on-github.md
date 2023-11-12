@@ -1,5 +1,6 @@
 ---
 title: jekyll+github action搭建不完全指南
+categories: 网站
 ---
 
 github支持jekyll已久，但新推出的github action做到了每次推送后能使用ruby自动生成部署jekyll站点，与本地部署无异，可以使用所有的插件。

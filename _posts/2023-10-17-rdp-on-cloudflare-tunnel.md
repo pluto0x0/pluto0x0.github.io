@@ -3,6 +3,7 @@ title: Couldflare Tunnel穿透远程桌面服务（RDP）
 date: 2023-10-17
 math: true
 toc: true
+categories: 网络
 ---
 
 > **对于外网用户，该方案免费且网络延迟很低，适合长期使用**
