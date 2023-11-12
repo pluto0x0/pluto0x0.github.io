@@ -3,6 +3,8 @@ title: Archlinux + i3wm 从0配置指南
 date: 2023-11-12 01:03:06
 img_path: /_posts/
 math: true
+categories: Linux
+tags: Linux
 ---
 
 ## Intro
