@@ -524,3 +524,4 @@ default_floating_border none
 - 剪贴板历史
 - 蓝牙（blueman）
 - 视频硬件解码
+- 自动锁定
