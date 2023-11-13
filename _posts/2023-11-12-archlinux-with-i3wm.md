@@ -218,7 +218,7 @@ sudo systemctl enable lightdm.service
 
 [参考](https://www.51cto.com/article/759235.html#%E5%9C%A8%20i3%20%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%A3%81%E7%BA%B8)
 
-### 配置系统
+### 程序功能配置
 
 #### 安装AUR
 
@@ -488,3 +488,39 @@ default_floating_border none
 试着创建一个将 `~/.icons/default/cursors`{: .filepath}(假设为指定用户安装)指向 `.local/share/icons/cursor_theme_name/cursors`{: .filepath}的符号链接然后再次重启 X。
 
 [参考](https://wiki.archlinuxcn.org/wiki/%E5%85%89%E6%A0%87%E4%B8%BB%E9%A2%98)
+
+## 软件包列表
+
+### 编辑器
+
+[Visual Studio Code](https://aur.archlinux.org/packages/visual-studio-code-bin)
+
+### 网络浏览器
+
+[Google Chrome](https://aur.archlinux.org/packages/google-chrome)
+
+### pdf阅读器
+
+[Okular](https://archlinux.org/packages/extra/x86_64/okular/)
+
+### Office套件
+
+[Onlyoffice](https://aur.archlinux.org/packages/onlyoffice-bin)
+
+### 远程桌面
+
+[Remmina](https://archlinux.org/packages/extra/x86_64/remmina/)
+
+### 局域网文件分享
+
+[Landrop](https://aur.archlinux.org/packages/landrop)
+
+### bittorrent客户端
+
+[Qbittorrent Enhanced Edition](https://aur.archlinux.org/packages/qbittorrent-enhanced)
+
+## to-do list
+
+- 剪贴板历史
+- 蓝牙（blueman）
+- 视频硬件解码
