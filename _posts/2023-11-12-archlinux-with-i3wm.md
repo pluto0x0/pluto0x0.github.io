@@ -525,3 +525,4 @@ default_floating_border none
 - 蓝牙（blueman）
 - 视频硬件解码
 - 自动锁定
+- 主题颜色
