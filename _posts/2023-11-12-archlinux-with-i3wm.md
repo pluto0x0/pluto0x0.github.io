@@ -94,18 +94,18 @@ arch-chroot /mnt
 
 引导需要的包：
 
--  `grub` 
--  `os-prober` , 探测其他安装的OS，显示在grub菜单中。
--  `efibootmgr` 
+- `grub`
+- `os-prober` , 探测其他安装的OS，显示在grub菜单中。
+- `efibootmgr`
 
 常用工具：
 
--  `nano`  /  `vi`  /  `vim` 
--  `sudo`  （注意可以新建一个非root用户并且将之加入sudoers列表中，要修改列表，请用 `visudo` 命令以防sudoers列表出现问题导致系统问题）
+- `nano`  /  `vi`  /  `vim`
+- `sudo`  （注意可以新建一个非root用户并且将之加入sudoers列表中，要修改列表，请用 `visudo` 命令以防sudoers列表出现问题导致系统问题）
 
 网络连接
 
--  `iw` ，  `iwd`  连接wifi
+- `iw` ，  `iwd`  连接wifi
 - 自动启动网络服务（否则DNS服务无法使用）：
 
 ```
@@ -370,7 +370,7 @@ EndSection
 
 安装 `fusuma` （AUR中[ruby-fusuma](https://aur.archlinux.org/packages/ruby-fusuma)）包和插件（AUR中[ruby-fusuma-plugin-sendkey](https://aur.archlinux.org/packages/ruby-fusuma-plugin-sendkey)）用来捕获手势和发送按键。
 
-这是我的配置 ： `~/.config/fusuma/config.yml` 
+这是我的配置 ： `~/.config/fusuma/config.yml`
 
 ```yml
 swipe:
@@ -523,10 +523,34 @@ default_floating_border none
 
 [parcellite](https://archlinux.org/packages/extra/x86_64/parcellite/)
 
+### 蓝牙
+
+<https://wiki.archlinuxcn.org/wiki/%E8%93%9D%E7%89%99>
+
+驱动和实用程序
+
+- [bluez](https://archlinux.org/packages/extra/x86_64/bluez/)
+- [bluez-utils](https://archlinux.org/packages/extra/x86_64/bluez-utils/)
+
+```shell
+sudo systemctl start bluetooth
+sudo systemctl enable bluetooth
+```
+
+图形界面
+
+- [blueman](https://archlinux.org/packages/extra/x86_64/blueman/)
+
+在 `~/.config/i3/config`{:.filepath}:
+
+```ini
+exec_always --no-startup-id blueman-tray
+```
+
 ## to-do list
 
 - ~~剪贴板历史~~
-- 蓝牙（blueman）
+- ~~蓝牙（blueman）~~
 - 视频硬件解码
 - 自动锁定
 - 主题颜色
