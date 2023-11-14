@@ -541,9 +541,9 @@ sudo systemctl enable bluetooth
 
 - [blueman](https://archlinux.org/packages/extra/x86_64/blueman/)
 
-在 `~/.config/i3/config`{:.filepath}:
+在 `~/.config/i3/config`{: .filepath}:
 
-```ini
+```config
 exec_always --no-startup-id blueman-tray
 ```
 
