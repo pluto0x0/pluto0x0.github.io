@@ -519,9 +519,13 @@ default_floating_border none
 
 [Qbittorrent Enhanced Edition](https://aur.archlinux.org/packages/qbittorrent-enhanced)
 
+### 剪贴板历史
+
+[parcellite](https://archlinux.org/packages/extra/x86_64/parcellite/)
+
 ## to-do list
 
-- 剪贴板历史
+- ~~剪贴板历史~~
 - 蓝牙（blueman）
 - 视频硬件解码
 - 自动锁定
