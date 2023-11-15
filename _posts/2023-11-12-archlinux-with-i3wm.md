@@ -544,7 +544,7 @@ sudo systemctl enable bluetooth
 在 `~/.config/i3/config`{: .filepath}:
 
 ```shell
-exec_always --no-startup-id blueman-tray
+exec_always --no-startup-id blueman-applet
 ```
 
 ### 自动锁定
