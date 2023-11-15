@@ -547,6 +547,17 @@ sudo systemctl enable bluetooth
 exec_always --no-startup-id blueman-tray
 ```
 
+### 自动锁定
+
+[xidlehook](https://aur.archlinux.org/packages/xidlehook)
+
+`~/.config/i3/config`{: .filepath}:
+
+```shell
+set $time_lock 300
+exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer $time_lock $lock ''
+```
+
 ## to-do list
 
 - ~~剪贴板历史~~
