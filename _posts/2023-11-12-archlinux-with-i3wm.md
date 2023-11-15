@@ -553,4 +553,5 @@ exec_always --no-startup-id blueman-tray
 - ~~蓝牙（blueman）~~
 - 视频硬件解码
 - 自动锁定
+- 合上盖子
 - 主题颜色
