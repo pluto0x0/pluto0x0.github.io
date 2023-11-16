@@ -562,6 +562,118 @@ set $time_lock 300
 exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer $time_lock $lock ''
 ```
 
+### 桌面通知
+
+[dunst](https://archlinux.org/packages/extra/x86_64/dunst/)
+
+i3配置
+```shell
+exec_always --no-startup-id dunst
+```
+
+测试通知
+
+```shell
+$ notify-send "title" "test notification"
+```
+
+### 桌面组件
+
+[Conky](https://archlinux.org/packages/extra/x86_64/conky/)
+
+i3中：
+
+```shell
+exec_always --no-startup-id conky
+```
+
+配置 `~/.config/conky/conky.conf`{: .filepath}
+
+```lua
+conky.config = {
+    -- Conky窗口设置
+    own_window = true,
+    own_window_type = 'override',  -- 使Conky显示在桌面上
+    own_window_class = 'Conky',
+    background = true,
+    own_window_transparent = true,  -- 透明窗口
+    own_window_argb_visual = true,  -- 开启真正的透明效果
+    own_window_argb_value = 0,  -- 透明度设置，0是完全透明
+
+    -- 文字设置
+    use_xft = true,
+    font = 'DejaVu Sans Mono:size=11',
+    xftalpha = 0.8,
+    alignment = 'top_right',  -- 窗口在屏幕上的位置
+
+    -- 尺寸和颜色
+    gap_x = 30,
+    gap_y = 60,
+    minimum_width = 200,
+    default_color = 'white',
+
+    -- 更新间隔
+    update_interval = 1,
+
+    -- 其他设置
+    double_buffer = true,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = false,
+    override_utf8_locale = false,
+    no_buffers = true,
+    uppercase = false,
+    cpu_avg_samples = 2,
+};
+
+conky.text = [[
+${user_names} @ ${nodename}
+${distribution} ${kernel}
+
+${color grey}Net
+${color}${wireless_essid wlan0} @ ${wireless_freq wlan0}
+${addrs wlan0} ${wireless_ap wlan0}
+
+${color grey}Time
+${color}$time
+
+${color grey}Up time
+${color}$uptime
+
+${color grey}CPU Usage
+${color}$cpu% @${freq}Mhz
+${cpugraph 50,320 000000 ffffff}
+
+${color grey}RAM Usage
+${color}${memperc}%
+${memgraph 50,320 000000 ffffff}
+${membar 4}
+${color}${mem}${alignr}${memavail}
+
+${color grey}File Systems
+${color}/ ${fs_type /} ${fs_free_perc /}% ${fs_size /} 
+
+$color ${fs_bar /}
+${fs_used /}${alignr}${fs_free /}
+
+${color grey}Disk IO
+${color grey}read ${color}${diskio_read}   ${color grey}write ${color}${diskio_write}
+${diskiograph 50,320 000000 ffffff}
+
+${color grey}Top
+
+${color}Process           CPU%  Mem%
+${color grey}${hr}
+${color}${top name 1}${top cpu 1}${top mem 1}
+${top name 2}${top cpu 2}${top mem 2}
+${top name 3}${top cpu 3}${top mem 3}
+${top name 4}${top cpu 4}${top mem 4}
+${top name 5}${top cpu 5}${top mem 5}
+]];
+
+```
+
 ## to-do list
 
 - ~~剪贴板历史~~
@@ -570,5 +682,5 @@ exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullsc
 - ~~自动锁定~~
 - 合上盖子
 - 主题颜色
-- 桌面组件
-- 桌面通知
+- ~~桌面组件~~
+- ~~桌面通知~~
