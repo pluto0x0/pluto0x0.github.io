@@ -674,6 +674,12 @@ ${top name 5}${top cpu 5}${top mem 5}
 
 ```
 
+see also:
+
+<https://conky.cc/variables#diskio>
+
+<https://conky.cc/config_settings>
+
 ## to-do list
 
 - ~~剪贴板历史~~
