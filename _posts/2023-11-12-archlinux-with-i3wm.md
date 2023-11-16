@@ -571,3 +571,4 @@ exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullsc
 - 合上盖子
 - 主题颜色
 - 桌面组件
+- 桌面通知
