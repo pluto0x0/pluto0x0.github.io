@@ -489,6 +489,10 @@ default_floating_border none
 
 [参考](https://wiki.archlinuxcn.org/wiki/%E5%85%89%E6%A0%87%E4%B8%BB%E9%A2%98)
 
+问题排查
+
+- 如果在i3桌面上鼠标指针一直显示忙，在配置中所有`exec`加上`--no-startup-id`参数
+
 ## 软件包列表
 
 ### 编辑器
