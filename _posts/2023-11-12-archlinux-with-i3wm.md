@@ -567,6 +567,6 @@ exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullsc
 - ~~剪贴板历史~~
 - ~~蓝牙（blueman）~~
 - 视频硬件解码
-- 自动锁定
+- ~~自动锁定~~
 - 合上盖子
 - 主题颜色
