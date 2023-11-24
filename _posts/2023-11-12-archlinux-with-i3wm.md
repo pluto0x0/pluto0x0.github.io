@@ -154,7 +154,7 @@ locale-gen
 
 然后在 `/etc/locale.conf`{: .filepath}写入
 
-```ini
+```shell
 LANG=zh_CN.UTF-8
 ```
 
@@ -163,7 +163,7 @@ LANG=zh_CN.UTF-8
 
 在 `/etc/environment`{: .filepath}写入
 
-```ini
+```shell
 LANG=zh_CN.UTF-8
 ```
 
@@ -301,6 +301,45 @@ XMODIFIERS=@im=fcitx
 > 输入法有托盘图标
 {: .prompt-tip }
 
+取消输入法浮动窗口阴影
+
+首先使用picom默认配置
+
+```config
+cp /etc/xdg/picom.conf ~/.config/picom/picom.conf
+```
+
+查找浮动窗口的类名：
+
+```shell
+xprop | grep -i class
+```
+
+```text
+WM_CLASS(STRING) = "sogoupinyin-service", "sogoupinyin-service"
+```
+
+得到类名`sogoupinyin-service`
+
+修改`~/.config/picom/picom.conf`{:.filepath}，添加一行`"class_g = 'sogoupinyin-service'"`
+
+```
+# Specify a list of conditions of windows that should have no shadow.
+#
+# examples:
+#   shadow-exclude = "n:e:Notification";
+#
+# shadow-exclude = []
+shadow-exclude = [
+  "name = 'Notification'",
+  "class_g = 'Conky'",
+  "class_g ?= 'Notify-osd'",
+  "class_g = 'Cairo-clock'",
+  "_GTK_FRAME_EXTENTS@:c",
+  "class_g = 'sogoupinyin-service'"
+];
+```
+
 #### 音量托盘图标
 
 ```shell
@@ -319,15 +358,15 @@ i3里已经有了音量Fn的绑定。
 
 安装 `xmodmap` 支持Fn键。
 
-通过  `brightnessctl i`  得到最大亮度1060，
+<!-- 通过  `brightnessctl i`  得到最大亮度1060， -->
 在i3配置里添加
 
 ```shell
 # @@backlight hotkey
-bindsym XF86KbdBrightnessDown exec --no-startup-id brightnessctl s 106-
-bindsym XF86KbdBrightnessUp exec --no-startup-id brightnessctl s 106+
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 106-
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 106+
+bindsym XF86KbdBrightnessDown exec --no-startup-id brightnessctl s 10%-
+bindsym XF86KbdBrightnessUp exec --no-startup-id brightnessctl s 10%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 10%+
 ```
 
 其中按键的名称可以在 `xmodmap -pke` 的输出中查找。
@@ -353,7 +392,7 @@ sudo pacman -S xf86-input-libinput
 
 把以下内容写入  `/etc/X11/xorg.conf.d/30-touchpad.conf`{: .filepath }
 
-```ini
+```
 Section "InputClass"
     Identifier "touchpad"
     Driver "libinput"
