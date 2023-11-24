@@ -680,13 +680,35 @@ see also:
 
 <https://conky.cc/config_settings>
 
+### 自动休眠和合上盖子功能
+
+`/etc/systemd/logind.conf`{:.filepath}
+
+```ini
+[login]
+...
+HandlePowerKey=suspend
+HandleLidSwitch=suspend
+IdleAction=suspend
+IdleActionSec=10min
+...
+```
+
+这里不同的电源模式可以[参考](https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate)，可能不是每种该模式都被硬件支持。
+
+最后
+
+```shell
+sudo systemctl restart systemd-logind
+```
+
 ## to-do list
 
 - ~~剪贴板历史~~
 - ~~蓝牙（blueman）~~
 - 视频硬件解码
 - ~~自动锁定~~
-- 合上盖子
+- ~~合上盖子~~
 - 主题颜色
 - ~~桌面组件~~
 - ~~桌面通知~~

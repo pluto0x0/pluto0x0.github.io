@@ -10,7 +10,6 @@ math: true
 
 解决
 
-
 ```python
 from sage.misc.latex_macros import sage_configurable_latex_macros
 global sage_configurable_latex_macros
