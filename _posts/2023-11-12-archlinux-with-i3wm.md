@@ -750,6 +750,13 @@ xdg-mime default org.xfce.ristretto.desktop image/png
 xdg-mime default org.xfce.ristretto.desktop image/jpeg
 ```
 
+### 鼠标设置
+
+使用xinput，[参考](../manjaro-i3wm/#%E6%8C%87%E9%92%88%E7%81%B5%E6%95%8F%E5%BA%A6)
+
+或者使用[xinput-gui](https://aur.archlinux.org/packages/xinput-gui)包。
+
+
 ## to-do list
 
 - ~~剪贴板历史~~
