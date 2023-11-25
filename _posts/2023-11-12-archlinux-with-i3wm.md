@@ -220,7 +220,7 @@ sudo systemctl enable lightdm.service
 
 ### 程序功能配置
 
-#### 安装AUR
+#### 安装AUR包管理器
 
 使用 `yay` 包，这里我源码编译有点问题，直接使用了二进制包 <https://aur.archlinux.org/yay-bin.git>。
 
@@ -739,6 +739,15 @@ IdleActionSec=10min
 
 ```shell
 sudo systemctl restart systemd-logind
+```
+
+### 图片查看器
+
+[ristretto](https://archlinux.org/packages/extra/x86_64/ristretto/)
+
+```shell
+xdg-mime default org.xfce.ristretto.desktop image/png
+xdg-mime default org.xfce.ristretto.desktop image/jpeg
 ```
 
 ## to-do list
