@@ -1,5 +1,8 @@
 {
     "markdown.copyFiles.destination": {
         "*": "${documentWorkspaceFolder}/upload/img/${documentBaseName}-${fileName}"
+    },
+    "[markdown]":{
+        "editor.quickSuggestions": true
     }
 }
