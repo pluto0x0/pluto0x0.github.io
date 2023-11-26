@@ -220,7 +220,7 @@ sudo systemctl enable lightdm.service
 
 ### 程序功能配置
 
-#### 安装AUR
+#### 安装AUR包管理器
 
 使用 `yay` 包，这里我源码编译有点问题，直接使用了二进制包 <https://aur.archlinux.org/yay-bin.git>。
 
@@ -740,6 +740,22 @@ IdleActionSec=10min
 ```shell
 sudo systemctl restart systemd-logind
 ```
+
+### 图片查看器
+
+[ristretto](https://archlinux.org/packages/extra/x86_64/ristretto/)
+
+```shell
+xdg-mime default org.xfce.ristretto.desktop image/png
+xdg-mime default org.xfce.ristretto.desktop image/jpeg
+```
+
+### 鼠标设置
+
+使用xinput，[参考](../manjaro-i3wm/#%E6%8C%87%E9%92%88%E7%81%B5%E6%95%8F%E5%BA%A6)
+
+或者使用[xinput-gui](https://aur.archlinux.org/packages/xinput-gui)包。
+
 
 ## to-do list
 
