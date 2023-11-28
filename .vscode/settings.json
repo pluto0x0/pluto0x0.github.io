@@ -3,6 +3,10 @@
         "*": "${documentWorkspaceFolder}/upload/img/${documentBaseName}-${fileName}"
     },
     "[markdown]":{
-        "editor.quickSuggestions": true
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
     }
 }
