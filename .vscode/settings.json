@@ -8,5 +8,6 @@
             "strings": "on",
             "other": "on"
         }
-    }
+    },
+    "markdown.extension.completion.respectVscodeSearchExclude": true
 }
