@@ -6,23 +6,27 @@
 /* append your custom style below */
 
 @media print {
-    /* 隐藏页面上的所有元素 */
-    body * {
+    /* 页面和元素的基础设置 */
+    body, body * {
         visibility: hidden;
+        margin: 0;
+        padding: 0;
     }
 
-    /* 显示 div.content 元素及其子元素 */
+    /* 打印特定内容 */
     div.content, div.content * {
         visibility: visible;
     }
 
-    /* 确保 div.content 元素占据整个打印页面 */
-    div.content{
-        left: 0;
+    div.content {
+        position: absolute;
         top: 0;
-        
+        left: 0;
+        width: 100%;
+        height: auto;
         column-count: 3;
         -webkit-column-count: 3;
         -moz-column-count: 3;
+        column-gap: 20px;
     }
 }
