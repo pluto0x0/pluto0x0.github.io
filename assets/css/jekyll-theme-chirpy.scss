@@ -18,10 +18,6 @@
 
     /* 确保 div.content 元素占据整个打印页面 */
     div.content{
-        position: absolute;
-        left: 0;
-        top: 0;
-        
         column-count: 3;
         -webkit-column-count: 3;
         -moz-column-count: 3;
