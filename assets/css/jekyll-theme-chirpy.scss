@@ -8,10 +8,10 @@
 @media print {
     /* 页面和元素的基础设置 */
     body, body * {
-        visibility: hidden; 
+        visibility: hidden;
+        
         margin: 0;
         padding: 0;
-        width: 100%;
         height: 100%;
     }
 
@@ -21,10 +21,11 @@
     }
 
     div.content {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
 
         column-count: 3;
         -webkit-column-count: 3;
