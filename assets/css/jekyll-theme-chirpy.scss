@@ -1,0 +1,28 @@
+---
+---
+
+@import 'main';
+
+/* append your custom style below */
+
+@media print {
+    /* 隐藏页面上的所有元素 */
+    body * {
+        visibility: hidden;
+    }
+
+    /* 显示 div.content 元素及其子元素 */
+    div.content, div.content * {
+        visibility: visible;
+        column-count: 3;
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+    }
+
+    /* 确保 div.content 元素占据整个打印页面 */
+    div.content{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
