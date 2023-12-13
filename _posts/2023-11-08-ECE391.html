@@ -146,7 +146,7 @@ model (as opposed to traditional model)
 <h3 id="kernel-side-data-structures-for-signals">Kernel side Data Structures for Signals</h3>
 <p><code>k_sigaction</code> a wrapper for <code>sigaction</code>.</p>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-25.png){: .w-75} -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-25.png" width="60%">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-25.png" width="60%"><br></p>
 <h3 id="signal-generation">Signal Generation</h3>
 <ul>
 <li>
@@ -201,9 +201,9 @@ wrapper of it:
 </li>
 </ul>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-26.png){: .w-25} -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-26.png" width="15%">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-26.png" width="15%"><br></p>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-27.png) -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-27.png" width="65%">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-27.png" width="65%"><br></p>
 <h1 id="25-linux-abstraction-on-device-drivers">25 Linux abstraction on device drivers</h1>
 <h2 id="device-drivers">Device Drivers</h2>
 <p>Kernel interacts with I/O devices.</p>
@@ -229,7 +229,7 @@ wrapper of it:
 <li>some allow random access or only sequentially</li>
 </ul>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-28.png) -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-28.png" width="20%">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-28.png" width="20%"><br></p>
 <p>A device driver statically compiled in the kernel (registered when kernel init) / as a module (registered when loaded)</p>
 <p>register a device</p>
 <p><code>int register_chrdev (unsigned int major, const char* name, struct file_operations* fops);</code></p>
@@ -286,12 +286,12 @@ wrapper of it:
 <h2 id="data-structure">data structure</h2>
 <p>head of the user list: <strong>user admin</strong>.</p>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-29.png) -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-29.png" width="50%">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-29.png" width="50%"><br></p>
 <p>for user list, use a reader/writer semaphore.</p>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-30.png) -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-30.png" width="50%">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-30.png" width="50%"><br></p>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-31.png) -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-31.png" width="42%">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-31.png" width="42%"><br></p>
 <p>lock order</p>
 <ol>
 <li>user list r/w semaphore</li>
@@ -396,7 +396,7 @@ wait for user program to run!)</p>
 <h1 id="28-review">28 Review</h1>
 <h2 id="task-structure">Task Structure</h2>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-32.png) -->
-<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-32.png" width="40%" style="">\</p>
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-32.png" width="40%" style="">&lt;br&gt;</p>
 <p>Each process stores: <strong>PID, Parent Process, ...</strong> Kernel stack : 8kb.</p>
 <ul>
 <li><code>task_struct</code> doubly linked list, Quick access by PID hash.</li>
@@ -415,7 +415,7 @@ wait for user program to run!)</p>
 <ul>
 <li>FIFO: First In, First Out (in the same priority); 2 flavors: when new task arrive, switch to it / not?</li>
 <li>Round Robin: (in the same priority) even time slices assignment.</li>
-<li>Normal: task priority rescheduled, and use RR in each priority.</li>
+<li>Normal: task priority rescheduled, and use RR in each  .</li>
 </ul>
 <h1 id="20-memory-allocation">20 Memory Allocation</h1>
 <ul>
@@ -457,9 +457,9 @@ wait for user program to run!)</p>
 </ul>
 <!-- E.g. Allocate 1KB. 8KB are viewed in 4 levels. -->
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-33.png) -->
-<!-- <img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-33.png" width="66%" style=""> -->
+<!-- <img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-33.png" width="66%" style=""> --><br>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-34.png) -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-34.png" width="46%" style="">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-34.png" width="46%" style=""><br></p>
 <h2 id="slab">Slab</h2>
 <ul>
 <li>
@@ -484,15 +484,27 @@ caches to fulfill the request.</p>
 </ul>
 <h2 id="systemcall">systemcall</h2>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-35.png) -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-35.png" width="35%" style="">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-35.png" width="35%" style=""><br></p>
 <h2 id="memory-maps">Memory Maps</h2>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-36.png) -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-36.png" width="33%" style="">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-36.png" width="33%" style=""><br></p>
 <!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-37.png) -->
-<img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-37.png" width="60%" style="">
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-37.png" width="60%" style=""><br></p>
 <p>starting and ending virtual addr / permissions / #pages / inode / file</p>
 <p>C libs are shared. heaps / stack / executable are not shared.</p>
 <p>Copy-on-write</p>
+<h2 id="tlb">TLB</h2>
+<p>translation lookaside buffers (TLBs)</p>
+<ul>
+<li>keep translations of first 20 bits around and reuse them</li>
+<li>only walk tables when necessary</li>
+<li>x86 provides separate TLBs for 4kB &amp; 4MB translations</li>
+<li>global page: TLB not flushed when changing to new program.</li>
+</ul>
+<!-- ![Alt text](../upload/img/2023-11-08-ECE391-image-38.png) -->
+<p><img src="file:///c:\Users\zfaye\Desktop\blog\pluto0x0.github.io\upload\img\2023-11-08-ECE391-image-38.png" width="50%" style=""><br></p>
+<h2 id="tss">TSS</h2>
+<p>esp / esp0 (ring 0); when switching to kernel: use esp0</p>
 
         <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
         
