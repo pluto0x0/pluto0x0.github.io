@@ -206,6 +206,34 @@ sudo pacman -S xorg lightdm lightdm-gtk-greeter i3-wm i3lock i3status i3blocks d
 ```shell
 sudo pacman -S alacritty
 ```
+> 20240101更新：`~/.config/alacritty/alacritty.yml`{: .filepath} 已经弃用，使用 `alacritty migrate` 迁移到 `/home/flayed/.config/alacritty/alacritty.toml`{: .filepath}
+{: .prompt-tip }
+
+`/home/flayed/.config/alacritty/alacritty.toml`{: .filepath} :
+
+```toml
+[font]
+size = 8
+
+[font.bold]
+family = "Source Code Pro"
+style = "Bold"
+
+[font.bold_italic]
+family = "Source Code Pro"
+style = "Bold Italic"
+
+[font.italic]
+family = "Source Code Pro"
+style = "Italic"
+
+[font.normal]
+family = "Source Code Pro"
+style = "Regular"
+
+[window]
+opacity = 0.75  # 窗口不透明度
+```
 
 启动lightDM
 
