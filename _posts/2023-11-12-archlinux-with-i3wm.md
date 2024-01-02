@@ -232,7 +232,7 @@ family = "Source Code Pro"
 style = "Regular"
 
 [window]
-opacity = 0.75  # 窗口不透明度
+opacity = 0.75  # 窗口不透明度 
 ```
 
 启动lightDM
