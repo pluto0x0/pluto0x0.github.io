@@ -1,5 +1,5 @@
 ---
-title: Communication Networks (1)
+title: Communication Networks (1-2)
 date: 2024-01-28 19:02:40
 img_path: /_posts/
 math: true
@@ -14,10 +14,13 @@ Internet: "network of networks"
 
 Protocols control sending,receiving of messages
 
-- e.g., TCP, IP, HTTP, Skype, 802.11
+- e.g., TCP, IP, HTTP, Skype, 802.11 (WiFi)
 
 Internet standards
 
 - RFC: Request for comments
 - IETF: Internet Engineering Task Force
 - ISO, IEEE
+
+---
+
