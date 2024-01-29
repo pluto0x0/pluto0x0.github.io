@@ -5,6 +5,8 @@ img_path: /_posts/
 math: true
 categories: Linux
 tags: Linux
+image:
+  path: ../upload/img/2023-11-12-archlinux-with-i3wm-image-2.png
 ---
 
 ## Intro
