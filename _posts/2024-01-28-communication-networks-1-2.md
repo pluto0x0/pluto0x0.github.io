@@ -92,4 +92,48 @@ Wide-area wireless accesss
 - ![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-6.png){ .w="40"}
 - cellular operator, 10's km
 - 1 to 10 Mbps
-- 3G, 4G, TLE
+- 3G, 4G, [LTE](https://en.wikipedia.org/wiki/LTE_(telecommunication))
+
+## Host: Sends Packets of Data
+
+Host sending function:
+
+- breaks appilication layer messages into smaller chunks (packets), of length $L$ bits
+- transmits packet into access network at transmission rate $R$
+- **link transmission rate / link capacity / link bandwidth**:
+
+$$
+\frac{L \text{ (bits)}}{R\text{ (bits/s)}}
+$$
+
+## Physical Media
+
+guided media:
+
+- signals propagate in solid media: copper,fiber,coax
+
+unguided media:
+
+- signals propagate freely
+e.g., radio
+
+twisted pair (TP)：
+
+- two insulated copper Wires
+- Category 5:100 Mbps1，Gbps Ethernet / Category 6: 10Gbps
+
+Coaxial Cable:
+
+- multiple channels
+
+Fiber optic cable:
+
+- high-speed point-to-point transmission (e.g.,10's-100's Gbps transmission rate)
+
+## Network-core
+
+2 key functions:
+
+- routing
+- forwarding
+
