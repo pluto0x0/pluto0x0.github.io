@@ -1,5 +1,5 @@
 ---
-title: Distributed Systems [2]
+title: Distributed Systems (1-2)
 date: 2024-01-23 17:38:15
 img_path: /_posts/
 math: true
