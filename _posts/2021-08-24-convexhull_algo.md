@@ -1,7 +1,7 @@
 ---
 title: 一些凸包有关的算法
-tags: [凸包]
-categories: 计算几何 
+tags: 凸包
+categories: 计算几何
 toc:  true
 math: true
 ---

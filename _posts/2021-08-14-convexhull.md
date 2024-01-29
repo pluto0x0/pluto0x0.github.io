@@ -1,7 +1,7 @@
 ---
 title: 模板：凸包周长
 math: true
-taggs:
+tags:
 - 计算几何
 - 模板
 - 凸包

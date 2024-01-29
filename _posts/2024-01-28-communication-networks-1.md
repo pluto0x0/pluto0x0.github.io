@@ -8,4 +8,16 @@ image:
     path: ../upload/img/2024-01-28-communication-networks-1-image.png
 ---
 
-new
+Internet: "network of networks"
+
+- Interconnected ISPs
+
+Protocols control sending,receiving of messages
+
+- e.g., TCP, IP, HTTP, Skype, 802.11
+
+Internet standards
+
+- RFC: Request for comments
+- IETF: Internet Engineering Task Force
+- ISO, IEEE
