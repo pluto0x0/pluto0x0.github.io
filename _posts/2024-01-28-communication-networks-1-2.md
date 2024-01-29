@@ -51,7 +51,7 @@ Connect end systems to edge routers
 
 ### Access Network: Digital Subscriber Line (DSL)
 
-![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-2.png){ .w="100"}
+![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-2.png)=
 
 - Use existing telephone line to central office DSLAM.
 - dedicated access to central office
@@ -84,12 +84,12 @@ Connect end systems to edge routers
 
 Wireless LANs (WiFi):
 
-- ![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-5.png){ .w="40"}
+- ![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-5.png){: .w="40"}
 - 11, 54, 450 Mbps rate
 
 Wide-area wireless accesss
 
-- ![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-6.png){ .w="40"}
+- ![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-6.png){: .w="40"}
 - cellular operator, 10's km
 - 1 to 10 Mbps
 - 3G, 4G, [LTE](https://en.wikipedia.org/wiki/LTE_(telecommunication))
