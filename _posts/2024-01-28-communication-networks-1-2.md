@@ -55,16 +55,41 @@ Connect end systems to edge routers
 
 - Use existing telephone line to central office DSLAM.
 - dedicated access to central office
+- < 2.5 Mbps upstream transmission rate (typically < 1 Mbps)
+- < 24 Mbps downstream transmission rate (typically < 10 Mbps)
 
 ### Access Network: Cable Network
 
 ![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-1.png)
 
 - Frequency division multiplexing: different channels transmitted in different frequency bands
-- HFC: [hybrid fiber coax](https://en.wikipedia.org/wiki/Hybrid_fiber-coaxial)
+- HFC: [hybrid fiber coax](https://en.wikipedia.org/wiki/Hybrid_fiber-coaxial) up to 30Mbps
 - Network of cable, fiber attaches homes to ISProuter
 - homes share network to cable headend
 
 ### Access Network: Home Network
 
 ![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-3.png)
+
+### Enterprise Access Networks (Ethernet)
+
+![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-4.png)
+
+- 10 Mbps,100Mbps,1Gbps, 10Gbps transmission rates
+- Today, end systems typically connect into Ethernet switch
+
+### Wireless Access Networks
+
+- Shared wireless access to base station aka "access point"
+
+Wireless LANs (WiFi):
+
+- ![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-5.png){ .w="40"}
+- 11, 54, 450 Mbps rate
+
+Wide-area wireless accesss
+
+- ![Alt text](../upload/img/2024-01-28-communication-networks-1-2-image-6.png){ .w="40"}
+- cellular operator, 10's km
+- 1 to 10 Mbps
+- 3G, 4G, TLE
