@@ -5,7 +5,7 @@ img_path: /_posts/
 math: true
 mermaid: true
 image:
-    path: ../upload/img/2024-01-28-communication-networks-1-image.png
+    path: ../upload/img/2024-01-29-communication-networks-3-image-6.png
 ---
 
 ## Network-core
