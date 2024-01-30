@@ -101,3 +101,12 @@ image:
 |network|routing of packets from source to destination (IP, routing protocols)|
 |link|data transfer between neighboring network elements (Ethernet, 802.11 (WiFi), PPP)
 |physical|bits on the wire|
+
+![Alt text](../upload/img/2024-01-29-communication-networks-3-image-10.png)
+
+- Switch
+  - level 2 device
+  - connects devices on a computer network by using packet switching to receive and forward data to the destination device.
+- Router
+  - level 3 device
+  - Routers perform the traffic directing functions between networks and on the global Internet.
