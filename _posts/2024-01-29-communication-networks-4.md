@@ -8,7 +8,7 @@ image:
     path: ../upload/img/2024-01-29-communication-networks-4-image-1.png
 ---
 
-![Alt text](../upload/img/2024-01-29-communication-networks-4-image-3.png){: .w="15"}
+![Alt text](../upload/img/2024-01-29-communication-networks-4-image-3.png){: .w="8"}
 
 ## Application architectures
 
