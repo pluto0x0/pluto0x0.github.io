@@ -29,7 +29,7 @@ tags: CS444
   - reinforcement learning
 
 ### Topics to be Covered
-
+w
 - ML basics, linear classifiers, multilayer neural networks, backpropagation.
 - Convolutional networks for classification, networks for detection, dense prediction.
 - Self-supervised learning, generative models (GANs, image-to-image translation, diffusion models).
