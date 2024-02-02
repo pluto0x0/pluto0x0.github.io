@@ -34,7 +34,7 @@ K-nearest neighbor classifier:
 
 ![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-1.png){: w="400"}
 
-![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-2.png){: w="600"}
+![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-2.png){: w="50%"}
 
 ## Linear classifier
 
