@@ -105,13 +105,13 @@ $y$ is normally distributed with mean $f_w(x) = w^Tx+b$
 
 Maximum likelihood estimation:
 
-$$ w_{ML} = \argmin_w - \sum_i \log P_w(y_i | x_i) $$
+$$ w_{ML} = \arg\min_w - \sum_i \log P_w(y_i | x_i) $$
 
-$$ w_{ML} = \argmin_w \sum_i - \log \left( \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( - \frac{[y_i-f_w(x_i)]^2}{2\sigma^2} \right) \right) $$
+$$ w_{ML} = \arg\min_w \sum_i - \log \left( \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( - \frac{[y_i-f_w(x_i)]^2}{2\sigma^2} \right) \right) $$
 
-$$ w_{ML} = \argmin_w \sum_i \log \sqrt{2\pi\sigma^2} + \frac{[y_i-f_w(x_i)]^2}{2\sigma^2} $$
+$$ w_{ML} = \arg\min_w \sum_i \log \sqrt{2\pi\sigma^2} + \frac{[y_i-f_w(x_i)]^2}{2\sigma^2} $$
 
-$$ w_{ML} = \argmin_w \sum_i [y_i-f_w(x_i)]^2 $$
+$$ w_{ML} = \arg\min_w \sum_i [y_i-f_w(x_i)]^2 $$
 
 ### Problem of linear regression
 
