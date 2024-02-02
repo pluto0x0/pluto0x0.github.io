@@ -32,15 +32,15 @@ $f(x)$ = label of the training example nearest to $x$
 
 K-nearest neighbor classifier:
 
-![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-1.png){: w="50%"}
+![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-1.png){: w="400"}
 
-![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-2.png){: w="70"}
+![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-2.png){: w="600"}
 
 ## Linear classifier
 
-![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-3.png){: w="50"}
+![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-3.png){: w="400"}
 
-![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-4.png){: w="50"}
+![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-4.png){: w="400"}
 
 $$
 f(x) = \operatorname{sgn} (w\cdot x + b)
