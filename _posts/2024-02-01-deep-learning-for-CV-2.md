@@ -24,7 +24,7 @@ training:
 
 $$
 {(x_1,𝑦1), …, (x_N,Y_N)}
-$$ 
+$$
 
 ## Nearest neighbor classifier
 
@@ -32,7 +32,7 @@ $f(x)$ = label of the training example nearest to $x$
 
 K-nearest neighbor classifier:
 
-![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-1.png){: .w="70"}
+![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-1.png){: .w="10"}
 
 ![Alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-2.png){: .w="70"}
 
@@ -67,3 +67,25 @@ Linear cons:
 - What if data is not linearly separable?
 
 </details>
+
+## Empirical loss minimization
+
+define expected loss
+
+$$
+L(f)=\mathbb{E}_{(x, y) \sim D}[l(f, x, y)]
+$$
+
+- $0-1$ loss
+  - $l(f,x,y) = \mathbb{I}[f(x) \neq y]$ 
+  - $L(f)=\operatorname{Pr}[f(x) \neq y]$
+- $l_2$ loss
+  - $l(f, x, y)=[f(x)-y]^2$
+  - $L(f)=\mathbb{E}\left[[f(x)-y]^2\right]$
+  
+Find $f$ that minimizes
+
+$$
+\hat{L}(f)=\frac{1}{n} \sum_{i=1}^n l\left(f, x_i, y_i\right)
+$$
+
