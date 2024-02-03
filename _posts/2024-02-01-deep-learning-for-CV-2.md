@@ -198,5 +198,5 @@ $$
 
 Logistic regression does not converge for linearly separable data:
 
-![alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-7.png)
+![alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-8.png)
 _Scaling $w$ by ever larger constants makes the classifier more confident and keeps increasing the likelihood of the data_
