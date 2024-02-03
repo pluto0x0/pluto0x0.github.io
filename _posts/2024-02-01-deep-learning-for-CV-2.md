@@ -93,8 +93,8 @@ $$
   - NP-hard
   - use surrogate loss functions instead
 - $l_2$ loss
-  - $\hat{L}(f_w) = \frac{1}{n} || Xw-Y ||_2$ is a convex function
-  - $0 = \nabla || Xw-Y ||_2 = 2X^T (Xw - Y)$
+  - $\hat{L}(f_w) = \frac{1}{n} \vert\vert Xw-Y \vert\vert_2$ is a convex function
+  - $0 = \nabla \vert\vert Xw-Y \vert\vert_2 = 2X^T (Xw - Y)$
   - $w = (X^T X)^{-1} X^T Y$
 
 ### Interpretation of $l_2$ loss
