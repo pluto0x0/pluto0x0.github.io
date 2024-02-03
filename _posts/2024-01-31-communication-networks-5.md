@@ -5,7 +5,7 @@ img_path: /_posts/
 math: true
 mermaid: true
 image:
-    path: ../upload/img/2024-01-29-communication-networks-4-image-1.png
+    path: ../upload/img/2024-01-31-communication-networks-5-image.png
 ---
 
 ## Internet transport protocols services

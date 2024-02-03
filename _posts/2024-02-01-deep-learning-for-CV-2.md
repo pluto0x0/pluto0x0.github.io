@@ -7,7 +7,7 @@ mermaid: true
 categories: CourseNotes
 tags: CS444
 image:
-  path: ../upload/img/2024-02-01-deep-learning-for-CV-2-image.png
+  path: ../upload/img/2024-02-01-deep-learning-for-CV-2-image-4.png
 ---
 
 ## The basic supervised learning framework
