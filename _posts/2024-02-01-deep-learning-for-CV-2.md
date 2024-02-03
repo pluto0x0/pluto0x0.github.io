@@ -68,7 +68,7 @@ Linear cons:
 
 </details>
 
-## Empirical loss minimization
+### Empirical loss minimization
 
 define expected loss
 
@@ -105,16 +105,98 @@ $y$ is normally distributed with mean $f_w(x) = w^Tx+b$
 
 Maximum likelihood estimation:
 
-$$ w_{ML} = \arg\min_w - \sum_i \log P_w(y_i | x_i) $$
-
-$$ w_{ML} = \arg\min_w \sum_i - \log \left( \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( - \frac{[y_i-f_w(x_i)]^2}{2\sigma^2} \right) \right) $$
-
-$$ w_{ML} = \arg\min_w \sum_i \log \sqrt{2\pi\sigma^2} + \frac{[y_i-f_w(x_i)]^2}{2\sigma^2} $$
-
-$$ w_{ML} = \arg\min_w \sum_i [y_i-f_w(x_i)]^2 $$
+$$
+\begin{aligned}
+w_{ML} &= \arg\min_w - \sum_i \log P_w(y_i | x_i) \\
+       &= \arg\min_w \sum_i - \log \left( \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( - \frac{[ y_i-f_w(x_i)]^2}{2\sigma^2} \right) \right) \\
+       &= \arg\min_w \sum_i \log \sqrt{2\pi\sigma^2} + \frac{[y_i-f_w(x_i)]^2}{2\sigma^2} \\
+       &= \arg\min_w \sum_i [y_i-f_w(x_i)]^2 \\
+\end{aligned}
+$$
 
 ### Problem of linear regression
 
-![alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-5.png)
+![alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-5.png){: w="500"}
 _Linear regression is very sensitive to outliers_
 
+## Logistic regression
+
+use sigmoid function
+
+```mermaid
+flowchart LR
+    x,y-->linear_output
+    linear_output-->|logistic function|Probability
+```
+
+![alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-6.png){: w="300"}
+_sigmoid function_
+
+$$
+P_w(y=1 | x)=\sigma\left(w^T x\right)=\frac{1}{1+\exp \left(-w^T x\right)}
+$$
+
+$$
+P_w(y=-1 | x) = 1-P_w(y=1|x)=\sigma(-w^Tx)
+$$
+
+$$
+\log \frac{P(y=1 \mid x)}{P(y=-1 \mid x)}=w^T x+b
+$$
+
+### Logistic loss
+
+Maximum likelihood estimate:
+
+$$\begin{aligned}
+w_{ML} &= \arg\min_w \sum_i -\log P(y_i|x_i) \\
+&= \arg\min_w \sum_i -\log \sigma(y_iw^Txi)
+\end{aligned}
+$$
+
+i.e. the logistic loss
+
+$$
+l(w,x_i, y_i) := -\log \sigma(y_i  w^T x_i)
+$$
+
+### Gradient descent
+
+To minimize $l(w,x_i, y_i)$, use gradient descent
+
+$$
+w \leftarrow w - \eta \nabla\hat{L} (w)
+$$
+
+### Stochastic gradient descent (SGD)
+
+$$
+w \leftarrow w - \eta \nabla l(w, x_i, y_i)
+$$
+
+mini-batch SGD:
+
+$$
+\nabla \hat{L}=\frac{1}{b} \sum_{i=1}^b \nabla l\left(w, x_i, y_i\right)
+$$
+
+$$
+\begin{aligned}
+\nabla l\left(w, x_i, y_i\right)&=-\nabla_w \log \sigma\left(y_i w^T x_i\right) \\
+&=-\frac{\nabla_w \sigma\left(y_i w^T x_i\right)}{\sigma\left(y_i w^T x_i\right)} \\
+&=-\frac{\sigma\left(y_i w^T x_i\right) \sigma\left(-y_i w^T x_i\right) y_i x_i}{\sigma\left(y_i w^T x_i\right)} \\
+&= \boxed{-\sigma(-y_iw^Tx_i)y_ix_i}
+
+\end{aligned}
+$$
+
+SGD:
+
+$$
+w \leftarrow w+\eta \sigma\left(-y_i w^T x_i\right) y_i x_i
+$$
+
+Logistic regression does not converge for linearly separable data:
+
+![alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-7.png)
+_Scaling $w$ by ever larger constants makes the classifier more confident and keeps increasing the likelihood of the data_
