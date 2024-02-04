@@ -41,11 +41,11 @@ $$
 \begin{gathered}
 \mathbb{E}\left[(Y-f(X))^2 - (f(X)-\mathbb{E}[Y \mid X])^2 - (Y-\mathbb{E}[Y \mid X])^2\right] = 0 \\
 
-\text{i.e.}\quad \mathbb{E}\left[\left(E\left[Y|X\right]-Y\right)\left(E\left[Y|X\right]-f\left(X\right)\right)\right]=0 .
+\text{i.e.}\quad \mathbb{E}\left[\left(E\left[Y|X\right]-Y\right)\left(E\left[Y\vert X\right]-f\left(X\right)\right)\right]=0 .
 \end{gathered}
 $$
 
-Given $E[Y|X]$ is a function of $X$, let $g(X) := E[Y|X] - f(X)$ then it suffies to prove
+Given $E[Y\vert X]$ is a function of $X$, let $g(X) := E[Y\vertX] - f(X)$ then it suffies to prove
 
 $$
 \mathbb{E}[\mathbb{E}[Y|X]g(X)] = \mathbb{E}[Y g(X)] .
