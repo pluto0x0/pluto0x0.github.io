@@ -10,8 +10,6 @@ math: true
 Among all probability distributions over $[a, b] \in \mathbb{R}$, which distribution has the highest variance? How large is
 that variance?
 
-### Proof
-
 $$
 P(x) = \begin{cases}
     \frac{1}{2} & x = a, b \\
@@ -19,7 +17,7 @@ P(x) = \begin{cases}
 \end{cases}
 $$
 
-then 
+then
 
 $$
 \operatorname{Var}(x) = \mathbb{E}\left(\left(x-\frac{a+b}{2}\right)^2\right) = \left(\frac{a+b}{2}\right)^2
@@ -45,7 +43,7 @@ $$
 \end{gathered}
 $$
 
-Given $E[Y\vert X]$ is a function of $X$, let $g(X) := E[Y\vertX] - f(X)$ then it suffies to prove
+Given $E[Y\vert X]$ is a function of $X$, let $g(X) := E[Y\vert X] - f(X)$ then it suffies to prove
 
 $$
 \mathbb{E}[\mathbb{E}[Y|X]g(X)] = \mathbb{E}[Y g(X)] .
@@ -56,9 +54,9 @@ then
 $$
 \begin{aligned}
     \text{LHS} &= \sum_{x_i} \boxed{\mathbb{E}[Y|X=x_i]} g(x_i) P_X(x_i) \\
-    &= \sum_{x_i} g(x_i) P_X(x_i) \boxed{\sum_{y_i}y_i\frac{P_{X,Y}(x_i,y_i)}{P_X(x_i)} } \\ 
+    &= \sum_{x_i} g(x_i) P_X(x_i) \boxed{\sum_{y_i}y_i\frac{P_{X,Y}(x_i,y_i)}{P_X(x_i)} } \\
     &= \sum_{x_i} \sum_{y_i} g(x_i) y_i P_{X,Y}(x_i,y_i) \\
-    &= \text{RHS} \blacksquare
+    &= \text{RHS} \;\blacksquare
 \end{aligned}
 $$
 
@@ -68,7 +66,6 @@ Let $f: \mathcal{X} \rightarrow \mathbb{R}$ be a estimator from $X$ to $Y$, this
 
 ## 3
 
-
 Let $A \in \mathbb{R}^{n \times n}$ be a positive-definite real symmetric matrix, and $b \in \mathbb{R}^n$ be a vector. $\lambda$ is the largest eigenvalue of $A$, that is,
 
 $$ \lambda = \max_{z:||z||_2=1} ||Az||_2. \quad (1) $$
@@ -76,3 +73,74 @@ $$ \lambda = \max_{z:||z||_2=1} ||Az||_2. \quad (1) $$
 Let $x^*$ be the solution to $x^* = Ax^* + b$. Define $x_0 = 0$ and for $t > 0$, $x_t := Ax_{t-1} + b$. Prove that $||x_t - x^*||_2 \leq \lambda^t ||x^*||_2$.
 
 (Hint: show that $||x_t - x^*||_2 \leq \lambda ||x_{t-1} - x^*||_2$). Also, you do not need to know any additional properties about the largest eigenvalue of matrix; the proof is elementary given Eq. (1).)
+
+### Proof
+
+substitude
+
+$$
+b = x^\star - Ax^\star,
+$$
+
+then
+
+$$
+x_t = Ax_{t-1} + b = Ax_{t-1} + x^\star - Ax^\star,
+$$
+
+and it suffies to prove
+
+$$
+\begin{gathered}
+    ||x_t - x^*||_2 \leq \lambda ||x_{t-1} - x^*||_2 \\
+    \text{i.e.}\quad ||Ax_{t-1} - Ax^\star||_2 \le  \lambda ||x_{t-1} - x^*||_2 \\
+\end{gathered}
+$$
+
+With Equation (1),
+
+$$
+ ||A(x_{t-1} - x^\star)||_2 \le  \lambda ||x_{t-1} - x^*||_2  \;\blacksquare
+$$
+
+## 4
+
+Prove that $\gamma^{\frac{\log(1/\epsilon)}{1-\gamma}} \le \epsilon$ when $\gamma, \epsilon \in (0, 1)$.
+
+(Hint: use the fact that $(1-1/x)^x< 1/e$ when $x > 1$)
+
+### Proof
+
+#### Lemma
+
+$$
+(1-1/x)^x< 1/e \quad\text{when}\quad x > 1
+$$
+
+It suffies to prove
+
+$$
+x\log\left(1-\frac{1}{x}\right) < -1.
+$$
+
+Substitude $u := 1-1/x$, then
+
+$$
+\log(u) < u-1
+$$
+
+holds.
+
+For original proposition, substitude $u := \frac{1}{1-\gamma}$ and therefore $\gamma = 1 - \frac{1}{u}$,
+then It suffies to prove
+
+$$
+\left( 1 - \frac{1}{u} \right)^{u \log(1/\epsilon)} \le \epsilon
+$$
+
+with the lemma,
+
+$$
+\left( 1 - \frac{1}{u} \right)^{u \log(1/\epsilon)} < \left( \frac{1}{e} \right)^{\log (1/\epsilon)} = \epsilon \;\blacksquare
+
+$$
