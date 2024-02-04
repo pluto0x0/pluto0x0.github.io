@@ -72,7 +72,7 @@ $$ \lambda = \max_{z:||z||_2=1} ||Az||_2. \quad (1) $$
 
 Let $x^\star$ be the solution to $x^\star = Ax^\star + b$. Define $x_0 = 0$ and for $t > 0$, $x_t := Ax_{t-1} + b$. Prove that $\vert\vert x_t - x^\star\vert\vert_2 \leq \lambda^t \vert\vert x^\star\vert\vert_2$.
 
-(Hint: show that $\vert\vert x_t - x^\star\vert\vert_2 \leq \lambda \vert\vert x_{t-1} - x^\star\vert\vert_2$). Also, you do not need to know any additional properties about the largest eigenvalue of matrix; the proof is elementary given Eq. (1).)
+(Hint: show that $\vert\vert x_t - x^\star\vert\vert_2 \leq \lambda \vert\vert x_{t-1} - x^\star\vert\vert_2$ ). Also, you do not need to know any additional properties about the largest eigenvalue of matrix; the proof is elementary given Eq. (1).)
 
 ### Proof
 
