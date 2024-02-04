@@ -70,9 +70,9 @@ Let $A \in \mathbb{R}^{n \times n}$ be a positive-definite real symmetric matrix
 
 $$ \lambda = \max_{z:||z||_2=1} ||Az||_2. \quad (1) $$
 
-Let $x^*$ be the solution to $x^* = Ax^* + b$. Define $x_0 = 0$ and for $t > 0$, $x_t := Ax_{t-1} + b$. Prove that $||x_t - x^*||_2 \leq \lambda^t ||x^*||_2$.
+Let $x^*$ be the solution to $x^* = Ax^* + b$. Define $x_0 = 0$ and for $t > 0$, $x_t := Ax_{t-1} + b$. Prove that $\vert\vert x_t - x^*\vert\vert _2 \leq \lambda^t \vert\vert x^*\vert\vert _2$.
 
-(Hint: show that $||x_t - x^*||_2 \leq \lambda ||x_{t-1} - x^*||_2$). Also, you do not need to know any additional properties about the largest eigenvalue of matrix; the proof is elementary given Eq. (1).)
+(Hint: show that $\vert\vert x_t - x^*\vert\vert _2 \leq \lambda \vert\vert x_{t-1} - x^*\vert\vert _2$). Also, you do not need to know any additional properties about the largest eigenvalue of matrix; the proof is elementary given Eq. (1).)
 
 ### Proof
 
@@ -142,5 +142,4 @@ with the lemma,
 
 $$
 \left( 1 - \frac{1}{u} \right)^{u \log(1/\epsilon)} < \left( \frac{1}{e} \right)^{\log (1/\epsilon)} = \epsilon \;\blacksquare
-
 $$
