@@ -27,7 +27,8 @@ $$
 
 ## 2
 
-2. Let $X, Y$ be two random variables that follow some joint distributions over $\mathcal{X} \times \mathbb{R}$. Let $f: \mathcal{X} \rightarrow \mathbb{R}$ be a real-valued function. Prove that
+Let $X, Y$ be two random variables that follow some joint distributions over $\mathcal{X} \times \mathbb{R}$. Let $f: \mathcal{X} \rightarrow \mathbb{R}$ be a real-valued function. Prove that
+
 $$
 \mathbb{E}\left[(Y-f(X))^2\right]-\mathbb{E}\left[(f(X)-\mathbb{E}[Y \mid X])^2\right]=\mathbb{E}\left[(Y-\mathbb{E}[Y \mid X])^2\right] .
 $$
@@ -63,3 +64,15 @@ $$
 
 ### Notes
 
+Let $f: \mathcal{X} \rightarrow \mathbb{R}$ be a estimator from $X$ to $Y$, this equation shows that square error ($l_2$ loss) $\mathbb{E}\left[(Y-f(X))^2\right]$ is at least $\mathbb{E}\left[(Y-\mathbb{E}[Y \mid X])^2\right]$ for $\forall f$ and thus cannot be arbitrarily small.
+
+## 3
+
+
+Let $A \in \mathbb{R}^{n \times n}$ be a positive-definite real symmetric matrix, and $b \in \mathbb{R}^n$ be a vector. $\lambda$ is the largest eigenvalue of $A$, that is,
+
+$$ \lambda = \max_{z:||z||_2=1} ||Az||_2. \quad (1) $$
+
+Let $x^*$ be the solution to $x^* = Ax^* + b$. Define $x_0 = 0$ and for $t > 0$, $x_t := Ax_{t-1} + b$. Prove that $||x_t - x^*||_2 \leq \lambda^t ||x^*||_2$.
+
+(Hint: show that $||x_t - x^*||_2 \leq \lambda ||x_{t-1} - x^*||_2$). Also, you do not need to know any additional properties about the largest eigenvalue of matrix; the proof is elementary given Eq. (1).)
