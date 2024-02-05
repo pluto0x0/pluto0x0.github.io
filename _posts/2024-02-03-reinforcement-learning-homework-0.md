@@ -143,3 +143,4 @@ with the lemma,
 $$
 \left( 1 - \frac{1}{u} \right)^{u \log(1/\epsilon)} < \left( \frac{1}{e} \right)^{\log (1/\epsilon)} = \epsilon \;\blacksquare
 $$
+
