@@ -58,12 +58,12 @@ Assume states & actions are visited uniformly.
 
 Random exploration can be inefficient:
 
-![alt text](../upload/img/2024-02-04-reinforcement-learning-lecture-1-image-5.png){: h="400" }
+![alt text](../upload/img/2024-02-04-reinforcement-learning-lecture-1-image-5.png){: w="400" }
 _example: video game_
 
 ## example: video game
 
-Objective: 
+Objective: maximize the reward
 
 $$
 \mathbb{E}\left[\sum_{t=1}^{\infty} r_t \mid \pi\right] \; \text{or} \;
