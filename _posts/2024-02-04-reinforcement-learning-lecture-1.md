@@ -39,8 +39,7 @@ $$
 
 optimal policy : $\pi^*$
 
-
-## Model-based RL:
+## Model-based RL
 
 The states are unknown.
 Learn by **trial-and-error**
@@ -70,12 +69,26 @@ $$
 \mathbb{E}\left[\sum_{t=1}^{\infty} \gamma^{t-1} r_t \mid \pi\right]
 $$
 
-
-
 Problem: the graph is too large
 
 ![alt text](../upload/img/2024-02-04-reinforcement-learning-lecture-1-image-4.png){: w="300" }
 
-- there are states that the RL model have never seen.
-- therefore need **generalization**
-- 
+There are states that the RL model have never seen, therefore need **generalization**
+
+### Contextual bandits
+
+- Even if the algorithm is good, if mamke bad actions at beginning, will not get good data.
+- Keep taking bad actions (e.g. guessing wrong label on image classification), don't know right action.
+  - Compared with superivsed learning
+- [Multi-armed bandit](https://en.wikipedia.org/wiki/Multi-armed_bandit)
+
+## RL steps
+
+For round t = 1, 2, ...,
+
+- For time step h=1, 2, ..., H, the learner
+  - Observes $x_h^{(t)}$
+  - Chooses $a_h^{(t)}$
+  - Receives $r_h^{(t)} \sim R(x_h^{(t)}, a_h^{(t)})$
+  - Next $x_{h+1}^{(t)}$ is generated as a function of $x_h^{(t)}$ and $a_h^{(t)}$
+    (or sometimes, all previous x's and a's within round t)
