@@ -58,7 +58,7 @@ Assume states & actions are visited uniformly.
 
 Random exploration can be inefficient:
 
-![alt text](../upload/img/2024-02-04-reinforcement-learning-lecture-1-image-5.png){: h="400" }
+![alt text](../upload/img/2024-02-04-reinforcement-learning-lecture-1-image-5.png){: height="400" }
 _example: video game_
 
 ## example: video game
@@ -74,7 +74,7 @@ $$
 
 Problem: the graph is too large
 
-![alt text](../upload/img/2024-02-04-reinforcement-learning-lecture-1-image-4.png){: h="30" }
+![alt text](../upload/img/2024-02-04-reinforcement-learning-lecture-1-image-4.png){: w="300" }
 
 - there are states that the RL model have never seen.
 - therefore need **generalization**
