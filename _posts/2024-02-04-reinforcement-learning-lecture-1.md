@@ -70,10 +70,12 @@ $$
 \mathbb{E}\left[\sum_{t=1}^{\infty} \gamma^{t-1} r_t \mid \pi\right]
 $$
 
+
+
 Problem: the graph is too large
 
-![alt text](../upload/img/2024-02-04-reinforcement-learning-lecture-1-image-4.png){: w="300" }
+![alt text](../upload/img/2024-02-04-reinforcement-learning-lecture-1-image-4.png){: h="30" }
 
 - there are states that the RL model have never seen.
-- therefore need generalization
+- therefore need **generalization**
 - 
