@@ -1,5 +1,5 @@
 ---
-title: Reinforcement Learning (2)
+title: Reinforcement Learning (2-3)
 date: 2024-02-07 22:00:44
 img_path: /_posts/
 math: true
@@ -13,7 +13,7 @@ An MDP $M = (S, A, P, R, \gamma)$ consists of:
 
 - **State space** $S$.
 - **Action space** $A$.
-- **Transition function** $P$: $S \times A \rightarrow \Delta(S)$. $\Delta(S)$ is the probability simplex over $S$, i.e., all non-negative vectors of length $|S|$ that sums up to 1.
+- **Transition function** $P$: $S \times A \rightarrow \Delta(S)$. $\Delta(S)$ is the probability simplex over $S$, i.e., all non-negative vectors of length $\ver S\vert $ that sums up to 1.
 - **Reward function** $R$: $S \times A \rightarrow \mathbb{R}$. (deterministic reward function)
 - **Discount factor** $\gamma \in [0,1]$
 
@@ -56,10 +56,8 @@ For $\gamma < 1$, the total reward is finite.
 
 ### finite horizon vs. infinite-horizon discounted MDP
 
-For finite-horizon (finite acitons), $\gamma$ can be $1$.
-
-For infinite-horizon (infinite acitons), $\gamma < 1$.
-
+- For finite-horizon (finite acitons), $\gamma$ can be $1$.
+- For infinite-horizon (infinite acitons), $\gamma < 1$.
 
 ## Value and policy
 
@@ -117,9 +115,9 @@ where $\langle\cdot, \cdot\rangle$ is Dot Product.
 
 ### Matrix form
 
-- $V^\pi$ as the $|S| \times 1$ vector $[V^\pi(s)]_{s \in S}$
+- $V^\pi$ as the $\vert S\vert  \times 1$ vector $[V^\pi(s)]_{s \in S}$
 - $R^\pi$ as the vector $[R(s, \pi(s))]_{s \in S}$
-- $P^\pi$ as the matrix $[P(s' | s, \pi(s))]_{s \in S, s' \in S}$
+- $P^\pi$ as the matrix $[P(s' \vert  s, \pi(s))]_{s \in S, s' \in S}$
 
 $$
 \begin{gathered}
@@ -132,7 +130,7 @@ $$
 ## Generalize to stochastic policies
 
 $$
-V^\pi(s) = 
+V^\pi(s) =
 \mathbb{E}_{a \sim \pi(\cdot \mid s), s^{\prime} \sim P(\cdot \mid s, a)}\left[R(s, a)+\gamma V^\pi\left(s^{\prime}\right)\right]
 $$
 
@@ -153,3 +151,6 @@ $$
 
 ## Optimality
 
+For infinite-horizon discounted MDPs, there always exists a stationary and deterministic policy that is optimal for all starting states simultaneously.
+
+Optimal policy $\pi^*$ and $V^* := V^{\pi^*}$
