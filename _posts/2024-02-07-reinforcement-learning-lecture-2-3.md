@@ -1,5 +1,5 @@
 ---
-title: Reinforcement Learning (2-3)
+title: Reinforcement Learning (2-4)
 date: 2024-02-07 22:00:44
 img_path: /_posts/
 math: true
@@ -13,7 +13,7 @@ An MDP $M = (S, A, P, R, \gamma)$ consists of:
 
 - **State space** $S$.
 - **Action space** $A$.
-- **Transition function** $P$: $S \times A \rightarrow \Delta(S)$. $\Delta(S)$ is the probability simplex over $S$, i.e., all non-negative vectors of length $\ver S\vert $ that sums up to 1.
+- **Transition function** $P$: $S \times A \rightarrow \Delta(S)$. $\Delta(S)$ is the **probability** simplex over $S$, i.e., all non-negative vectors of length $\vert S\vert$ that sums up to $1$.
 - **Reward function** $R$: $S \times A \rightarrow \mathbb{R}$. (deterministic reward function)
 - **Discount factor** $\gamma \in [0,1]$
 
@@ -83,15 +83,15 @@ $$
 define value funtion
 
 $$
-V^\pi (s) = \mathbb{E}\left[\sum_{t=1}^{\infty} \gamma^{t-1} r_t | s_1 = s, \pi \right]
+V^\pi (s) = \mathbb{E}\left[\sum_{t=1}^{\infty} \gamma^{t-1} r_t \middle| s_1 = s, \pi \right]
 $$
 
 ## Bellman Equation
 
 $$
 \begin{aligned}
-V^\pi(s) & =\mathbb{E}\left[\sum_{t=1}^{\infty} \gamma^{t-1} r_t \mid s_1=s, \pi\right] \\
-& =R(s, \pi(s))+\gamma\left\langle P(\cdot \mid s, \pi(s)), V^\pi(\cdot)\right\rangle
+V^\pi(s) & =\mathbb{E}\left[\sum_{t=1}^{\infty} \gamma^{t-1} r_t \middle| s_1=s, \pi\right] \\
+& =R(s, \pi(s))+\gamma\left\langle P(\cdot \middle| s, \pi(s)), V^\pi(\cdot)\right\rangle
 \end{aligned}
 $$
 
@@ -100,13 +100,13 @@ $$
 
 $$
 \begin{aligned}
-V^\pi(s) & =\mathbb{E}\left[\sum_{t=1}^{\infty} \gamma^{t-1} r_t \mid s_1=s, \pi\right] \\
-& =\mathbb{E}\left[r_1+\sum_{t=2}^{\infty} \gamma^{t-1} r_t \mid s_1=s, \pi\right] \\
-& =R(s, \pi(s))+\sum_{s^{\prime} \in \mathcal{S}} P\left(s^{\prime} \mid s, \pi(s)\right) \mathbb{E}\left[\gamma \sum_{t=2}^{\infty} \gamma^{t-2} r_t \mid s_1=s, s_2=s^{\prime}, \pi\right] \\
-& =R(s, \pi(s))+\sum_{s^{\prime} \in \mathcal{S}} P\left(s^{\prime} \mid s, \pi(s)\right) \mathbb{E}\left[\gamma \sum_{t=2}^{\infty} \gamma^{t-2} r_t \mid s_2=s^{\prime}, \pi\right] \\
-& =R(s, \pi(s))+\gamma \sum_{s^{\prime} \in \mathcal{S}} P\left(s^{\prime} \mid s, \pi(s)\right) \mathbb{E}\left[\sum_{t=1}^{\infty} \gamma^{t-1} r_t \mid s_1=s^{\prime}, \pi\right] \\
-& =R(s, \pi(s))+\gamma \sum_{s^{\prime} \in \mathcal{S}} P\left(s^{\prime} \mid s, \pi(s)\right) V^\pi\left(s^{\prime}\right) \\
-& =R(s, \pi(s))+\gamma\left\langle P(\cdot \mid s, \pi(s)), V^\pi(\cdot)\right\rangle
+V^\pi(s) & =\mathbb{E}\left[\sum_{t=1}^{\infty} \gamma^{t-1} r_t \middle| s_1=s, \pi\right] \\
+& =\mathbb{E}\left[r_1+\sum_{t=2}^{\infty} \gamma^{t-1} r_t \middle| s_1=s, \pi\right] \\
+& =R(s, \pi(s))+\sum_{s^{\prime} \in \mathcal{S}} P\left(s^{\prime} \middle| s, \pi(s)\right) \mathbb{E}\left[\gamma \sum_{t=2}^{\infty} \gamma^{t-2} r_t \middle| s_1=s, s_2=s^{\prime}, \pi\right] \\
+& =R(s, \pi(s))+\sum_{s^{\prime} \in \mathcal{S}} P\left(s^{\prime} \middle| s, \pi(s)\right) \mathbb{E}\left[\gamma \sum_{t=2}^{\infty} \gamma^{t-2} r_t \middle| s_2=s^{\prime}, \pi\right] \\
+& =R(s, \pi(s))+\gamma \sum_{s^{\prime} \in \mathcal{S}} P\left(s^{\prime} \middle| s, \pi(s)\right) \mathbb{E}\left[\sum_{t=1}^{\infty} \gamma^{t-1} r_t \middle| s_1=s^{\prime}, \pi\right] \\
+& =R(s, \pi(s))+\gamma \sum_{s^{\prime} \in \mathcal{S}} P\left(s^{\prime} \middle| s, \pi(s)\right) V^\pi\left(s^{\prime}\right) \\
+& =R(s, \pi(s))+\gamma\left\langle P(\cdot \middle| s, \pi(s)), V^\pi(\cdot)\right\rangle
 \end{aligned}
 $$
 </details>
@@ -126,6 +126,29 @@ V^\pi = R^\pi + \gamma P^\pi V^\pi \\
 V^\pi = (I - \gamma P^\pi)^{-1}R^\pi \\
 \end{gathered}
 $$
+
+Claim: $(I - \gamma P^\pu)$ is invertible.
+
+Proof. It suffies to prove
+
+$$
+\forall x \ne \vec{0} \in \mathbb{R}^S, \; (I - \gamma P^\pi)x \ne \vec{0}
+$$
+
+then
+
+$$
+\begin{aligned}
+&||(I - \gamma P^\pi) x ||_{\infty} \\
+=&||x - \gamma P^\pi  x ||_{\infty} \\
+\ge&||x||_{\infty} - \gamma||P^\pi  x ||_{\infty} \\
+\ge&||x||_{\infty} - \gamma||x||_{\infty} \\
+=&(1 - \gamma)||x||_{\infty} \\
+\ge&||x||_{\infty} \\
+>& 0 \blacksquare
+\end{aligned}
+$$
+
 
 ## Generalize to stochastic policies
 
@@ -153,4 +176,55 @@ $$
 
 For infinite-horizon discounted MDPs, there always exists a stationary and deterministic policy that is optimal for all starting states simultaneously.
 
-Optimal policy $\pi^*$ and $V^* := V^{\pi^*}$
+Optimal policy $\pi^*$ and 
+
+$$
+V^* := V^{\pi^*}
+$$
+
+### Bellman Optimality Equation:
+
+$$
+V^{*}(s)=\max_{a\in A}\left(R(s,a)+\gamma\mathbb{E}_{s^{\prime}\thicksim P(s,a)}\left[V^{*}(s^{\prime})\right]\right)
+$$
+
+### Q-functions
+
+$$
+\begin{gathered}
+Q^{\pi}(s,a):=\mathbb{E}\left[\sum_{t=1}^{\infty}\gamma^{t-1}r_{t} \middle| s_1=s, a_1=a; \pi \right] \\
+
+Q^* := Q^{\pi^*} \; \text{or} \\
+
+V^{\pi}(s)=Q^{\pi}(s,\pi(s))  \;\; \text{or} \;\; Q^{\pi}(s,\pi)\\
+\end{gathered}
+$$
+
+### Bellman equation for $Q$
+
+$$
+\begin{gathered}
+  
+Q^{\pi}(s,a)=R(s,a)+\gamma\mathbb{E}_{s^{\prime}\sim P(\cdot|s,a)}\left[Q^{\pi}(s^{\prime},\pi)\right] \\
+
+Q^*(s,a)=R(s,a)+\gamma\mathbb{E}_{s^{\prime}\sim P(\cdot|s,a)}\left[\max_{a^{\prime}\in A}Q^*(s^{\prime},a^{\prime})\right]
+
+\end{gathered}
+$$
+
+### Define $V$ by $Q$
+
+$$
+V^{*}(s)=\max_{a\in A}Q^{*}(s,a)=Q^{*}(s,\pi^{*}(s))
+$$
+
+## Fixed-horizon MDPs
+
+
+Specified by $(S, A, R, P, H)$, All trajectories end in precisely $H$ steps
+
+
+$$
+V_{H+1}^\pi \equiv 0 \\
+V_{h}^{\pi}(s)=R(s,\pi(s))+\mathbb{E}_{s'\sim P(s,a)}[V_{h+1}^{\pi}(s')]
+$$
