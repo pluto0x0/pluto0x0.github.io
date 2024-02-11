@@ -68,7 +68,7 @@ Let $f: \mathcal{X} \rightarrow \mathbb{R}$ be a estimator from $X$ to $Y$, this
 
 Let $A \in \mathbb{R}^{n \times n}$ be a positive-definite real symmetric matrix, and $b \in \mathbb{R}^n$ be a vector. $\lambda$ is the largest eigenvalue of $A$, that is,
 
-$$ \lambda = \max_{z:||z||_2=1} ||Az||_2. \quad (1) $$
+$$ \lambda = \max_{z:\Vert z\Vert _2=1} \Vert Az\Vert _2. \quad (1) $$
 
 Let $x^\star$ be the solution to $x^\star = Ax^\star + b$. Define $x_0 = 0$ and for $t > 0$, $x_t := Ax_{t-1} + b$. Prove that $\Vert x_t - x^\star\Vert_2 \leq \lambda^t \Vert x^\star\Vert_2$.
 
@@ -92,15 +92,15 @@ and it suffies to prove
 
 $$
 \begin{gathered}
-    ||x_t - x^*||_2 \leq \lambda ||x_{t-1} - x^*||_2 \\
-    \text{i.e.}\quad ||Ax_{t-1} - Ax^\star||_2 \le  \lambda ||x_{t-1} - x^*||_2 \\
+    \Vert x_t - x^*\Vert _2 \leq \lambda \Vert x_{t-1} - x^*\Vert _2 \\
+    \text{i.e.}\quad \Vert Ax_{t-1} - Ax^\star\Vert _2 \le  \lambda \Vert x_{t-1} - x^*\Vert _2 \\
 \end{gathered}
 $$
 
 With Equation (1),
 
 $$
- ||A(x_{t-1} - x^\star)||_2 \le  \lambda ||x_{t-1} - x^*||_2  \;\blacksquare
+ \Vert A(x_{t-1} - x^\star)\Vert _2 \le  \lambda \Vert x_{t-1} - x^*\Vert _2  \;\blacksquare
 $$
 
 ## 4

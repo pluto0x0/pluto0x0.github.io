@@ -139,12 +139,12 @@ then
 
 $$
 \begin{aligned}
-&||(I - \gamma P^\pi) x ||_{\infty} \\
-=&||x - \gamma P^\pi  x ||_{\infty} \\
-\ge&||x||_{\infty} - \gamma||P^\pi  x ||_{\infty} \\
-\ge&||x||_{\infty} - \gamma||x||_{\infty} \\
-=&(1 - \gamma)||x||_{\infty} \\
-\ge&||x||_{\infty} \\
+&\Vert (I - \gamma P^\pi) x \Vert _{\infty} \\
+=&\Vert x - \gamma P^\pi  x \Vert _{\infty} \\
+\ge&\Vert x\Vert _{\infty} - \gamma\Vert P^\pi  x \Vert _{\infty} \\
+\ge&\Vert x\Vert _{\infty} - \gamma\Vert x\Vert _{\infty} \\
+=&(1 - \gamma)\Vert x\Vert _{\infty} \\
+\ge&\Vert x\Vert _{\infty} \\
 >& 0 \blacksquare
 \end{aligned}
 $$

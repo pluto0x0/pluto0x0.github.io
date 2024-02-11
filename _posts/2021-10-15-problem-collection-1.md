@@ -45,7 +45,7 @@ int main()
     }
     
     // find who win
-    cout << ((p1 % 2 || p2 % 2)  ? "Alice" : "Bob");
+    cout << ((p1 % 2 \Vert  p2 % 2)  ? "Alice" : "Bob");
     // print result
  
 }

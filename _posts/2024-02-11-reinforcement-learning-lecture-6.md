@@ -57,12 +57,50 @@ $$
 
 ## Convergence of VI
 
-lemma: $\mathcal{T}$ is a $\gamma$**-contraction** under $\|\cdot\|_{\infty}$ where $\|\cdot\|_{\infty} := \max_{x\in (\cdot)}x$
+lemma: $\mathcal{T}$ is a $\gamma$**-contraction** under $\Vert \cdot\Vert _{\infty}$ where $\Vert \cdot\Vert _{\infty} := \max_{x\in (\cdot)}x$.
 
 which means 
 
 $$
-\|Tf-f\|_{\infty}\leq\gamma\|f-f\|_{\infty}
+\Vert \mathcal{T}f-\mathcal{T}f'\Vert _{\infty}\leq\gamma\Vert f-f'\Vert _{\infty}
 $$
 
+Proof.
 
+$$
+\begin{aligned}
+&\Vert f_k - Q^* \Vert_\infty  \\
+=& \Vert \mathcal{T}f_{k-1} - Q^*\Vert_\infty \\
+=& \Vert \mathcal{T}f_{k-1} - \mathcal{T}Q^*\Vert_\infty \\
+\overset{\text{lemma}}{\le}& \gamma \Vert f_{k-1} - Q^*\Vert_\infty \\
+\end{aligned}
+$$
+
+$$
+\Rightarrow \Vert f_k-Q^*\Vert_\infty \le \gamma^k \Vert f_{k-1} -Q^*\Vert_\infty \; \text{where}\; \gamma \in (0,1) \blacksquare
+$$
+
+Proof of lemma:
+
+It suffies to prove 
+
+$$
+\begin{aligned}
+&\left|(\mathcal{T}f - \mathcal{T}f') (s,a)\right| \\
+= &\left|\left(R(s,a) + \gamma \mathbb{E}_{s'\sim P(\cdot|s,a)}[\max_{a'} f(s', a')]\right)
+- \left(R(s,a) + \gamma \mathbb{E}_{s'\sim P(\cdot|s,a)}[\max_{a'} f(s', a')]\right)\right| \\
+=& \gamma\left|\mathbb{E}_{s'\sim P(\cdot|s,a)}[\max_{a'} f(s', a') - \max_{a'} f'(s', a')]\right|
+\end{aligned}
+$$
+
+$\text{WLOG}$ assume, $\max_{a'} f(s', a') > \max_{a'} f'(s', a')$ and $\exist a^*: \max_af(s',a)=f(s',a^*)$, then
+
+$$
+\begin{aligned}
+& \gamma\left|\mathbb{E}_{s'\sim P(\cdot|s,a)}[\max_{a'} f(s', a') - \max_{a'} f'(s', a')]\right| \\
+=& \gamma\left|\mathbb{E}_{s'\sim P(\cdot|s,a)}[f(s', a^*) - \max_{a'} f'(s', a')]\right| \\
+\le& \gamma\left|\mathbb{E}_{s'\sim P(\cdot|s,a)}[f(s', a^*) - f'(s', a^*)]\right| \\
+\le& \gamma\left|f(s', a^*) - f'(s', a^*)\right| \\
+\le& \gamma \Vert f-f'\Vert_\infty
+\end{aligned}
+$$

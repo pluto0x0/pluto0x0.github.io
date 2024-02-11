@@ -196,7 +196,7 @@ function run_cmd() {
 	color_echo "$2"
 	echo -n -e " ${BG_WHITE}${UBLACK}[Y/n]${NC}:"
 	read -r response < /dev/tty
-	if [[ "$response" == "" || "$response" == "y" || "$response" == "y" ]]; then
+	if [[ "$response" == "" \Vert  "$response" == "y" \Vert  "$response" == "y" ]]; then
 		eval "$cmd"
 	else
 		if [ -z "$3" ]; then
