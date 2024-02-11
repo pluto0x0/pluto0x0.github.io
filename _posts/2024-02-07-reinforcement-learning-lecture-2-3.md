@@ -149,7 +149,6 @@ $$
 \end{aligned}
 $$
 
-
 ## Generalize to stochastic policies
 
 $$
@@ -176,13 +175,13 @@ $$
 
 For infinite-horizon discounted MDPs, there always exists a stationary and deterministic policy that is optimal for all starting states simultaneously.
 
-Optimal policy $\pi^*$ and 
+Optimal policy $\pi^*$ and
 
 $$
 V^* := V^{\pi^*}
 $$
 
-### Bellman Optimality Equation:
+### Bellman Optimality Equation
 
 $$
 V^{*}(s)=\max_{a\in A}\left(R(s,a)+\gamma\mathbb{E}_{s^{\prime}\thicksim P(s,a)}\left[V^{*}(s^{\prime})\right]\right)
@@ -212,19 +211,23 @@ Q^*(s,a)=R(s,a)+\gamma\mathbb{E}_{s^{\prime}\sim P(\cdot|s,a)}\left[\max_{a^{\pr
 \end{gathered}
 $$
 
-### Define $V$ by $Q$
+### Define $V^*$ and $\pi^*$ by $Q$
 
 $$
 V^{*}(s)=\max_{a\in A}Q^{*}(s,a)=Q^{*}(s,\pi^{*}(s))
 $$
 
-## Fixed-horizon MDPs
+$$
+\pi^*(s) = \arg \max_{a \in A} Q^*(s, a)
+$$
 
+## Fixed-horizon MDPs
 
 Specified by $(S, A, R, P, H)$, All trajectories end in precisely $H$ steps
 
-
 $$
+\begin{gathered}
 V_{H+1}^\pi \equiv 0 \\
 V_{h}^{\pi}(s)=R(s,\pi(s))+\mathbb{E}_{s'\sim P(s,a)}[V_{h+1}^{\pi}(s')]
+\end{gathered}
 $$
