@@ -147,3 +147,67 @@ graph TD;
     C ==>|+3| G([Pasta])
 ```
 
+#### Comment
+
+Policy $\pi$ was switched to Japanese for once, and switched back to Italian at the end.
+
+Also, the policy updates upwards.
+
+## Monotone Policy improvement
+
+$$
+\forall k,\forall s: V^{\pi_k}\geq V^{\pi_{k-1}}
+$$
+
+$$
+\text { if } \pi_{k-1} \neq \pi^*, \exists s: v^{\pi_k}(s)>V^{\pi_{k-1}}(s)
+$$
+
+$$
+\Rightarrow \text{\#iteration} \le |A|^{|S|}
+$$
+
+>  Monotone Policy improvement produces exact solutions, while value iteration produces approxmitate solutions,
+{: .prompt-tip }
+
+Proof of: $Q^{\pi_{k+1}} \ge Q^{\pi_k}$
+
+lemma 1:
+
+$$
+Q^{\pi_k}=\mathcal{T}^{\pi_k} Q^{\pi_k} \leq \mathcal{T} Q^{\pi_k}
+$$
+
+beacuse
+
+$$
+\begin{aligned}
+& (\mathcal{T}^\pi f)(s, a)=R(s, a)+\gamma \mathbb{E}_{s^{\prime} \sim p(\cdot \mid s, a)}\left[f\left(s^{\prime}, \pi\right)\right] \\ \le
+& (\mathcal{T} f)(s, a)=R(s, a)+\gamma \mathbb{E}_{s^{\prime} \sim  p(\cdot \mid s, a)}\left[\max _{a^{\prime}} f\left(s^{\prime}, a^{\prime}\right)\right]
+\end{aligned}
+$$
+
+lemma 2:
+
+$$
+\mathcal{T} Q^{\pi_k}=\mathcal{T}^{\pi_{k+1}} Q^{\pi_k}
+$$
+
+lemma 3:
+
+$$
+\forall f \ge f', \; \mathcal{T}^\pi f \ge \mathcal{T}^\pi f'
+$$
+
+with lemma 1,2,3,
+
+$$
+\begin{aligned}
+Q^{\pi_k} & \leq \boxed{\mathcal{T}^{\pi_{k+1}} Q^{\pi_k}} \\
+\Rightarrow  \boxed{\mathcal{T}^{\pi_{k+1}} Q^{\pi_k}} & \leq \mathcal{T}^{\pi_{k+1}} \mathcal{T}^{\pi_{k+1}} Q^{\pi_k} \\
+& \vdots \\
+\Rightarrow  Q^{\pi_k} & \leq\left(\mathcal{T}^{\pi_{k+1}}\right)^{\infty} Q^{\pi_k}=Q^{\pi_{k+1}}
+\end{aligned}
+$$
+
+because $Q^{\pi_{k+1}}$ is the fixed point of $\mathcal{T}^{\pi_{k+1}}$.
