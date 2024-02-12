@@ -4,6 +4,7 @@ date: 2024-02-11 19:56:53
 img_path: /_posts/
 math: true
 mermaid: true
+mermaid: true
 ---
 
 ## Policy Iteration
@@ -33,14 +34,14 @@ $$
 ## example
 
 ```mermaid
-graph TD;
-    A([start])
-    A -->|+0| B([Japanese])
-    A -->|+0| C([Italian])
-    B -->|+2| D([Ramen])
-    B -->|+2| E([Sushi])
-    C -->|+1| F([Steak])
-    C -->|+3| G([Pasta])
+    graph TD;
+        A([start])
+        A -->|+0| B([Japanese])
+        A -->|+0| C([Italian])
+        B -->|+2| D([Ramen])
+        B -->|+2| E([Sushi])
+        C -->|+1| F([Steak])
+        C -->|+3| G([Pasta])
 ```
 
 Optimal policy is heading `Pasta`.
