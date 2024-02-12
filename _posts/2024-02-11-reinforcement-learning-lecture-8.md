@@ -19,7 +19,7 @@ steps:
 - policy improvement: $\pi_k \leftarrow \pi_{Q^{\pi_{k-1}}}$ where
 
 $$
-\pi_{f{s}} = \argmax_{a \in A} f(s,a)
+\pi_{f{s}} = \arg\max_{a \in A} f(s,a)
 $$
 
 property:
