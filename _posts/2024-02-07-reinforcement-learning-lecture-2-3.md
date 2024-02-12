@@ -211,7 +211,7 @@ Q^*(s,a)=R(s,a)+\gamma\mathbb{E}_{s^{\prime}\sim P(\cdot|s,a)}\left[\max_{a^{\pr
 \end{gathered}
 $$
 
-### Define $V^*$ and $\pi^*$ by $Q$
+### Define optimal $V$ and $\pi$ by $Q$
 
 $$
 V^{*}(s)=\max_{a\in A}Q^{*}(s,a)=Q^{*}(s,\pi^{*}(s))
