@@ -127,7 +127,7 @@ V^\pi = (I - \gamma P^\pi)^{-1}R^\pi \\
 \end{gathered}
 $$
 
-Claim: $(I - \gamma P^)$ is invertible.
+Claim: $(I - \gamma P)$ is invertible.
 
 Proof. It suffies to prove
 
