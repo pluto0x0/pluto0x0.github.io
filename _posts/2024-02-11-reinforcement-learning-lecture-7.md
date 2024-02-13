@@ -8,25 +8,25 @@ math: true
 greedy policy:
 
 $$
-\pi^*(s) = \arg\max_{a\in A} Q^*(s, a)
+\pi^\star (s) = \arg\max_{a\in A} Q^\star (s, a)
 $$
 
 sequence of function:
 
 $$
-f_0, f_1, f_2, \cdots \to Q^*
+f_0, f_1, f_2, \cdots \to Q^\star 
 $$
 
 define
 
 $$
-\pi_{f_k}^*(s) = \arg\max_{a\in A} f_k(s, a)
+\pi_{f_k}^\star (s) = \arg\max_{a\in A} f_k(s, a)
 $$
 
 Claim:
 
 $$
-\Vert V^* -V^{\pi_f} \Vert \le \frac{2 \Vert f - Q^* ||_\infty}{1-\gamma}
+\Vert V^\star  -V^{\pi_f} \Vert \le \frac{2 \Vert f - Q^\star  ||_\infty}{1-\gamma}
 $$
 
 define operator $\mathcal{T}$:
@@ -36,10 +36,10 @@ $$
 $$
 
 > Note:
-> the $\mathcal{T}$ in $\mathcal{T}Q^*$ and $\mathcal{T}V^*$ are **not the same**.
+> the $\mathcal{T}$ in $\mathcal{T}Q^\star $ and $\mathcal{T}V^\star $ are **not the same**.
 {: .prompt-tip }
 
-## $V^*$ Iteration
+## $V^\star $ Iteration
 
 $$
 \begin{gathered}
@@ -54,19 +54,22 @@ $$
 f_k(s)=\max _{\text {all possible } \pi} \mathbb{E}\left[\sum_{t=1}^k \gamma^{t-1} r_t \mid s_1=s, \pi\right]
 $$
 
+> This is derived my the definaion of operator $\mathcal{T}$.
+{: .prompt-tip }
+
 Claim:
 
 $$
-\Vert f_k  -V^* \Vert \lesssim \gamma^k
+\Vert f_k  -V^\star  \Vert \lesssim \gamma^k
 $$
 
-step 1: $f_k \le V^*$
+step 1: $f_k \le V^\star $
 
 step 2: 
 
 $$
 \begin{aligned}
-f_k \ge &\boxed{\mathbb{E}\left[\sum_{t=1}^\infty \gamma^{t-1} r_t \mid s_1=s, \pi^*\right]} - \mathbb{E}\left[\sum_{t=k+1}^\infty \gamma^{t-1} r_t \mid s_1=s, \pi^*\right] \\
-\ge&\boxed{V^*} - r^k V_{\max} \blacksquare
+f_k \ge &\boxed{\mathbb{E}\left[\sum_{t=1}^\infty \gamma^{t-1} r_t \mid s_1=s, \pi^\star \right]} - \mathbb{E}\left[\sum_{t=k+1}^\infty \gamma^{t-1} r_t \mid s_1=s, \pi^\star \right] \\
+\ge&\boxed{V^\star } - r^k V_{\max} \blacksquare
 \end{aligned}
 $$

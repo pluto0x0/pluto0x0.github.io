@@ -5,10 +5,10 @@ img_path: /_posts/
 math: true
 ---
 
-Recall $V^*, Q^*, V^\pi, Q^\pi$.
+Recall $V^\star , Q^\star , V^\pi, Q^\pi$.
 
 $$
-V^*(s)=\max _{a \in A}(\underbrace{R(s, a)+\gamma \mathbb{E}_{S^{\prime} \sim P(\cdot \mid s, a)}\left[V^*\left(s^{\prime}\right)\right]}_{Q^*(s, a)})
+V^\star (s)=\max _{a \in A}(\underbrace{R(s, a)+\gamma \mathbb{E}_{S^{\prime} \sim P(\cdot \mid s, a)}\left[V^\star \left(s^{\prime}\right)\right]}_{Q^\star (s, a)})
 $$
 
 ## Bellman Operator
@@ -25,12 +25,12 @@ then
 
 $$
 \begin{gathered}
-Q^* = \mathcal{T} Q^* \\
-V^* = \mathcal{T} V^* \\
+Q^\star  = \mathcal{T} Q^\star  \\
+V^\star  = \mathcal{T} V^\star  \\
 \end{gathered}
 $$
 
-i.e. $Q^*$ and $V^*$ are fixpoints of $\mathcal{T}$.
+i.e. $Q^\star $ and $V^\star $ are fixpoints of $\mathcal{T}$.
 
 ## Value Interation Algorithm (VI)
 
@@ -69,15 +69,15 @@ Proof.
 
 $$
 \begin{aligned}
-&\Vert f_k - Q^* \Vert_\infty  \\
-=& \Vert \mathcal{T}f_{k-1} - Q^*\Vert_\infty \\
-=& \Vert \mathcal{T}f_{k-1} - \mathcal{T}Q^*\Vert_\infty \\
-\overset{\text{lemma}}{\le}& \gamma \Vert f_{k-1} - Q^*\Vert_\infty \\
+&\Vert f_k - Q^\star  \Vert_\infty  \\
+=& \Vert \mathcal{T}f_{k-1} - Q^\star \Vert_\infty \\
+=& \Vert \mathcal{T}f_{k-1} - \mathcal{T}Q^\star \Vert_\infty \\
+\overset{\text{lemma}}{\le}& \gamma \Vert f_{k-1} - Q^\star \Vert_\infty \\
 \end{aligned}
 $$
 
 $$
-\Rightarrow \Vert f_k-Q^*\Vert_\infty \le \gamma^k \Vert f_{k-1} -Q^*\Vert_\infty \; \text{where}\; \gamma \in (0,1) \blacksquare
+\Rightarrow \Vert f_k-Q^\star \Vert_\infty \le \gamma^k \Vert f_{k-1} -Q^\star \Vert_\infty \; \text{where}\; \gamma \in (0,1) \blacksquare
 $$
 
 Proof of lemma:
@@ -93,14 +93,14 @@ $$
 \end{aligned}
 $$
 
-$\text{WLOG}$ assume, $\max_{a'} f(s', a') > \max_{a'} f'(s', a')$ and $\exist a^*: \max_af(s',a)=f(s',a^*)$, then
+$\text{WLOG}$ assume, $\max_{a'} f(s', a') > \max_{a'} f'(s', a')$ and $\exist a^\star : \max_af(s',a)=f(s',a^\star )$, then
 
 $$
 \begin{aligned}
 & \gamma\left|\mathbb{E}_{s'\sim P(\cdot|s,a)}[\max_{a'} f(s', a') - \max_{a'} f'(s', a')]\right| \\
-=& \gamma\left|\mathbb{E}_{s'\sim P(\cdot|s,a)}[f(s', a^*) - \max_{a'} f'(s', a')]\right| \\
-\le& \gamma\left|\mathbb{E}_{s'\sim P(\cdot|s,a)}[f(s', a^*) - f'(s', a^*)]\right| \\
-\le& \gamma\left|f(s', a^*) - f'(s', a^*)\right| \\
+=& \gamma\left|\mathbb{E}_{s'\sim P(\cdot|s,a)}[f(s', a^\star ) - \max_{a'} f'(s', a')]\right| \\
+\le& \gamma\left|\mathbb{E}_{s'\sim P(\cdot|s,a)}[f(s', a^\star ) - f'(s', a^\star )]\right| \\
+\le& \gamma\left|f(s', a^\star ) - f'(s', a^\star )\right| \\
 \le& \gamma \Vert f-f'\Vert_\infty
 \end{aligned}
 $$

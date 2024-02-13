@@ -25,10 +25,10 @@ $$
 property:
 
 $$
-\pi^*\to Q^{\pi^*}=Q^*\to \pi_{Q^*} =\pi^*
+\pi^\star \to Q^{\pi^\star }=Q^\star \to \pi_{Q^\star } =\pi^\star 
 $$
 
-> this means, once reached goal $\pi^*$, never leave.
+> this means, once reached goal $\pi^\star $, never leave.
 {: .prompt-tip }
 
 ## example
@@ -68,7 +68,7 @@ Optimal policy is heading `Pasta`.
 >
 {: .prompt-tip }
 
-To find $V^*(s)$, update $V$ value from leaf upwards to root state.
+To find $V^\star (s)$, update $V$ value from leaf upwards to root state.
 
 ### policy iteration (example)
 
@@ -160,7 +160,7 @@ $$
 $$
 
 $$
-\text { if } \pi_{k-1} \neq \pi^*, \exists s: v^{\pi_k}(s)>V^{\pi_{k-1}}(s)
+\text { if } \pi_{k-1} \neq \pi^\star , \exists s: v^{\pi_k}(s)>V^{\pi_{k-1}}(s)
 $$
 
 $$
