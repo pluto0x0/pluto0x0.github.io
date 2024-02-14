@@ -53,3 +53,9 @@ On process $P_i$ recieving multicast $\{m, S\}$ from $P_j$:
 
 ## Total ordering
 
+---
+
+21 Feb
+
+ISIS algorithm for tatal ordering
+
