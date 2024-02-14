@@ -21,7 +21,7 @@ Greedy is not optimal.
 **Bellman Equation** (Dynamic Programing):  
 
 $$
-V^*(d) = \min\{3 + V^*(g) ,\, 2 + V^*(f)\
+V^\star (d) = \min\{3 + V^\star (g) ,\, 2 + V^\star (f)\
 $$
 
 ## Stochastic Shortest Path
@@ -34,10 +34,10 @@ _Stochastic Shortest Path_
 **Bellman Equation**
 
 $$
-V^*(c) = \min\{4 + 0.7 × V^*(d) + 0.3 × V^*(e) ,\, 2 + V^*(e)\}
+V^\star (c) = \min\{4 + 0.7 × V^\star (d) + 0.3 × V^\star (e) ,\, 2 + V^\star (e)\}
 $$
 
-optimal policy : $\pi^*$
+optimal policy : $\pi^\star $
 
 ## Model-based RL
 

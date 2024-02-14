@@ -92,15 +92,15 @@ and it suffies to prove
 
 $$
 \begin{gathered}
-    \Vert x_t - x^*\Vert _2 \leq \lambda \Vert x_{t-1} - x^*\Vert _2 \\
-    \text{i.e.}\quad \Vert Ax_{t-1} - Ax^\star\Vert _2 \le  \lambda \Vert x_{t-1} - x^*\Vert _2 \\
+    \Vert x_t - x^\star \Vert _2 \leq \lambda \Vert x_{t-1} - x^\star \Vert _2 \\
+    \text{i.e.}\quad \Vert Ax_{t-1} - Ax^\star\Vert _2 \le  \lambda \Vert x_{t-1} - x^\star \Vert _2 \\
 \end{gathered}
 $$
 
 With Equation (1),
 
 $$
- \Vert A(x_{t-1} - x^\star)\Vert _2 \le  \lambda \Vert x_{t-1} - x^*\Vert _2  \;\blacksquare
+ \Vert A(x_{t-1} - x^\star)\Vert _2 \le  \lambda \Vert x_{t-1} - x^\star \Vert _2  \;\blacksquare
 $$
 
 ## 4

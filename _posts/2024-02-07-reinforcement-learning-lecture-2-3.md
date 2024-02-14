@@ -127,7 +127,7 @@ V^\pi = (I - \gamma P^\pi)^{-1}R^\pi \\
 \end{gathered}
 $$
 
-Claim: $(I - \gamma P^\pu)$ is invertible.
+Claim: $(I - \gamma P)$ is invertible.
 
 Proof. It suffies to prove
 
@@ -175,10 +175,10 @@ $$
 
 For infinite-horizon discounted MDPs, there always exists a stationary and deterministic policy that is optimal for all starting states simultaneously.
 
-Optimal policy $\pi^*$ and
+Optimal policy $\pi^\star $ and
 
 $$
-V^* := V^{\pi^*}
+V^\star  := V^{\pi^\star }
 $$
 
 ### Bellman Optimality Equation
@@ -193,7 +193,7 @@ $$
 \begin{gathered}
 Q^{\pi}(s,a):=\mathbb{E}\left[\sum_{t=1}^{\infty}\gamma^{t-1}r_{t} \middle| s_1=s, a_1=a; \pi \right] \\
 
-Q^* := Q^{\pi^*} \; \text{or} \\
+Q^\star  := Q^{\pi^\star } \; \text{or} \\
 
 V^{\pi}(s)=Q^{\pi}(s,\pi(s))  \;\; \text{or} \;\; Q^{\pi}(s,\pi)\\
 \end{gathered}
@@ -206,7 +206,7 @@ $$
   
 Q^{\pi}(s,a)=R(s,a)+\gamma\mathbb{E}_{s^{\prime}\sim P(\cdot|s,a)}\left[Q^{\pi}(s^{\prime},\pi)\right] \\
 
-Q^*(s,a)=R(s,a)+\gamma\mathbb{E}_{s^{\prime}\sim P(\cdot|s,a)}\left[\max_{a^{\prime}\in A}Q^*(s^{\prime},a^{\prime})\right]
+Q^\star (s,a)=R(s,a)+\gamma\mathbb{E}_{s^{\prime}\sim P(\cdot|s,a)}\left[\max_{a^{\prime}\in A}Q^\star (s^{\prime},a^{\prime})\right]
 
 \end{gathered}
 $$
@@ -218,7 +218,7 @@ V^{*}(s)=\max_{a\in A}Q^{*}(s,a)=Q^{*}(s,\pi^{*}(s))
 $$
 
 $$
-\pi^*(s) = \arg \max_{a \in A} Q^*(s, a)
+\pi^\star (s) = \arg \max_{a \in A} Q^\star (s, a)
 $$
 
 ## Fixed-horizon MDPs
