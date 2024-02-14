@@ -123,6 +123,10 @@ _Linear regression is very sensitive to outliers_
 
 use sigmoid function
 
+$$
+\sigma(x) = \frac{1}{1 + e^{-x}}
+$$
+
 ```mermaid
 flowchart LR
     x,y-->linear_output
@@ -145,6 +149,9 @@ $$
 $$
 
 ### Logistic loss
+
+![alt text](../upload/img/2024-02-01-deep-learning-for-CV-2-image-9.png){: w="400" }
+
 
 Maximum likelihood estimate:
 
