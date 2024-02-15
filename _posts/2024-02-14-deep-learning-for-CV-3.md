@@ -121,3 +121,67 @@ $$
 $$
 l\left(W, x_i, y_i\right)=\frac{\lambda}{2 n}\|W\|^2+\sum_{c \neq y_i} \max \left[0,1-w_{y_i}^T x_i+w_c^T x_i\right]
 $$
+
+### Softmax
+
+Softmax maps a vector into probability.
+
+$$
+\operatorname{softmax}\left(f_1, \ldots, f_c\right)=\left(\frac{\exp \left(f_1\right)}{\sum_j \exp \left(f_j\right)}, \ldots, \frac{\exp \left(f_C\right)}{\sum_j \exp \left(f_j\right)}\right)
+$$
+
+Compared to sigmoid: for 2 class cases,
+
+$$
+\operatorname{softmax}(f,-f) =(\sigma(2 f), \sigma(-2 f))
+$$
+
+**loss function**
+
+The negative log likelihood loss
+
+$$
+l\left(W, x_i, y_i\right)=-\log P_W\left(y_i \mid x_i\right)=-\log \left(\frac{\exp \left(w_{y_i}^T x_i\right)}{\sum_j \exp \left(w_j^T x_i\right)}\right)
+$$
+
+This is also the cross-entropy between the empirical distribution $\hat{P}$ and estimated distribution $P_W$:
+
+$$
+-\sum_C \hat{P}\left(c \mid x_i\right) \log P_W\left(c \mid x_i\right)
+$$
+
+### More on Softmax
+
+**Avoid overflow**
+
+$$
+\frac{\exp \left(f_c\right)}{\sum_j \exp \left(f_j\right)}=\frac{K \exp \left(f_c\right)}{\sum_j K \exp \left(f_j\right)}=\frac{\exp \left(f_c+\log K\right)}{\sum_j \exp \left(f_j+\log K\right)}
+$$
+
+and let
+
+$$
+\log K :=-\max _j f_j
+$$
+
+**Temperature**
+
+$$
+\operatorname{softmax}\left(f_1, \ldots, f_c ; T\right)=\left(\frac{\exp \left(f_1 / T\right)}{\sum_j \exp \left(f_j / T\right)}, \ldots, \frac{\exp \left(f_C / T\right)}{\sum_j \exp \left(f_j / T\right)}\right)
+$$
+
+High temperature: close to uniform distribution.
+
+**Label smoothing**
+
+Use "Soft" prediction targets. i.e. Use empirical distribution
+
+$$
+\hat{P}\left(c \mid x_i\right) =
+\begin{cases}
+    1 - \epsilon & c = y_i \\
+    \frac{\epsilon}{C-1} & c \neq y_i \\
+\end{cases}.
+$$
+
+Label smoothing is a form of regularization to avoid overly confident predictions, account for label noise
