@@ -11,7 +11,7 @@ Recall the sigmiod loss.
 
 Define the perceptron hinge loss:
 
-![asd](../upload/img/2024-02-14-deep-learning-for-CV-3-image-1.png){: w="40000" }
+![asd](../upload/img/2024-02-14-deep-learning-for-CV-3-image-1.png){: w="400" }
 
 $$
 l\left(w, x_i, y_i\right)=\max \left(0,-y_i w^T x_i\right)
@@ -54,8 +54,6 @@ $$
 
 For non-separable and some separable data, we may prefer a **larger margin** with a few constraints violated.
 
-
-
 $$
 \min _w \underbrace{\frac{\lambda}{2}\|w\|^2}_{\substack{\text { Maximize margin }- \\ \text { (regularization) }}}+\underbrace{\sum_{i=1}^n \max \left[0,1-y_i w^T x_i\right]}_{\text {Minimize misclassification loss }}
 $$
@@ -67,14 +65,13 @@ _SVM and Hinge loss_
 
 This loss function tolerates wrongly classified points to get a larger margin.
 
-### SGD update 
+### SGD update
 
 The loss function is $l\left(w, x_i, y_i\right)=\frac{\lambda}{2 n}\|w\|^2+\max \left[0,1-y_i w^T x_i\right]$ and its gradient is
 
 $$
 \nabla l\left(w, x_i, y_i\right)=\frac{\lambda}{n} w-\mathbb{I}\left[y_i w^T x_i<1\right] y_i x_i.
 $$
-
 
 ## General recipe
 
@@ -87,7 +84,7 @@ $$
 ### regularization
 
 - L2 regularization: $R(w)=\frac{1}{2}\|w\|_2^2$
-- **L1 regularization**: $R(w)=\frac{1}{2}\|w\|_1 := 
+- **L1 regularization**: $R(w)=\frac{1}{2}\|w\|_1 :=
 \sum_d\left|w^{(d)}\right|$
 
 The gradient of loss function with L1 regularization is
@@ -98,4 +95,29 @@ $$
 
 L1 regularization encourages sparsity weight.
 
+## Multi-class classification
 
+### Multi-class perceptron
+
+Learn $C$ scoring functions: $f_1, f_2, \ldots, f_C$
+and $\hat{y}=\operatorname{argmax}_c f_c(x)$
+
+Multi-class perceptrons:
+
+![alt text](../upload/img/2024-02-14-deep-learning-for-CV-3-image-7.png){: w="300" }
+
+$$
+f_c(x) = w_c^T x
+$$
+
+use sum of hinge losses:
+
+$$
+l\left(W, x_i, y_i\right)=\sum_{c \neq y_i} \max \left[0, w_c^T x_i-w_{y_i}^T x_i\right]
+$$
+
+### Multi-class SVM
+
+$$
+l\left(W, x_i, y_i\right)=\frac{\lambda}{2 n}\|W\|^2+\sum_{c \neq y_i} \max \left[0,1-w_{y_i}^T x_i+w_c^T x_i\right]
+$$
