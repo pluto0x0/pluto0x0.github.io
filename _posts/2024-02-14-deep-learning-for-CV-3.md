@@ -60,6 +60,7 @@ $$
 \min _w \underbrace{\frac{\lambda}{2}\|w\|^2}_{\substack{\text { Maximize margin }- \\ \text { (regularization) }}}+\underbrace{\sum_{i=1}^n \max \left[0,1-y_i w^T x_i\right]}_{\text {Minimize misclassification loss }}
 $$
 
+The loss is similar to the **perceptron loss**.
 
 ![](../upload/img/2024-02-14-deep-learning-for-CV-3-image-6.png){: w="800" }
 _SVM and Hinge loss_
@@ -73,3 +74,28 @@ The loss function is $l\left(w, x_i, y_i\right)=\frac{\lambda}{2 n}\|w\|^2+\max 
 $$
 \nabla l\left(w, x_i, y_i\right)=\frac{\lambda}{n} w-\mathbb{I}\left[y_i w^T x_i<1\right] y_i x_i.
 $$
+
+
+## General recipe
+
+empirical loss = empirical loss + data loss
+
+$$
+\hat{L}(w) \quad=\lambda R(w)+\frac{1}{n} \sum_{i=1}^n l\left(w, x_i, y_i\right)
+$$
+
+### regularization
+
+- L2 regularization: $R(w)=\frac{1}{2}\|w\|_2^2$
+- **L1 regularization**: $R(w)=\frac{1}{2}\|w\|_1 := 
+\sum_d\left|w^{(d)}\right|$
+
+The gradient of loss function with L1 regularization is
+
+$$
+\nabla \hat{L}(w)=\lambda \operatorname{sgn}(w)+\sum_{i=1}^n \nabla l\left(w, x_i, y_i\right)
+$$
+
+L1 regularization encourages sparsity weight.
+
+
