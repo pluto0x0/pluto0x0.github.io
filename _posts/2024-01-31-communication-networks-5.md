@@ -69,10 +69,96 @@ server TCP creates new socket
 - for server process to communicate with that particular client
 
 ![alt text](../upload/img/2024-01-31-communication-networks-5-image-2.png){: w="700" }
+_UDP_
 
 ![alt text](../upload/img/2024-01-31-communication-networks-5-image-1.png){: w="700" }
+_TCP_
 
 ---
 
-## Web and HTTP
+## Web and HTTP (hypertext transfer protocol)
 
+- each object is addressable by a URL:
+
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-3.png){: w="500" }
+
+- use TCP on port 80
+- HTTP is stateless: server maintains no information about past client requests
+
+### Non-persistent HTTP
+
+RTT (Round Trip Time): time for a small packet to travel from client to server and back
+
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-4.png){: w="300" }
+_non-persistent HTTP response time = 2RTT+ file transmission time_
+
+### Persistent HTTP
+
+server leaves connection open after sending response
+
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-5.png){: h="700" }
+
+<details markdown="1">
+<summary>Other Optimizations</summary>
+
+### Pipelining
+
+Send several requests at once
+
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-6.png){: w="700" }
+
+### HTTP/2
+
+Push resources (send file ahead that clients may request)
+
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-7.png){: w="700" }
+
+### QUIC
+
+Eliminate first RTT
+
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-8.png){: w="700" }
+
+</details>
+
+### HTTP request message
+
+two types of HTTP messages: **request**, **response**.
+
+HTTP request message:
+
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-9.png){: w="600" }
+
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-10.png){: w="600" }
+
+- `GET` method: input is in `URL` field.
+- `POST` method: inpit is in entity body.
+- `HEAD` method: asks server to leave requested object out of response
+- (HTTP1.1) `PUT` method: uploads file in entity body to path specified in URL field
+- (HTTP1.1) `DELETE` method: deletes file specified in the URL field
+
+### HTTP response message
+
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-11.png){: w="700" }
+
+code | message | meaning
+---|---|---
+200 | OK | request succeeded, | requested object later in this msg
+301 | Moved Permanently | requested object moved, new location specified later in this msg (Location:)
+400 | Bad Request | request msg not understood by server
+404 | Not Found | requested document not found on this server
+505 | HTTP Version Not Supported |
+
+### User-server state: cookies
+
+1) Cookie header line of HTTP **response** message
+2) Cookie header line in next HTTP **request** message
+3) Cookie file kept on user’s host, managed by user’s browser
+4) Back-end database at Website
+
+Server creats a unique ID as cookies and a entry in back-end database. Cookies can be used for:
+
+- authorization
+- shopping carts
+- recommendations
+- user session state (Web e-mail)
