@@ -68,4 +68,7 @@ server TCP creates new socket
 
 - for server process to communicate with that particular client
 
-### ![alt text](../upload/img/2024-01-31-communication-networks-5-image-1.png)
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-2.png){: w="700" }
+
+![alt text](../upload/img/2024-01-31-communication-networks-5-image-1.png){: w="700" }
+

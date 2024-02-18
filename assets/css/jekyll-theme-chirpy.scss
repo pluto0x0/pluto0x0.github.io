@@ -36,6 +36,7 @@
 div.content {
     img {
       // 默认情况下不做修改
+      border-radius: 10px; // 设置背景圆角
     }
   
     // 当不是浅色模式时（即深色模式）
