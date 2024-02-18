@@ -3,6 +3,8 @@ title: Reinforcement Learning (2-4)
 date: 2024-02-07 22:00:44
 img_path: /_posts/
 math: true
+categories: CourseNotes ReinforcementLearning
+categories: CourseNotes ReinforcementLearning
 ---
 
 ## Markov Decision Processes

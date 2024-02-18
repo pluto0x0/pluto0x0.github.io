@@ -3,6 +3,7 @@ title: Reinforcement Learning (7)
 date: 2024-02-11 15:54:31
 img_path: /_posts/
 math: true
+categories: CourseNotes ReinforcementLearning
 ---
 
 greedy policy:

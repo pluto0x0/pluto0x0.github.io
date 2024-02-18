@@ -7,6 +7,7 @@ mermaid: true
 categories: CourseNotes
 tags:
 - Distributed Systems
+categories: CourseNotes DistributedSystem
 ---
 
 <https://courses.grainger.illinois.edu/ece428/sp2024//assets/slides/lect2-after.pdf>

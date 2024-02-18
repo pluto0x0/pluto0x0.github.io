@@ -8,6 +8,7 @@ categories: CourseNotes
 tags: CS444
 image:
   path: ../upload/img/2024-02-01-deep-learning-for-CV-1-image.png
+categories: CourseNotes DeepLearningforCV
 ---
 
 # CS 444: Deep Learning for Computer Vision Course Notes

@@ -6,6 +6,7 @@ math: true
 # mermaid: true
 category: CourseNotes
 tags: CS443
+categories: CourseNotes ReinforcementLearning
 ---
 
 ## example: Shortest Path

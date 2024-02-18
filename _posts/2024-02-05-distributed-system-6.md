@@ -3,6 +3,7 @@ title: Distributed System (6)
 date: 2024-02-05 14:06:55
 img_path: /_posts/
 math: true
+categories: CourseNotes DistributedSystem
 ---
 
 ## linearization
@@ -53,6 +54,7 @@ On process $P_i$ recieving multicast $\{m, S\}$ from $P_j$:
 
 ## Total ordering
 
+categories: CourseNotes DistributedSystem
 ---
 
 21 Feb

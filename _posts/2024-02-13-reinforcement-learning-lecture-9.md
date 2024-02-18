@@ -4,6 +4,7 @@ date: 2024-02-13 14:03:05
 img_path: /_posts/
 math: true
 mermaid: true
+categories: CourseNotes ReinforcementLearning
 ---
 
 ## recap
