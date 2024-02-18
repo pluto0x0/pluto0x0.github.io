@@ -3,7 +3,9 @@ title: Deep Learning for CV (x)
 date: 2024-02-06 11:07:26
 img_path: /_posts/
 math: true
-categories: CourseNotes DeepLearningforCV
+categories:
+- Course Notes
+- Deep Learning for CV
 ---
 
 l1 and l2 regulation

@@ -3,7 +3,9 @@ title: Reinforcement Learning (6)
 date: 2024-02-11 07:51:18
 img_path: /_posts/
 math: true
-categories: CourseNotes ReinforcementLearning
+categories:
+- Course Notes
+- Reinforcement Learning
 ---
 
 Recall $V^\star , Q^\star , V^\pi, Q^\pi$.

@@ -5,7 +5,9 @@ img_path: /_posts/
 math: true
 mermaid: true
 mermaid: true
-categories: CourseNotes ReinforcementLearning
+categories:
+- Course Notes
+- Reinforcement Learning
 ---
 
 ## Policy Iteration

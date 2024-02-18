@@ -6,7 +6,9 @@ math: true
 mermaid: true
 image:
     path: ../upload/img/2024-01-29-communication-networks-3-image-6.png
-categories: CourseNotes CommunicationNetworks
+categories:
+- Course Notes
+- Communication Networks
 ---
 
 ## Network-core

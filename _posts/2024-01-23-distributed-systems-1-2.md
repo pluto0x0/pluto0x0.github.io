@@ -4,10 +4,12 @@ date: 2024-01-23 17:38:15
 img_path: /_posts/
 math: true
 mermaid: true
-categories: CourseNotes
+categories:
+- Course Notes
+- Distributed Systems
 tags:
 - Distributed Systems
-categories: CourseNotes DistributedSystem
+categories: Course Notes DistributedSystem
 ---
 
 <https://courses.grainger.illinois.edu/ece428/sp2024//assets/slides/lect2-after.pdf>

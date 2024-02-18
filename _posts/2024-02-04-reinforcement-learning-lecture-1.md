@@ -4,9 +4,11 @@ date: 2024-02-04 17:42:46
 img_path: /_posts/
 math: true
 # mermaid: true
-category: CourseNotes
+category: Course Notes
 tags: CS443
-categories: CourseNotes ReinforcementLearning
+categories:
+- Course Notes
+- Reinforcement Learning
 ---
 
 ## example: Shortest Path

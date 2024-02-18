@@ -6,7 +6,9 @@ math: true
 mermaid: true
 image:
     path: ../upload/img/2024-01-29-communication-networks-4-image-1.png
-categories: CourseNotes CommunicationNetworks
+categories:
+- Course Notes
+- Communication Networks
 ---
 
 ![Alt text](../upload/img/2024-01-29-communication-networks-4-image-3.png){: w="8"}

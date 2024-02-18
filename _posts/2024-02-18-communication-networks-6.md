@@ -4,8 +4,8 @@ date: 2024-02-18 02:52:17
 img_path: /_posts/
 math: true
 categories:
-- CourseNotes
-- Commd d d fsdf fffff
+- Course Notes
+- Communication Networks
 ---
 
 ## Web caches (proxy server)
@@ -23,6 +23,12 @@ categories:
 1) send HTTP request with `If-modified-since: <date>`
 2) server response `HTTP/1.0 304 Not Modified` if data not modified ever since
 3) server response `HTTP/1.0 200 OK <data>` otherwise
+
+---
+
+# Chapter 2
+
+## Electronic mail
 
 
 
