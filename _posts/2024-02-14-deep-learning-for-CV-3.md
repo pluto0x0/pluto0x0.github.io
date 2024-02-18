@@ -116,6 +116,15 @@ $$
 l\left(W, x_i, y_i\right)=\sum_{c \neq y_i} \max \left[0, w_c^T x_i-w_{y_i}^T x_i\right]
 $$
 
+Update rule: for each $c$ s.t. $w_c^T x_i>w_{y_i}^T x_i$ :
+
+$$
+\begin{aligned}
+w_{y_i} & \leftarrow w_{y_i}+\eta x_i \\
+w_c & \leftarrow w_c-\eta x_i
+\end{aligned}
+$$
+
 ### Multi-class SVM
 
 $$
@@ -185,4 +194,3 @@ $$
 $$
 
 Label smoothing is a form of regularization to avoid overly confident predictions, account for label noise
-
