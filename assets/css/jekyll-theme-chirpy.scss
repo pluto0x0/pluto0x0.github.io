@@ -33,19 +33,47 @@
     }
 }
 
-div.content {
-    img {
-      // 默认情况下不做修改
-      border-radius: 10px; // 设置背景圆角
-    }
+// div.content {
+//     img {
+//       // 默认情况下不做修改
+//       border-radius: 10px; // 设置背景圆角
+//     }
   
-    // 当不是浅色模式时（即深色模式）
-    html:not([data-mode="light"]) & {
-      img {
-        // background-color: rgbb(0, 0, 0, 0.5); // 设置背景颜色为半透明的黑色
-        background-color: rgb(50, 50, 50);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); // 添加阴影以模拟羽化效果
-        border-radius: 10px; // 设置背景圆角
-      }
+//     // 当不是浅色模式时（即深色模式）
+//     html:not([data-mode="light"]) & {
+//       img {
+//         // background-color  : rgbb(0, 0, 0, 0.5); // 设置背景颜色为半透明的黑色
+//         background-color: rgb(50, 50, 50);
+//         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); // 添加阴影以模拟羽化效果
+//         border-radius: 10px; // 设置背景圆角
+//       }
+//     }
+//   }
+
+div.content {
+  img {
+    // 默认情况下不做修改
+    position: relative;
+    z-index: 2;
+
+    // 创建一个伪元素作为模糊背景
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5); // 半透明黑色背景
+      backdrop-filter: blur(8px); // 对背景应用模糊效果
+      z-index: 1; // 确保伪元素在图片下方
     }
   }
+
+  // 当不是浅色模式时（即深色模式）
+  html:not([data-mode="light"]) & {
+    img::before {
+      content: ''; // 确保伪元素存在
+    }
+  }
+}

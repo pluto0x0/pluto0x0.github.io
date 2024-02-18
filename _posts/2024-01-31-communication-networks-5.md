@@ -72,3 +72,7 @@ server TCP creates new socket
 
 ![alt text](../upload/img/2024-01-31-communication-networks-5-image-1.png){: w="700" }
 
+---
+
+## Web and HTTP
+
