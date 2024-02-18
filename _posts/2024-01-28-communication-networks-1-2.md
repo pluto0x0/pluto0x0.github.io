@@ -6,6 +6,7 @@ math: true
 mermaid: true
 image:
     path: ../upload/img/2024-01-28-communication-networks-1-image.png
+categories: CourseNotes CommunicationNetworks
 ---
 
 <https://birkhoffg.github.io/blog/posts/networking-what-is-networking/>

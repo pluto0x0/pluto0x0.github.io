@@ -6,6 +6,7 @@ math: true
 mermaid: true
 image:
     path: ../upload/img/2024-01-31-communication-networks-5-image.png
+categories: CourseNotes CommunicationNetworks
 ---
 
 ## Internet transport protocols services
