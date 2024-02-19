@@ -6,6 +6,8 @@ math: true
 categories:
 - Course Notes
 - Communication Networks
+image:
+  path: ../upload/img/2024-02-18-communication-networks-7-image-1.png
 ---
 
 ## Pure P2P architecture
