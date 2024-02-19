@@ -19,7 +19,6 @@ image:
 ### File distribution: client-server vs P2P
 
 ![alt text](../upload/img/2024-02-18-communication-networks-7-image.png){: w="600" }
-
 _client-server model_
 
 Time to distribute $F$ to $N$ clients using client-server approach
