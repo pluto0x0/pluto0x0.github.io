@@ -1,4 +1,7 @@
---- --- @import 'main';
+---
+---
+
+@import 'main';
 
 /* append your custom style below */
 
@@ -43,9 +46,9 @@ div.content {
   html:not([data-mode="light"]) & {
     img {
       // background-color  : rgbb(0, 0, 0, 0.5); // 设置背景颜色为半透明的黑色
-      background-color: rgb(50, 50, 50);
+      background-color: rgb(60, 60, 60);
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); // 添加阴影以模拟羽化效果
-      border-radius: 10px; // 设置背景圆角
+      // border-radius: 10px; // 设置背景圆角
     }
   }
 }

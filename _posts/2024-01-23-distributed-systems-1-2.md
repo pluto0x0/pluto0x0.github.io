@@ -9,7 +9,6 @@ categories:
 - Distributed Systems
 tags:
 - Distributed Systems
-categories: Course Notes DistributedSystem
 ---
 
 <https://courses.grainger.illinois.edu/ece428/sp2024//assets/slides/lect2-after.pdf>
