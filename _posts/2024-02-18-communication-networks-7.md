@@ -89,4 +89,45 @@ rule: assign key-value pair to the peer that has the closest ID (**the immediate
 
 each peer only aware of immediate successor and predecessor.
 
-![alt text](../upload/img/2024-02-18-communication-networks-7-image-2.png)
+![alt text](../upload/img/2024-02-18-communication-networks-7-image-2.png){: w="400" }
+
+![alt text](../upload/img/2024-02-18-communication-networks-7-image-3.png){: w="500" }
+_$O(N)$_
+
+### Circular DHT with shortcuts (Chord)
+
+![alt text](../upload/img/2024-02-18-communication-networks-7-image-5.png){: w="500" }
+_$O(\log N)$_
+
+### Peer churn
+
+- peers may come and go (churn)
+- each peer knows address of its two successors
+- each peer periodically pings its two successors to check aliveness
+- if immediate uccessor leaves, choose next successor as new immediate successor
+- and ask for the successors of its new immediate successor
+
+## Video Streaming and CDNs
+
+- CBR: (constant bit rate): video encoding rate fixed
+- VBR:  (variable bit rate): video encoding rate changes as amount of spatial, temporal coding changes
+- examples:
+  - MPEG 1 (CD-ROM) 1.5 Mbps
+  - MPEG2 (DVD) 3-6 Mbps
+  - MPEG4 (often used in Internet, < 1 Mbps)
+
+### Streaming multimedia: DASH
+
+DASH: Dynamic, Adaptive Streaming over HTTP
+
+- divides video file into multiple chunks
+- each chunk stored, encoded at different rates
+- manifest file: provides URLs for different chunks
+- client requests chunks according to server-to-client bandwidth.
+
+### Content distribution networks (CDN)
+
+- To stream content to hundreds of thousands of simultaneous users.
+- Store/serve multiple copies of videos at multiple geographically distributed sites (CDN)
+
+![alt text](../upload/img/2024-02-18-communication-networks-7-image-6.png){: w="600" }
