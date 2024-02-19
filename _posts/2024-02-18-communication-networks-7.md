@@ -1,135 +1,72 @@
 ---
-title: Communication Networks (7)
-date: 2024-02-18 08:20:19
+title: Communication Networks (8)
+date: 2024-02-18 22:53:26
 img_path: /_posts/
 math: true
 categories:
 - Course Notes
 - Communication Networks
-image:
-  path: ../upload/img/2024-02-18-communication-networks-7-image-1.png
 ---
 
-## Pure P2P architecture
+# Chapter 3: Transport Layer
 
-- no always-on server
-- arbitrary end systems directly communicate
-- peers are intermittently connected and change IP addresses
+## Transport services and protocols
 
-### File distribution: client-server vs P2P
+- transport protocols run in end systems
+- send side: breaks app messages into segments, passes to  network layer
+- rcv side: reassembles segments into messages, passes to app layer
+- TCP / UDP
 
-![alt text](../upload/img/2024-02-18-communication-networks-7-image.png){: w="600" }
+TCP and UDP:
 
-_client-server model_
+- TCP: reliable, in-order delivery
+- UDP: unreliable, unordered delivery
 
-Time to distribute $F$ to $N$ clients using client-server approach
+**Transport** vs. **Network Layer**
 
-$$
-D_{c-s} \geq \max \left\{N F / u_s, F / d_{\min }\right\}
-$$
+- network layer: logical communication between hosts
+- transport layer: logical communication between processes
 
-Time to  distribute $F$ to $N$ clients using P2P approach
+## Multiplexing/Demultiplexing
 
-$$
-D_{P 2 P} \geq \max \left\{F / u_s, F / d_{\min }, N F /\left(u_s+\sum u_i\right)\right\}
-$$
+- multiplexing at sender
+- demultiplexing at receiver
 
-### P2P file distribution: BitTorrent
+host uses **IP addresses & port** numbers to direct segment to appropriate socket
 
-- File divided into 256Kb chunks
-- Peers in torrent send/receive file chunks
+![alt text](../upload/img/2024-02-18-communication-networks-7-image-7.png){: w="400" }
+_TCP/UDP segment format_
 
-![alt text](../upload/img/2024-02-18-communication-networks-7-image-1.png){: w="600" }
+### In Connectionless Demultiplexing (UDP)
 
-peer joining torrent:
+In **UDP**, IP datagrams with same dest. port #, but **different** source IP addresses and/or source port numbers will be directed to **same socket** at dest.
 
-- has no chunks, accumulate them over time from other peers.
-- registers with tracker to get list of peers, connects to **subset of peers** (“neighbors”)
+### In Connection-Oriented Demux (TCP)
 
-requesting chunks:
+TCP socket identified by 4-tuple:
 
-- different peers have different subsets of file chunks
-- periodically, asks each peer for list of chunks that they have
-- requests missing chunks from peers, rarest first
+- source IP address
+- source port number
+- dest IP address
+- dest port number
 
-sending chunks: tit-for-tat
+demux: receiver uses **all four values** to direct segment to appropriate socket
 
-- sends chunks to those four peers currently sending her chunks at highest rate
-  - re-evaluate top 4 every 10 secs
-  - other peers are choked by Alice (do not receive chunks from her)
-- every 30 secs: randomly select another peer, starts sending chunks
-  - newly chosen peer may join top 4 (and unchoke them)
+- server have different sockets for each connecting client
+- non-persistent HTTP will have different socket for each request
 
-## Distributed Hash Table (DHT)
+## UDP: User Datagram Protocol [RFC 768]
 
-Compared to simple Database, use Hash Table: `key` = hash(`original key`)
+- UDP segments may be: lost or delivered out-of-order to app
+- connectionless
+  - no handshaking between UDP sender, receiver
+  - each UDP segment handled independently of others
+- used in
+  - streaming multimedia apps (loss tolerant, rate sensitive)
+  - DNS
+  - SNMP
+  
+![alt text](../upload/img/2024-02-18-communication-networks-7-image-8.png){: w="400" }
+_UDP segment format_
 
-Original|Key|Key Value
---|--|--
-John Washington|8962458|132-54-3570
-Diana Louise Jones|7800356|761-55-3791
-...|...|...
-
-- Evenly distribute `(key, value)` over pairs
-- Any peer can query database with a key
-- Each peer only knows about a small number of other peers
-- small number of messages exchanged among peers
-
-### Assign key-value pairs to peers
-
-rule: assign key-value pair to the peer that has the closest ID (**the immediate successor**).
-
-> e.g., ID space $\{0,1,2,3,…,63\}$
-> suppose 8 peers: $1, 12, 13, 25, 32, 40, 48, 60$
->
-> - If key = 51, then assigned to peer 60
-> - If key = 60, then assigned to peer 60
-> - If key = 61, then assigned to peer 1
-{: .prompt-tip }
-
-### Silly Strawman Circular DHT
-
-each peer only aware of immediate successor and predecessor.
-
-![alt text](../upload/img/2024-02-18-communication-networks-7-image-2.png){: w="400" }
-
-![alt text](../upload/img/2024-02-18-communication-networks-7-image-3.png){: w="500" }
-_$O(N)$_
-
-### Circular DHT with shortcuts (Chord)
-
-![alt text](../upload/img/2024-02-18-communication-networks-7-image-5.png){: w="500" }
-_$O(\log N)$_
-
-### Peer churn
-
-- peers may come and go (churn)
-- each peer knows address of its two successors
-- each peer periodically pings its two successors to check aliveness
-- if immediate uccessor leaves, choose next successor as new immediate successor
-- and ask for the successors of its new immediate successor
-
-## Video Streaming and CDNs
-
-- CBR: (constant bit rate): video encoding rate fixed
-- VBR:  (variable bit rate): video encoding rate changes as amount of spatial, temporal coding changes
-- examples:
-  - MPEG 1 (CD-ROM) 1.5 Mbps
-  - MPEG2 (DVD) 3-6 Mbps
-  - MPEG4 (often used in Internet, < 1 Mbps)
-
-### Streaming multimedia: DASH
-
-DASH: Dynamic, Adaptive Streaming over HTTP
-
-- divides video file into multiple chunks
-- each chunk stored, encoded at different rates
-- manifest file: provides URLs for different chunks
-- client requests chunks according to server-to-client bandwidth.
-
-### Content distribution networks (CDN)
-
-- To stream content to hundreds of thousands of simultaneous users.
-- Store/serve multiple copies of videos at multiple geographically distributed sites (CDN)
-
-![alt text](../upload/img/2024-02-18-communication-networks-7-image-6.png){: w="600" }
+checksum is used to detect errors.
