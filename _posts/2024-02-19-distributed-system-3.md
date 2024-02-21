@@ -3,6 +3,7 @@ title: Distributed System (3)
 date: 2024-02-19 17:13:51
 img_path: /_posts/
 math: true
+categories:
 - Course Notes
 - Distributed Systems
 image:
