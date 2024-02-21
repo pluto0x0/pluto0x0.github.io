@@ -10,18 +10,15 @@ categories:
 
 ## linearization
 
-liveness: guarantee that something good will happen, eventually
-
-
-Safety = guarantee that something bad will never happen.
-
-• Stable = once true, stays true forever afterwards
+- **Liveness**: guarantee that something good will happen, eventually
+- **Safety**: guarantee that something bad will never happen.
+- **Stable**: once true, stays true forever afterwards
 
 ## Ordered Multicast
 
 ### FIFO ordering
 
-For a peocess, if it sends $m_1$ before $m_2$, then all processes recieves $m_1$ before $m_2$.
+For a process, if it sends $m_1$ before $m_2$, then all processes recieves $m_1$ before $m_2$.
 
 ### Causal ordering
 
@@ -29,12 +26,11 @@ If multicasts $m_1 \to m_2$ ($m_1$ cause $m_2$, which means a process sends $m_2
 
 Causal ordering implies FIFO ordering, because multicasts that sent by a process can be regarded as Causal
 
-### Total ordering
+### Total ordering ht
 
 For **any** pair of multicasts $m_1$, $m_2$, all processes recieving them recieves them **in the same order**.
 
 Total Ordering doesn't imply Causal Ordering
-
 
 ## Ordered Multicast
 
@@ -62,4 +58,3 @@ categories: Course Notes DistributedSystem
 21 Feb
 
 ISIS algorithm for tatal ordering
-
