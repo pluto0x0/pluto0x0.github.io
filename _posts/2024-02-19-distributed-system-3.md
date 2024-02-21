@@ -76,7 +76,7 @@ unit time (measured by the reference clock).
 Synchronization bound (D) between two clocks A and B over
 a real time interval I:
 
-- |A(t) – B(t)| < D, for all t in the real time interval I.
+- \|A(t) – B(t)\| < D, for all t in the real time interval I.
 - If A is authoritative, D can also be called accuracy bound.
 
 ## Synchronization in asynchronous systems

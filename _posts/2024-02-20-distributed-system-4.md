@@ -93,7 +93,7 @@ For a set of process $<P_1, P_2, \ldots, P_n>$,
 - global history: $H=\cup_i\left(h_i\right)$
 - global state: $S=\cup_i\left(s_i\right)$
 - a cut $C \subseteq H=h_1^{c_1} \cup h_2^{c_2} \cup \ldots \cup h_n^{c_n}$
-- the frontier of $C=\left\{e_i^{c_i}, i=1,2, \ldots n\right\}$
+- the frontier of $C=\{e_i^{c_i}, i=1,2, \ldots n\}$
 
 ### Consistent cut
 
