@@ -33,4 +33,5 @@ For other process $P_i$ receiving a marked message from channel $c_{ki}$,
 - else
   - stop recording $c_{ki}$ (the state of channel contains all messages during recording)
 
-<video controls src="../upload/img/2024-02-21-distributed-system-5-output.mp4" title="Title"></video>
+<video controls src="../upload/img/2024-02-21-distributed-system-5-output.mp4" title="Chandy-Lamport Algorithm" width="60%"></video>
+
