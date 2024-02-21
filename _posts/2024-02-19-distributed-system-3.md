@@ -127,7 +127,6 @@ $$
 & \mathrm{O}_{\mathrm{i}}=\left(\left(\mathrm{T}_{\mathrm{Br}}-\mathrm{T}_{\mathrm{As}}\right)-\left(\mathrm{T}_{\mathrm{Ar}}-\mathrm{T}_{\mathrm{Bs}}\right)\right) / 2 \\
 & o=o_i+\left(t^{\prime}-t\right) / 2 \\
 & \mathrm{~d}_{\mathrm{i}}=\mathrm{t}+\mathrm{t}^{\prime}=\left(\mathrm{T}_{\mathrm{Br}}-\mathrm{T}_{\mathrm{As}}\right)+\left(\mathrm{T}_{\mathrm{Ar}}-\mathrm{T}_{\mathrm{Bs}}\right) \\
-& \left(o_i-d_i / 2\right) \leq 0 \leq\left(o_i+d_i / 2\right) \text { given } t, t^{\prime} \geq 0 \\
-&
+& \left(o_i-d_i / 2\right) \leq 0 \leq\left(o_i+d_i / 2\right) \text { given } t, t^{\prime} \geq 0
 \end{aligned}
 $$
