@@ -54,7 +54,6 @@ Proof.
 
 ![alt text](../upload/img/2024-02-21-distributed-system-5-image-1.png){: w="600" }
 
-
 - Run: $< e_1^0, e_1^1, e_1^2, e_1^3 , e_2^0, e_2^1 e_2^2 >$ (keeping the order within each process suffies)
 - Linearization: $< e_1^0, e_1^1, e_1^2, e_2^0, e_2^1 e_2^2 , e_1^3 >$
 
@@ -65,5 +64,3 @@ Each path represents a linearization.
 ![alt text](../upload/img/2024-02-21-distributed-system-5-image-2.png){: w="600" }
 
 ![alt text](../upload/img/2024-02-20-distributed-system-4-image-3.png){: w="250" }
-
-
