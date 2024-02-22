@@ -52,7 +52,7 @@ if events $e \to e'$, then $L(e) < L(e’)$
 
 ### Vector Clocks
 
-![alt text](../upload/img/2024-02\mathrm{-20-distributed-system-4-image-1.png){: w="400" }
+![alt text](../upload/img/2024-02-20-distributed-system-4-image-1.png){: w="400" }
 
 $V_i[j]$ is the clock for process $P_j$ as maintained by $P_i$
 
