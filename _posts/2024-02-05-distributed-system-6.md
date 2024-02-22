@@ -6,6 +6,8 @@ math: true
 categories:
 - Course Notes
 - Distributed Systems
+image:
+    path: ../upload/img/2024-02-05-distributed-system-6-image.png
 ---
 
 ## linearization
