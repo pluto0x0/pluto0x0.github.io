@@ -8,7 +8,7 @@ categories:
 - Course Notes
 - Distributed Systems
 image:
-  path: 
+  path: ../upload/img/2024-02-21-distributed-system-5-image.png
 ---
 
 ## Chandy-Lamport Algorithm
