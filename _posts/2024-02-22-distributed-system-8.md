@@ -8,7 +8,7 @@ categories:
 - Course Notes
 - Distributed Systems
 image:
-  path: ../upload/img/2024-02-21-distributed-system-5-image.png
+  path: ../upload/img/2024-02-22-distributed-system-8-image-6.png
 ---
 
 ## More efficient B-multicasts
@@ -47,7 +47,8 @@ Properties
 - More efficient than unicasting to all receivers
 - no hard guarantees.
 
-![alt text](../upload/img/2024-02-22-distributed-system-8-image-5.png)
+![alt text](../upload/img/2024-02-22-distributed-system-8-image-5.png){: w="500" }
+
 
 ## Mutual Exclusion
 
