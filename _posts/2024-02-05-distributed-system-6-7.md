@@ -1,5 +1,5 @@
 ---
-title: Distributed System (6)
+title: Distributed System (6-7)
 date: 2024-02-05 14:06:55
 img_path: /_posts/
 math: true
