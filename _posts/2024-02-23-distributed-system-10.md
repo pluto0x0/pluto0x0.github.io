@@ -7,8 +7,8 @@ mermaid: true
 categories:
 - Course Notes
 - Distributed Systems
-# image:
-#   path: ../upload/img/2024-02-22-distributed-system-8-image-6.png
+image:
+  path: ../upload/img/2024-02-23-distributed-system-10-image-1.png
 ---
 
 ## Leader Election
