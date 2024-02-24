@@ -92,13 +92,33 @@ When a process wants to initiate an election:
 - if it knows its id is the highest
   - it elects itself as coordinator
   - sends a Coordinator message to all processes with lower identifiers. Election is completed.
-- else it initiates an election by sending an *Election* message
+- else it initiates an election by sending an _Election_ message
   - Sends it to only processes that have a higher id than itself.
-  - if receives no answer within timeout
+  - if receives no answer **within timeout**
     - calls itself leader and sends Coordinator message to all lower id processes. Election completed.
   - if an answer received however, then
     - there is some non-faulty higher process.
-    - wait for coordinator message. If none received after another timeout, start a new election run.
+    - wait for coordinator message. If none received after **another timeout**, start a new election run.
 
-A process that receives an *Election* message replies with *disagree* message,
+A process that receives an _Election_ message replies with _disagree_ message,
 and starts its own leader election protocol (unless it has already done so).
+
+![alt text](../upload/img/2024-02-23-distributed-system-10-image-2.png){: w="600" }
+
+#### Timeout values
+
+Assume the one-way message transmission time (T) is known.
+
+- first timeout: 2T + (processing time) ≈ 2T
+
+#### Performance Analysis
+
+Best-case
+
+- Turnaround time: 1 message transmission time (T)
+  - if Highest remaining id initiates election.
+
+Worst-case
+
+- Turnaround time: 4 message transmission times (4T)
+  - if any lower id process detects failure and starts election.
