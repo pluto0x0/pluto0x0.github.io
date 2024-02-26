@@ -79,3 +79,5 @@ Estimate an empirical MDP $\hat{M}$ from data
 Plan in the estimated model and return the optimal policy
 
 transition tuples: $(s_i, a_i, r_i, s_{i+1})$. Use $s_i, a_i$ to identify current state and action, use $r_i$ for reward and $s_{i+1}$ for transition.
+
+extract transition tuples from trajectories.

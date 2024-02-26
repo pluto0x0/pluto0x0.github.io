@@ -11,3 +11,5 @@ categories:
 
 # Tabular RL for Value Prediction
 
+## The Value Prediction Problem
+
