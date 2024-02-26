@@ -1,5 +1,5 @@
 ---
-title: Reinforcemant Learning (9)
+title: Reinforcemant Learning (10)
 date: 2024-02-24 03:06:58
 img_path: /_posts/
 math: true
@@ -53,7 +53,7 @@ $$
 \frac{1}{n} \sum_{i=1}^n \sum_{t=1}^H \gamma^{t-1} r_t^{(i)}
 $$
 
-> Guarantee: w.p. at least $1-\delta,|v-J(\pi)| \leq \frac{R_{\max }}{1-\gamma} \sqrt{\frac{1}{2 n} \ln \frac{2}{\delta}}$ (larger n, higher accuracy)
+> Guarantee: w.p. at least $1-\delta,\vert v-J(\pi)\vert  \leq \frac{R_{\max }}{1-\gamma} \sqrt{\frac{1}{2 n} \ln \frac{2}{\delta}}$ (larger n, higher accuracy)
 >
 > It is **independent** to the size of state space
 {: .prompt-tip }
@@ -69,12 +69,12 @@ Monte-Carlo is a Zeroth-order (ZO) optimization method, which is not efficient.
 
 Assume we can sample $r \sim R(s, a)$ and $s^{\prime} \sim P(s, a)$ for any $(s, a)$
 
-Collect $n$ samples per $(s, a):\left\{\left(r_i, s_i^{\prime}\right)\right\}_{i=1}^n$. Total sample size $n|S \times A|$
+Collect $n$ samples per $(s, a):\left\{\left(r_i, s_i^{\prime}\right)\right\}_{i=1}^n$. Total sample size $n\vert S \times A\vert $
 
 Estimate an empirical MDP $\hat{M}$ from data
 
 - $\hat{R}(s, a):=\frac{1}{n} \sum_{i=1}^n r_i, \quad \hat{P}\left(s^{\prime} \mid s, a\right):=\frac{1}{n} \sum_{i=1}^n \mathbb{I}\left[s_i^{\prime}=s^{\prime}\right]$
-- i.e., treat the empirical frequencies of states appearing in $\left\{s_i^{\prime}\right\}_{i=1}^n$ as the true distribution.
+- i.e., treat the empirical frequencies of states appearing in $\{s_i^{\prime}\}_{i=1}^n$ as the true distribution.
 
 Plan in the estimated model and return the optimal policy
 
