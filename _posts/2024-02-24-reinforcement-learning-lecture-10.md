@@ -81,3 +81,16 @@ Plan in the estimated model and return the optimal policy
 transition tuples: $(s_i, a_i, r_i, s_{i+1})$. Use $s_i, a_i$ to identify current state and action, use $r_i$ for reward and $s_{i+1}$ for transition.
 
 extract transition tuples from trajectories.
+
+### finding policy on estimated environment
+
+**true** environment: $M = (S, A, P, R, \gamma)$
+
+**estimated** environment: $\hat{M} = (S, A, \hat{P}, \hat{R}, \gamma)$
+
+- notation: $\pi_{\hat{M}}, \, V_{\hat{M}}, \, \ldots$
+
+performance measurement:
+
+- in the true environment, use $\Vert V^\star - V^{\pi_f} \Vert$ where $f \approx Q^\star$
+- in estimated environment, use $\Vert V_M^\star - V_M^{\pi_{\hat{M}}^\star} \Vert$, i.e. measure the optimal policy of estimated environment in the real environment.
