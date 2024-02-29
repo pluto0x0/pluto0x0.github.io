@@ -124,11 +124,11 @@ relations:
 $$
 \begin{aligned}
 & {T}_{{Br}}={T}_{{As}}+{t}+{o} \\
-& {T}_{{Ar}}={T}_{{Bs}}+{t}^{\prime}-{o} \\
-& o=\left(\left(T_{B r}-T_{A s}\right)-\left(T_{A r}-T_{B s}\right)+\left(t^{\prime}-t\right)\right) / 2 \\
-& {o}_{{i}}=\left(\left({T}_{{Br}}-{T}_{{As}}\right)-\left({T}_{{Ar}}-{T}_{{Bs}}\right)\right) / 2 \\
-& o=o_i+\left(t^{\prime}-t\right) / 2 \\
-& {~d}_{{i}}={t}+{t}^{\prime}=\left({T}_{{Br}}-{T}_{{As}}\right)+\left({T}_{{Ar}}-{T}_{{Bs}}\right) \\
-& \left(o_i-d_i / 2\right) \leq 0 \leq\left(o_i+d_i / 2\right) \;\text { given } t, t^{\prime} \geq 0
+& {T}_{{Ar}}={T}_{{Bs}}+{t}'-{o} \\
+& o=((T_{B r}-T_{A s})-(T_{A r}-T_{B s})+(t'-t)) / 2 \\
+& {o}_{{i}}=(({T}_{{Br}}-{T}_{{As}})-({T}_{{Ar}}-{T}_{{Bs}})) / 2 \\
+& o=o_i+(t'-t) / 2 \\
+& {~d}_{{i}}={t}+{t}'=({T}_{{Br}}-{T}_{{As}})+({T}_{{Ar}}-{T}_{{Bs}}) \\
+& (o_i-d_i / 2) \leq 0 \leq(o_i+d_i / 2) \;\text { given } t, t' \geq 0
 \end{aligned}
 $$
