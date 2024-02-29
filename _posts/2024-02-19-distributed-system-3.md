@@ -84,13 +84,13 @@ a real time interval I:
 ### Cristian Algorithm
 
 $$
-\mathrm{T}_{\mathrm{client}}=\mathrm{T}_{\mathrm{server}}+\left(\mathrm{T}_{\text {round }} / 2\right)
+\mathrmT_{\mathrm{client}}=\mathrmT_{\mathrm{server}}+\left(\mathrmT_{\text {round }} / 2\right)
 $$
 
 then
 
 $$
-\text{skew} \le \mathrm{T}_{\text {round }} / 2 - \min \le \mathrm{T}_{\text {round }} / 2
+\text{skew} \le \mathrmT_{\text {round }} / 2 - \min \le \mathrmT_{\text {round }} / 2
 $$
 
 where $\min$ is minimum one way network.
@@ -123,12 +123,12 @@ relations:
 
 $$
 \begin{aligned}
-& {T}_{{Br}}={T}_{{As}}+{t}+{o} \\
-& {T}_{{Ar}}={T}_{{Bs}}+{t}'-{o} \\
+& T_{Br}=T_{As}+t+o \\
+& T_{Ar}=T_{Bs}+t'-o \\
 & o=((T_{B r}-T_{A s})-(T_{A r}-T_{B s})+(t'-t)) / 2 \\
-& {o}_{{i}}=(({T}_{{Br}}-{T}_{{As}})-({T}_{{Ar}}-{T}_{{Bs}})) / 2 \\
+& o_{i}=((T_{Br}-T_{As})-(T_{Ar}-T_{Bs})) / 2 \\
 & o=o_i+(t'-t) / 2 \\
-& {~d}_{{i}}={t}+{t}'=({T}_{{Br}}-{T}_{{As}})+({T}_{{Ar}}-{T}_{{Bs}}) \\
+& d_{i}=t+t'=(T_{Br}-T_{As})+(T_{Ar}-T_{Bs}) \\
 & (o_i-d_i / 2) \leq 0 \leq(o_i+d_i / 2) \;\text { given } t, t' \geq 0
 \end{aligned}
 $$
