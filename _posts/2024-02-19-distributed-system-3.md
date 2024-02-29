@@ -84,13 +84,13 @@ a real time interval I:
 ### Cristian Algorithm
 
 $$
-\mathrmT_{\mathrm{client}}=\mathrmT_{\mathrm{server}}+\left(\mathrmT_{\text {round }} / 2\right)
+T_{{client}}=T_{{server}}+\left(T_{\text {round }} / 2\right)
 $$
 
 then
 
 $$
-\text{skew} \le \mathrmT_{\text {round }} / 2 - \min \le \mathrmT_{\text {round }} / 2
+\text{skew} \le T_{\text {round }} / 2 - \min \le T_{\text {round }} / 2
 $$
 
 where $\min$ is minimum one way network.
