@@ -64,3 +64,9 @@ Each path represents a linearization.
 ![alt text](../upload/img/2024-02-21-distributed-system-5-image-2.png){: w="600" }
 
 ![alt text](../upload/img/2024-02-20-distributed-system-4-image-3.png){: w="250" }
+
+An lattice of
+
+![alt text](../upload/img/2024-02-21-distributed-system-5-image-3.png){: w="500" }
+
+![alt text](../upload/img/2024-02-21-distributed-system-5-image-4.png){: w="300" }
