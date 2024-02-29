@@ -95,9 +95,9 @@ On process $P_i$ sending multicast ($g$, $m$):
 - $P_j[j] = P_j[j] + 1$
 - B-multicast($g$, $\{m, P_j[j]\}$)
 
-On process $P_i$ recieving multicast $\{m, S\}$ from $P_j$:
+On process $P_i$ recieving multicast $\{m, V[1 \ldots n]\}$ from $P_j$:
 
-- buffer it until $S = P_i[j] + 1$ and $\forall k\ne j: V[k] \le P_i[k]$
+- buffer it until $V[j] = P_i[j] + 1$ and $\forall k\ne j: V[k] \le P_i[k]$
   - deliver$(m)$
   - $P_i[j] = V[j]$
 
@@ -118,7 +118,7 @@ Sequencer:
 
 Process $P_i$:
 
-- init: $Si = 0$
+- init: $S_i = 0$
 - On process $P_i$ recieving B-deliver$(m)$ from $P_j$:
   - buffer it until
 <br>i. B-deliver$(g, \{ \text{"order"}, m ,S \})$ from sequencer, and
