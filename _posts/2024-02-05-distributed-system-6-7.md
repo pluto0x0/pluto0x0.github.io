@@ -77,7 +77,7 @@ Total Ordering doesn't imply Causal Ordering
 
 Each process has a sequence vector $P_i[1..N]$
 
-On process $P_i$ sending multicast ($g$, $m$):
+On process $P_j$ sending multicast ($g$, $m$):
 
 - $P_j[j] = P_j[j] + 1$
 - B-multicast($g$, $\{m, P_j[j]\}$)
