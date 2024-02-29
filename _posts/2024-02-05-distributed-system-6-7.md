@@ -39,7 +39,7 @@ R-multicast is reliable even after **the sender crashes**.
 
 On initialization:
 
-- Received $:= \{\}$
+- Received $:= \\{\\}$
 
 For process $p$ to R-multicast message $m$ to group $g$
 
