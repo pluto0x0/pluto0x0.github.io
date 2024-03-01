@@ -86,7 +86,7 @@ Ping-ack:
 
 $T + \Delta_1- \Delta$ where $\Delta$ is time taken for last ping from p to reach q
 
-Ping-ack:
+Heartbeat:
 
 $\Delta + T + \Delta_2$ where $\Delta$ is time taken for last message from q to reach p)
 
