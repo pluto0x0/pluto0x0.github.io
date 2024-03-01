@@ -63,7 +63,7 @@ report q crashed.
 
 ```mermaid
 flowchart LR
-    p -->|ack| q
+    p -->|heartbeat| q
 ```
 
 q sends heartbeats to p every $T$ seconds.$(T + \Delta_2)$ is the timeout value at p. If $(T + \Delta_2)$ time elapsed since last heartbeat, report q crashed.
