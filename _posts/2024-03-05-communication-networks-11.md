@@ -28,3 +28,30 @@ TCP fast retransmit
 : if sender receives 3 ACKs for same data (“triple duplicate ACKs”), resend unacked segment with smallest seq #
 : likely that unacked segment lost, so don’t wait for timeout
 
+![alt text](../upload/img/2024-03-05-communication-networks-11-image-3.png){: w="300" }
+
+## TCP flow control
+
+flow control
+: receiver controls sender, so sender won’t overflow receiver’s buffer by transmitting too much, too fast
+
+- receiver “advertises” free buffer space by including rwnd value in TCP header of receiver-to-sender segments
+- sender limits amount of unacked (“in-flight”) data to receiver’s rwnd value
+- guarantees receive buffer will not overflow
+
+![alt text](../upload/img/2024-03-05-communication-networks-11-image-4.png){: w="300" }
+
+## Connection Management
+
+before exchanging data, sender/receiver “handshake”:
+
+- agree to establish connection (each knowing the other willing to establish connection)
+- agree on connection parameters
+
+### TCP 3-way handshake
+
+![alt text](../upload/img/2024-03-05-communication-networks-11-image-5.png){: w="700" }
+
+### TCP closing a connection
+
+![alt text](../upload/img/2024-03-05-communication-networks-11-image-6.png){: w="700" }
