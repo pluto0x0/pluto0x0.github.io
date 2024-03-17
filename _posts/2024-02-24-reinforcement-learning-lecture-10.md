@@ -69,7 +69,7 @@ Monte-Carlo is a Zeroth-order (ZO) optimization method, which is not efficient.
 
 Assume we can sample $r \sim R(s, a)$ and $s^{\prime} \sim P(s, a)$ for any $(s, a)$
 
-Collect $n$ samples per $(s, a):\left\{\left(r_i, s_i^{\prime}\right)\right\}_{i=1}^n$. Total sample size $n\vert S \times A\vert $
+Collect $n$ samples per $(s, a):\{\left(r_i, s_i^{\prime}\right)\}_{i=1}^n$. Total sample size $n\vert S \times A\vert $
 
 Estimate an empirical MDP $\hat{M}$ from data
 
