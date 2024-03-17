@@ -65,11 +65,14 @@ Monte-Carlo is a Zeroth-order (ZO) optimization method, which is not efficient.
 - **first order**: gradient / first derivative (in DL/ML, **SDG**)
 - **second order**: Hessian matrix / second derivative
 
-## Model-based RL with a sampling oracle
+## Model-based RL with a sampling oracle (Certainty Equivalence)
+
+> Assuming the reward / probability is determined (constant) via sampling.
+{: .prompt-info }
 
 Assume we can sample $r \sim R(s, a)$ and $s^{\prime} \sim P(s, a)$ for any $(s, a)$
 
-Collect $n$ samples per $(s, a):\{\left(r_i, s_i^{\prime}\right)\}_{i=1}^n$. Total sample size $n\vert S \times A\vert $
+Collect $n$ samples per $(s, a):\\{\left(r_i, s_i^{\prime}\right)\\}_{i=1}^n$. Total sample size $n\vert S \times A\vert$
 
 Estimate an empirical MDP $\hat{M}$ from data
 
@@ -92,5 +95,5 @@ extract transition tuples from trajectories.
 
 performance measurement:
 
-- in the true environment, use $\Vert V^\star - V^{\pi_f} \Vert$ where $f \approx Q^\star$
-- in estimated environment, use $\Vert V_M^\star - V_M^{\pi_{\hat{M}}^\star} \Vert$, i.e. measure the optimal policy of estimated environment in the real environment.
+- in the **true** environment, use $\Vert V^\star - V^{\pi_f} \Vert$ where $f \approx Q^\star$
+- in **estimated** environment, use $\Vert V_M^\star - V_M^{\pi_{\hat{M}}^\star} \Vert$, i.e. measure the optimal policy of estimated environment in the real environment.
