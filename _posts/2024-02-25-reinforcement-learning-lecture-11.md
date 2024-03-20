@@ -98,9 +98,9 @@ For each $s$, roll out $n$ trajectories using policy $\pi$
 
 **Online Monte-Carlo**
 
-- For $i=1,2, \ldots$
+- For $i=1,2, \ldots$ as the index of trajectories
   - Draw a starting state $s_i$ from the exploratory initial distribution, roll out a trajectory using $\pi$ from $s_i$, and let $G_i$ be the (random) discounted return
-  - Let $n\left(s_i\right)$ be the number of times $s_i$ has appeared as an initial state. If $n\left(s_i\right)=1$ (first time seeing this state), let $V\left(s_{i}\right) \leftarrow G_{i}$
+  - Let $n\left(s_i\right)$ be the number of times $s_i$ has appeared as an initial state. If $n\left(s_i\right)=1$ (first time seeing this state), let $V\left(s_{i}\right) \leftarrow G_{i}$ (where $G_t=\sum_{t^{\prime}=t}^{t+H} \gamma^{t^{\prime}-t} r_{t^{\prime}}$)
   - Otherwise, $V\left(s_{i}\right) \leftarrow \frac{n\left(s_{i}\right)-1}{n\left(s_{i}\right)} V\left(s_{i}\right)+\frac{1}{n\left(s_{i}\right)} G_{i}$
 
 No need to store the trajectory.

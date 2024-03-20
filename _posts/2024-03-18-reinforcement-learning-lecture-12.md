@@ -44,3 +44,32 @@ TD
 
 TD_error
 : $r_t+\gamma V\left(s_{t+1}\right)-V\left(s_t\right)$
+
+Same as Monte-Carlo update rule, excepts that the "target" is $r_t+\gamma V\left(s_{t+1}\right)$, which is similar to the [empirical Bellman update](reinforcement-learning-lecture-11/#model-based-rl-with-a-sampling-oracle-certainty-equivalence-contd). <!-- (the differece is) -->
+
+Recall that in [Monte-Carlo](reinforcement-learning-lecture-11/#monte-carlo-value-prediction), the "target" is $G_t=\sum_{t^{\prime}=t}^{t+H} \gamma^{t^{\prime}-t} r_{t^{\prime}}$ and is **independent** to the current value function.
+While in TD(0), the target $r_t+\gamma V\left(s_{t+1}\right)$ is dependent to the current value function $V$. i.e.
+
+Compared to value iteration:
+
+$$
+    V_{k+1}(s) := \mathbb{E}_{r,s'|s,\pi} \left[r+\gamma V_k\left(s^{\prime}\right)\right]
+$$
+
+and the equation above is
+
+$$
+    \approx \frac{1}{n} \sum_{i=1}^n\left(r_i+r V_k\left(s_i^{\prime}\right)\right)
+$$
+
+which is an approximate Value Iteration process, and notice that the whole iteraton through $i=1,\cdots, n$ is only 1 iteration (a $V_k$), so an outside loop is needed if we want to $V$ approximates real $V^\pi$.
+
+### Understanding TD(0)
+
+The "approximate" Value Iteration process above is similar to TD(0) but slightly different:
+it uses a value function $V$ (which stays constant during updates) to update $V'$ which is another function. After long enough, we have $V'=\mathcal{T} V$ and do $V \leftarrow V'$, then repeat the process.
+
+But in TD(0), we uses $V$ to update itself. The difference is "synchronous" vs "asynchronous".
+
+> TD(0) is less stable
+{: .prompt-info }
