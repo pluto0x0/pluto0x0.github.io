@@ -119,8 +119,9 @@ $$
 
 where $\alpha$ is known as learning rate, and $G_i$ as the target.
 
-Can be interpreted as stochastic gradient descent. If we have i.i.d. real random variables $v_1, v_2, \ldots, v_n$, the average is the solution of the least-square optimization problem:
-
-$$
-\min _v \frac{1}{2 n} \sum_{i=1}^n\left(v-v_i\right)^2
-$$
+> It can be interpreted as stochastic gradient descent. If we have i.i.d. real random variables $v_1, v_2, \ldots, v_n$, the average is the solution of the least-square optimization problem:
+>
+> $$
+> \min _v \frac{1}{2 n} \sum_{i=1}^n\left(v-v_i\right)^2
+> $$
+{: .prompt-tip }
