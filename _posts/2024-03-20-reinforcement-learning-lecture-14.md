@@ -54,7 +54,7 @@ $$
 
 - typically only a small subset of all possible functions
 - Using "all possible functions" = tabular!
-- Equivalently, tabular MC value prediction can be recovered by choosing $\phi$ as the identity features $\phi(\mathrm{s})=\left\{\mathbb{I} \left[\mathrm{~s}=\mathrm{s}^{\prime}\right]\right\}_{\mathrm{s}^{\prime} \in \mathrm{S}}$
+- Equivalently, tabular MC value prediction can be recovered by choosing $\phi$ as the identity features $\phi(\mathrm{s})=\left\\{\mathbb{I} \left[\mathrm{~s}=\mathrm{s}^{\prime}\right]\right\\}_{\mathrm{s}^{\prime} \in \mathrm{S}}$
 
 Find the function:
 
