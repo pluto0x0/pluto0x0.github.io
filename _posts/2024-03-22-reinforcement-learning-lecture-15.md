@@ -1,5 +1,5 @@
 ---
-title: Reinforcemant Learning (14)
+title: Reinforcemant Learning (15)
 date: 2024-03-22 02:50:00
 img_path: /_posts/
 math: true
@@ -8,8 +8,6 @@ categories:
 - Course Notes
 - Reinforcement Learning
 ---
-
-##
 
 Recall the Bellman Equation:
 
@@ -32,7 +30,7 @@ $$
 Q_k(s_t, a_t) \leftarrow Q_k(s_t, a_t)+\alpha(r_t+\gamma Q_{k-1}(s_{t+1}, \pi)-Q_k(s_t, a_t))
 $$
 
-### SARSA
+## SARSA
 
 $$
 Q\left(s_{t}, a_{t}\right) \leftarrow Q\left(s_{t}, a_{t}\right)+\alpha\left(r_{t}+\gamma Q\left(s_{t}+1, a_{t}+1\right)-Q\left(s_{t}, a_{t}\right)\right)
