@@ -24,3 +24,31 @@ e.g. in the cliff setting, the optimal can always be found, no matter the choice
 ### Exercise: Multi-step Q-learning?
 
 Does the target $r_{t}+\gamma r_{t+1}+\gamma^2 \max _{a^{\prime}} Q\left(s_{t+2}, a^{\prime}\right)$ work? If not, why?
+
+No. Because it leads to
+
+$$
+Q \leftarrow \mathcal{T}^\pi \mathcal{T} Q
+$$
+
+> This resulting $\mathcal{T}^\pi \mathcal{T}\cdots \mathcal{T}^\pi \mathcal{T}Q$ is also a optimal policy, but for another MDP, i.e. on odd steps, follow $\pi$, on even steps, free to decide.
+{: .prompt-info }
+
+## Q-learning with experience replay
+
+So far most algorithms we see are "one-pass
+
+- i.e., use each data point once and discard them
+- \# updates = # data points
+
+- Concern 1: We need many updates for optimization to converge
+Can we separate optimization from data collection?
+- Concern 2: Need to reuse data if sample size is limited
+
+Sample (with replacement) a tuple randomly from the bag, and apply the Q-learning update rule.
+
+- \# updates >> \# data points
+
+Each time get a new tuple, put in bag, and do updates for several times.
+
+Not applicable for on-policy controls (e.g. SARSA).
