@@ -69,8 +69,10 @@ $$
 Backward view
 
 $$
+\begin{gathered}
 1                  \cdot (r_1 + \gamma V(s_2) - V(s_1)) \\
 \lambda \gamma     \cdot (r_2 + \gamma V(s_3) - V(s_2)) \\
 \lambda^2 \gamma^2 \cdot (r_3 + \gamma V(s_4) - V(s_3)) \\
 \cdots
+\end{gathered}
 $$
