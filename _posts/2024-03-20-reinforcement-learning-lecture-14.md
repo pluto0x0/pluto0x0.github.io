@@ -38,7 +38,7 @@ $$
 
 Is a regression problem.
 
-> Why the expectation is the argmin? See [here](reinforcement-learning-homework-0/#notes)
+> Why the expectation is the argmin? See [here](./reinforcement-learning-homework-0/#notes)
 {: .prompt-tip }
 
 The same idea applies to non-linear value function approximation
