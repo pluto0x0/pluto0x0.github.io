@@ -67,17 +67,65 @@ graph LR
 
 iterations
 
-Iter   | 1     | 2     | ...    | 9     | 10
+\#Iter | 1     | 2     | ...    | 9     | 10
 -------|-------|-------|--------|-------|-------
 1      |       |       |        |       | 0.501
 2      |       |       |        | 0.501 | 0.501
 ...    |       |       |        |       |
-2      | 0.501 | 0.501 |  0.501 | 0.501 | 0.501
+10     | 0.501 | 0.501 |  0.501 | 0.501 | 0.501
 
 Assume the function space has to possible values at each state:
 
+<!-- 1     |2     |3      | ... | 8     | 9     | 10
+------|------|-------|-----|-------|-------|------ -->
 0.5   |0.5   | 0.5   | ... | 0.5   | 0.5   | 0.5
 1.012 |0.756 |0.628  | ... | 0.504 | 0.502 | 0.501
 
+(
+0.5 and **0.502** have the same distance to **0.501**;
+0.5 and **0.504** have the same distance to **0.502**;
+...
+)
 
+then
 
+\#Ite  | 1     | 2     | ...    | 9     | 10
+-------|-------|-------|--------|-------|-------
+1      |       |       |        |       | 0.501
+2      |       |       |        | 0.502 | 0.501
+...    |       |       |        |       |
+10     | 1.012 | 0.756 | ...    | 0.502 | 0.501
+
+Value deviates from 0.501 as iteration goes.
+
+Say the function space is a **plane**, than the results of each iteration (bellman operator) is not on the plane, instead, their **projections** are picked.
+
+We can only sample $x \sim q$ but want to estimate $\mathbb{E}_{x\sim p} f(x)$
+
+Is (or importance weighted, or inverse propensity yscore Ps
+estimator): 
+
+$$
+\frac{p(x)}{q(x)}f(x)
+$$
+
+Unbiasedness:
+
+$$
+\mathbb{E}_{x \sim q}\left[\frac{p(x)}{q(x)} f(x)\right]=\sum_x q(x)\left(\frac{p(x)}{q(x)} f(x)\right)=\sum_x p(x) f(x)=\mathbb{E}_{x \sim p}[f(x)]
+$$
+
+<!-- ### Application in contextual bandit (CB)
+
+- CB: episodic MDP with $H=1$. Actions have no long-term effects. Just optimize the immediate reward.
+  - $x \sim d_0$ : context distribution (corresponds to initial state distribution of the MDP)
+  - agent takes an action $a$ based on $x$
+  - agent observes reward $r \sim R(x, a)$
+
+- The data point is a tuple $(x, a, r)$
+- The function of interest is $(x, a, r) \mapsto r \quad \pi$ : target policy
+- The distribution of interest is $x \sim d_0, a \sim \frac{\pi}{\Delta} r \sim R(x, a)$
+- Let the joint density b $p(x, a, r) \nabla_{\pi_b \text { : behavior/logging policy }}$
+- The data distribution is $x \sim d_0, a \sim \pi_k, r \sim R(x, a)$
+- Let the joint density be $q(x, a, r)$ f
+- IS estimator: $\frac{p(x, a, r)}{q(x, a, r)} \cdot r$ -->
