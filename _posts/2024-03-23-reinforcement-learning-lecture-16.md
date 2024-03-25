@@ -23,7 +23,7 @@ e.g. in the cliff setting, the optimal can always be found, no matter the choice
 
 ### Exercise: Multi-step Q-learning?
 
-Does the target $r_{t}+\gamma r_{t+1}+\gamma^2 \max _{a^{\prime}} Q\left(s_{t+2}, a^{\prime}\right)$ work? If not, why?
+Does the target $r_{t}+\gamma r_{t+1}+\gamma^2 \max_{a^{\prime}} Q\left(s_{t+2}, a^{\prime}\right)$ work? If not, why?
 
 No. Because it leads to
 
