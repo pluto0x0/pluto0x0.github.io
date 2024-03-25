@@ -67,7 +67,7 @@ which is an approximate Value Iteration process, and notice that the whole itera
 ### Understanding TD(0)
 
 The "approximate" Value Iteration process above is similar to TD(0) but slightly different:
-it uses a value function $V$ (which stays constant during updates) to update $V'$ which is another function. After long enough, we have $V'=\mathcal{T} V$ and do $V \leftarrow V'$, then repeat the process.
+it uses a value function $V$ (which stays constant during updates) to update $V'$ which is another function. After long enough, we have $V'=\mathcal{T}^\pi V$ and do $V \leftarrow V'$, then repeat the process. Finally converges to $V^\pi$.
 
 But in TD(0), we uses $V$ to update itself. The difference is "synchronous" vs "asynchronous".
 
