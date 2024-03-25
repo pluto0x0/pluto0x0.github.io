@@ -40,6 +40,8 @@ Notice that SARSA is not applicable for deterministic policy, because it require
 
 ### SARSA with $\epsilon$-greedy policy
 
+How are the $s, a$ data pairs picked in SARSA?
+
 At each time step t, with probability $\epsilon$, choose a from the action space uniformly at random. otherwise, $a_t = \arg\max_a Q(s_t, a)$
 
 > When sampling s-a-r-s-a tuple along the trajectory, the first action in the tuple is actually generated with last version of $Q$, so we can say SARSA is not 100% "on policy".
