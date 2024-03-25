@@ -13,7 +13,7 @@ categories:
 
 We do $V_\theta(s)\leftarrow V_\theta(s) + \alpha(r-\gamma V_\theta\left(s^{\prime}\right) - V_\theta(s))$ in TD(0).
 
-What if we minimize the square error between $V_\theta(s)$ and its target, i.e. $\mathbb{E}_{s, r, s^{\prime}}\left[\left(V_\theta(s)-r-\gamma V_\theta\left(s^{\prime}\right)\right)^2\right]$ ?
+What if we minimize the square error between $V_\theta(s)$ and its target, i.e. $\mathbb{E}_{s,r,s^{\prime}}\left[\left(V_\theta(s)-r-\gamma V_\theta\left(s^{\prime}\right)\right)^2\right]$ ?
 
 No correct. It can be [decomposed](./reinforcement-learning-homework-0/#proof) as the sum of 2 parts:
 
