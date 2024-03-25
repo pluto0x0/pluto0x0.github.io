@@ -11,6 +11,8 @@ categories:
 
 ## A Question
 
+$a_1 a_2 a_3 a_4 a_5$
+
 We do $V_\theta(s)\leftarrow V_\theta(s) + \alpha(r-\gamma V_\theta\left(s^{\prime}\right) - V_\theta(s))$ in TD(0).
 
 What if we minimize the square error between $V_\theta(s)$ and its target, i.e. $\mathbb{E}_{s,r,s^{\prime}}\left[\left(V_\theta(s)-r-\gamma V_\theta\left(s^{\prime}\right)\right)^2\right]$ ?
