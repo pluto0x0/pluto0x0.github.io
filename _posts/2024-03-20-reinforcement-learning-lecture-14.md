@@ -83,13 +83,13 @@ Here $\theta$ is the tabular value function and $\phi$ is $[0,\cdots, 0, 1, 0, \
 In TD(0), we do
 
 $$
-V\left(s_t\right) \leftarrow V\left(s_t\right)+\alpha\left(V_t+\gamma V\left(s_{t+1}\right)-V\left(s_t\right)\right) ,
+V\left(s_t\right) \leftarrow V\left(s_t\right)+\alpha\left(r_t+\gamma V\left(s_{t+1}\right)-V\left(s_t\right)\right) ,
 $$
 
 which, with all steps on $t$, gets
 
 $$
-V_{k+1} \leftarrow \tau^{\top} V_k .
+V_{k+1} \leftarrow \mathcal{T}^\pi V_k .
 $$
 
 i.e.
