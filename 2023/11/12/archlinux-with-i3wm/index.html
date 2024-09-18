@@ -1,0 +1,1206 @@
+
+
+<!DOCTYPE html>
+<html lang="en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zifan Ying">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Intro 之前用manjro+i3，勉强算是开箱即用，然而还是准备折腾arch。 安装archlinux 根据 中文安装指南 进行，只选择了重要的步骤。 启动到 live 环境 首先准备安装镜像、安装介质（U盘） 连接互联网 这里使用wifi连接，以太网请忽略这一步。 连接wifi可以使用iwd包的iwctl命令。  列出所有 WiFi 设备： [iwd]# device list 开始扫描网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Archlinux + I3wm 从0配置指南">
+<meta property="og:url" content="https://yzzzf.xyz/2023/11/12/archlinux-with-i3wm/index.html">
+<meta property="og:site_name" content="flayed blog">
+<meta property="og:description" content="Intro 之前用manjro+i3，勉强算是开箱即用，然而还是准备折腾arch。 安装archlinux 根据 中文安装指南 进行，只选择了重要的步骤。 启动到 live 环境 首先准备安装镜像、安装介质（U盘） 连接互联网 这里使用wifi连接，以太网请忽略这一步。 连接wifi可以使用iwd包的iwctl命令。  列出所有 WiFi 设备： [iwd]# device list 开始扫描网络">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/archlinux-with-i3wm-2.png">
+<meta property="article:published_time" content="2023-11-12T07:03:06.000Z">
+<meta property="article:modified_time" content="2024-09-18T11:03:46.882Z">
+<meta property="article:author" content="Zifan Ying">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yzzzf.xyz/img/post/archlinux-with-i3wm-2.png">
+<meta name="twitter:creator" content="@flayed__">
+  
+  
+  
+  <title>Archlinux + I3wm 从0配置指南 - flayed blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yzzzf.xyz","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 40vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>flayed</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Archlinux + I3wm 从0配置指南"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-12 01:03" pubdate>
+          November 12, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Archlinux + I3wm 从0配置指南</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Intro">Intro</h2>
+<p>之前用manjro+i3，勉强算是开箱即用，然而还是准备折腾arch。</p>
+<h2 id="安装archlinux">安装archlinux</h2>
+<p>根据<br>
+<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">中文安装指南</a><br>
+进行，只选择了重要的步骤。</p>
+<h3 id="启动到-live-环境">启动到 live 环境</h3>
+<p>首先准备安装镜像、安装介质（U盘）</p>
+<h3 id="连接互联网">连接互联网</h3>
+<p>这里使用wifi连接，以太网请忽略这一步。</p>
+<p>连接wifi可以使用<a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=iwd">iwd</a>包的<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Iwd#iwctl">iwctl</a>命令。</p>
+<blockquote>
+<p>列出所有 WiFi 设备： [iwd]# device list</p>
+<p>开始扫描网络: [iwd]# station <em>device</em> scan</p>
+<p>列出所有可用的网络: [iwd]# station <em>device</em> get-networks</p>
+<p>连接到一个网络：[iwd]# station <em>device</em> connect <em>SSID</em></p>
+</blockquote>
+<p>运行  <code>ping archlinux.org</code>  测试网络连接。</p>
+<h3 id="创建硬盘分区">创建硬盘分区</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">fdisk -l # 列出所有分区
+fdisk &#x2F;dev&#x2F;the_disk_to_be_partitioned #（要被分区的磁盘）进行分区。</code></pre></div></figure>
+<p>参考<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97#%E5%88%86%E5%8C%BA%E6%96%B9%E6%A1%88%E7%A4%BA%E4%BE%8B">分区方案示例</a></p>
+<p>本次给EFI分了512M，给SWAP分了8G（8G内存），剩下给 <code>/</code> 挂载点。</p>
+<h3 id="格式化分区">格式化分区</h3>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%88%86%E5%8C%BA">参考</a>，注意相应的文件系统</p>
+<h3 id="挂载分区">挂载分区</h3>
+<p>分别挂载主分区和EFI分区到 <code>/mnt</code> 和 <code>/mnt/boot</code>  上。</p>
+<p>注意启用swap分区。</p>
+<h3 id="开始安装系统">开始安装系统</h3>
+<p>运行</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">pacman -Sy pacman-mirrorlist</code></pre></div></figure>
+<h3 id="配置系统">配置系统</h3>
+<h4 id="生成fstab">生成fstab</h4>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">genfstab -U &#x2F;mnt &gt;&gt; &#x2F;mnt&#x2F;etc&#x2F;fstab</code></pre></div></figure>
+<h4 id="chroot-到新安装的系统">chroot 到新安装的系统</h4>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">arch-chroot &#x2F;mnt</code></pre></div></figure>
+<p>注意是 <code>arch-chroot</code> 命令。</p>
+<h4 id="设置时区、区域和本地化设置">设置时区、区域和本地化设置</h4>
+<p>注意语言要选择英语  <code>en_US.UTF-8</code> ，中文无法显示。</p>
+<h4 id="创建-hostname-文件、设置-root-密码">创建 hostname 文件、设置 root 密码</h4>
+<h4 id="！安装必要软软件包">！安装必要软软件包</h4>
+<p>一般来说需要安装</p>
+<p>引导需要的包：</p>
+<ul>
+<li><code>grub</code></li>
+<li><code>os-prober</code> , 探测其他安装的OS，显示在grub菜单中。</li>
+<li><code>efibootmgr</code></li>
+</ul>
+<p>常用工具：</p>
+<ul>
+<li><code>nano</code>  /  <code>vi</code>  /  <code>vim</code></li>
+<li><code>sudo</code>  （注意可以新建一个非root用户并且将之加入sudoers列表中，要修改列表，请用 <code>visudo</code> 命令以防sudoers列表出现问题导致系统问题）</li>
+</ul>
+<p>网络连接</p>
+<ul>
+<li><code>iw</code> ，  <code>iwd</code>  连接wifi</li>
+<li>自动启动网络服务（否则DNS服务无法使用）：</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="language-none"><code class="language-none">systemctl enable systemd-networkd
+systemctl enable systemd-resolved</code></pre></div></figure>
+<p>字体</p>
+<ul>
+<li>参见<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E4%B8%AD%E6%96%87%E6%9C%AC%E5%9C%B0%E5%8C%96#Fonts">wiki</a>， 我使用了思源简体无衬线字体。</li>
+</ul>
+<blockquote>
+<p>此时请为图形界面新建一个非root用户！<br>
+{: .prompt-warning }</p>
+</blockquote>
+<h4 id="安装引导">安装引导</h4>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">grub-install --target&#x3D;x86_64-efi --efi-directory&#x3D;&#x2F;boot --bootloader&#x3D;Arch --recheck
+grub-mkconfig -o &#x2F;boot&#x2F;grub&#x2F;grub.cfg</code></pre></div></figure>
+<p><code>grub-mkconfig</code>  类似其他平台的 <code>grub-update</code> 的作用。</p>
+<p>接下来</p>
+<p>卸载挂载点，重启</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">umount -R &#x2F;mnt
+reboot</code></pre></div></figure>
+<p>此时一切顺利的话就可以引导进入新系统了。</p>
+<h2 id="配置系统-2">配置系统</h2>
+<h3 id="语言">语言</h3>
+<p>确保  <code>/etc/locale.gen</code>{: .filepath} 中的  <code>zh_CN.UTF-8</code>  项已经被取消注释。</p>
+<p>运行</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">locale-gen</code></pre></div></figure>
+<p>然后在 <code>/etc/locale.conf</code>{: .filepath}写入</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">LANG&#x3D;zh_CN.UTF-8</code></pre></div></figure>
+<blockquote>
+<p>此时重启后输入 <code>locale</code> 命令应该可以看到 <code>LANG</code> 变量已经被设置为中文，如果不是：<br>
+{: .prompt-info }</p>
+</blockquote>
+<p>在 <code>/etc/environment</code>{: .filepath}写入</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">LANG&#x3D;zh_CN.UTF-8</code></pre></div></figure>
+<h3 id="网络连接">网络连接</h3>
+<p>此时有必要的软件包，可以在命令行连接wifi了，但是如果遇到了连接问题（ <code>ping</code> 出错），请检查：</p>
+<blockquote>
+<p>根据<a target="_blank" rel="noopener" href="https://bbs.archlinux.org/viewtopic.php?pid=1973099#p1973099">这里</a>，将以下内容写入  <code>/etc/iwd/main.conf</code>{: .filepath}。<br>
+{： .prompt-tip }</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="language-ini" data-language="ini"><code class="language-ini">[General]
+EnableNetworkConfiguration&#x3D;true
+
+[Network]
+NameResolvingService&#x3D;systemd</code></pre></div></figure>
+<blockquote>
+<p>尝试启动网络服务</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"># 重启服务
+systemctl restart systemd-networkd
+systemctl restart systemd-resolved
+# 自动启动
+systemctl enable systemd-networkd
+systemctl enable systemd-resolved</code></pre></div></figure>
+<h3 id="安装图形界面：Xorg和i3相关包">安装图形界面：Xorg和i3相关包</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S xorg lightdm lightdm-gtk-greeter i3-wm i3lock i3status i3blocks dmenu</code></pre></div></figure>
+<p>（其中 <code>lightdm-gtk-greeter</code> ）负责登录界面</p>
+<p>安装终端（自行选择）</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S alacritty</code></pre></div></figure>
+<blockquote>
+<p>20240101更新：<code>~/.config/alacritty/alacritty.yml</code>{: .filepath} 已经弃用，使用 <code>alacritty migrate</code> 迁移到 <code>/home/flayed/.config/alacritty/alacritty.toml</code>{: .filepath}<br>
+{: .prompt-tip }</p>
+</blockquote>
+<p><code>/home/flayed/.config/alacritty/alacritty.toml</code>{: .filepath} :</p>
+<figure><div class="code-wrapper"><pre class="language-toml" data-language="toml"><code class="language-toml">[font]
+size &#x3D; 8
+
+[font.bold]
+family &#x3D; &quot;Source Code Pro&quot;
+style &#x3D; &quot;Bold&quot;
+
+[font.bold_italic]
+family &#x3D; &quot;Source Code Pro&quot;
+style &#x3D; &quot;Bold Italic&quot;
+
+[font.italic]
+family &#x3D; &quot;Source Code Pro&quot;
+style &#x3D; &quot;Italic&quot;
+
+[font.normal]
+family &#x3D; &quot;Source Code Pro&quot;
+style &#x3D; &quot;Regular&quot;
+
+[window]
+opacity &#x3D; 0.75  # 窗口不透明度 </code></pre></div></figure>
+<p>启动lightDM</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo systemctl start lightdm.service
+sudo systemctl enable lightdm.service</code></pre></div></figure>
+<p>此时进入图形界面，选择非root用户登录</p>
+<p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/759235.html#%E5%9C%A8%20i3%20%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%A3%81%E7%BA%B8">参考</a></p>
+<h3 id="程序功能配置">程序功能配置</h3>
+<h4 id="安装AUR包管理器">安装AUR包管理器</h4>
+<p>使用 <code>yay</code> 包，这里我源码编译有点问题，直接使用了二进制包 <a target="_blank" rel="noopener" href="https://aur.archlinux.org/yay-bin.git">https://aur.archlinux.org/yay-bin.git</a>。</p>
+<h4 id="feh，i3lock-color，主题，图标主题">feh，i3lock-color，主题，图标主题</h4>
+<p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/759235.html#%E5%9C%A8%20i3%20%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%A3%81%E7%BA%B8">参考</a></p>
+<h4 id="文件管理器">文件管理器</h4>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S pcmanfm</code></pre></div></figure>
+<p>设置为目录的默认打开方式</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">xdg-mime default pcmanfm.desktop inode&#x2F;directory</code></pre></div></figure>
+<h4 id="透明窗口混合器">透明窗口混合器</h4>
+<p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/759235.html#%E5%9C%A8%20i3%20%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%AD%E6%9B%B4%E6%94%B9%E5%A3%81%E7%BA%B8">参考</a></p>
+<h3 id="其他配置">其他配置</h3>
+<h4 id="zsh-oh-my-zsh">zsh, oh-my-zsh</h4>
+<p><a target="_blank" rel="noopener" href="https://ohmyz.sh/#install">https://ohmyz.sh/#install</a></p>
+<p>插件：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh">zsh-autosuggestions</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md">zsh-syntax-highlighting</a></li>
+</ul>
+<h4 id="网络托盘图标">网络托盘图标</h4>
+<p>安装<a target="_blank" rel="noopener" href="https://archlinux.org/packages/?name=networkmanager">networkmanager</a>包</p>
+<p>其中 <code>nm-applet</code> 用于显示托盘图标</p>
+<p>启动服务：</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo systemctl start NetworkManager
+sudo systemctl enable NetworkManager</code></pre></div></figure>
+<p>i3的config已经包含了以下内容来启动 <code>NetworkManager</code> ：</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">exec --no-startup-id NetworkManager
+exec --no-startup-id nm-applet</code></pre></div></figure>
+<h4 id="中文输入法">中文输入法</h4>
+<p>使用搜狗</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S fcitx fcitx-im fcitx-configtool
+yay -S fcitx-sogoupinyin</code></pre></div></figure>
+<p>i3配置中添加</p>
+<figure><div class="code-wrapper"><pre class="language-none"><code class="language-none">exec_always --no-startup-id fcitx-autostart</code></pre></div></figure>
+<p>此外在 <code>/etc/environment</code>{: .filepath} 添加</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">GTK_IM_MODULE&#x3D;fcitx
+QT_IM_MODULE&#x3D;fcitx
+XMODIFIERS&#x3D;@im&#x3D;fcitx</code></pre></div></figure>
+<blockquote>
+<p>输入法有托盘图标<br>
+{: .prompt-tip }</p>
+</blockquote>
+<p>取消输入法浮动窗口阴影</p>
+<p>首先使用picom默认配置</p>
+<figure><div class="code-wrapper"><pre class="language-config" data-language="config"><code class="language-config">cp &#x2F;etc&#x2F;xdg&#x2F;picom.conf ~&#x2F;.config&#x2F;picom&#x2F;picom.conf</code></pre></div></figure>
+<p>查找浮动窗口的类名：</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">xprop | grep -i class</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="language-text" data-language="text"><code class="language-text">WM_CLASS(STRING) &#x3D; &quot;sogoupinyin-service&quot;, &quot;sogoupinyin-service&quot;</code></pre></div></figure>
+<p>得到类名<code>sogoupinyin-service</code></p>
+<p>修改<code>~/.config/picom/picom.conf</code>{:.filepath}，添加一行<code>&quot;class_g = 'sogoupinyin-service'&quot;</code></p>
+<figure><div class="code-wrapper"><pre class="language-none"><code class="language-none"># Specify a list of conditions of windows that should have no shadow.
+#
+# examples:
+#   shadow-exclude &#x3D; &quot;n:e:Notification&quot;;
+#
+# shadow-exclude &#x3D; []
+shadow-exclude &#x3D; [
+  &quot;name &#x3D; &#39;Notification&#39;&quot;,
+  &quot;class_g &#x3D; &#39;Conky&#39;&quot;,
+  &quot;class_g ?&#x3D; &#39;Notify-osd&#39;&quot;,
+  &quot;class_g &#x3D; &#39;Cairo-clock&#39;&quot;,
+  &quot;_GTK_FRAME_EXTENTS@:c&quot;,
+  &quot;class_g &#x3D; &#39;sogoupinyin-service&#39;&quot;
+];</code></pre></div></figure>
+<p>消除菜单的透明边框阴影：</p>
+<figure><div class="code-wrapper"><pre class="language-none"><code class="language-none">wintypes:
+&#123;
+  ...
+  menu &#x3D; &#123; shadow &#x3D; false; opacity &#x3D; 0.9; &#125;
+  ...
+&#125;;</code></pre></div></figure>
+<h4 id="音量托盘图标">音量托盘图标</h4>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">pacman -S pulseaudio pavucontrol pasystray</code></pre></div></figure>
+<p><code>pavucontrol</code> 控制音量</p>
+<p><code>pasystray</code> 托盘图标，在i3添加自启动</p>
+<p>i3里已经有了音量Fn的绑定。</p>
+<h4 id="亮度">亮度</h4>
+<p>安装 <code>xorg-xbacklight</code> 或者 <code>brightnessctl</code> 包，效果基本相同。</p>
+<p>安装 <code>xmodmap</code> 支持Fn键。</p>
+<!-- 通过  `brightnessctl i`  得到最大亮度1060， -->
+<p>在i3配置里添加</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"># @@backlight hotkey
+bindsym XF86KbdBrightnessDown exec --no-startup-id brightnessctl s 10%-
+bindsym XF86KbdBrightnessUp exec --no-startup-id brightnessctl s 10%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 10%+</code></pre></div></figure>
+<p>其中按键的名称可以在 <code>xmodmap -pke</code> 的输出中查找。</p>
+<h4 id="状态栏">状态栏</h4>
+<p>使用  <code>polybar</code> ，以及<a target="_blank" rel="noopener" href="https://github.com/adi1090x/polybar-themes/">第三方主题</a>，其中音量显示、亮度显示、电池显示、托盘图标的显示都需要额外配置。</p>
+<p>主题内支持设置壁纸的同时设置相应的主题色（包括zsh主题色）。</p>
+<blockquote>
+<p>鼠标放在滑块上滚动使用。<br>
+{: .prompt-tip }</p>
+</blockquote>
+<h4 id="触摸板">触摸板</h4>
+<p>根据<a target="_blank" rel="noopener" href="https://twor.me/posts/archlinux_gesture/">参考</a></p>
+<p>安装触摸板驱动</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S xf86-input-libinput</code></pre></div></figure>
+<p>把以下内容写入  <code>/etc/X11/xorg.conf.d/30-touchpad.conf</code>{: .filepath }</p>
+<figure><div class="code-wrapper"><pre class="language-none"><code class="language-none">Section &quot;InputClass&quot;
+    Identifier &quot;touchpad&quot;
+    Driver &quot;libinput&quot;
+    MatchIsTouchpad &quot;on&quot;
+    Option &quot;Tapping&quot; &quot;on&quot;
+    Option &quot;TappingButtonMap&quot; &quot;lrm&quot;
+EndSection</code></pre></div></figure>
+<blockquote>
+<p>这里 <code>&quot;lrm&quot;</code> 指的是1，2，3指轻触分别表示左键、右键、中键点击。<br>
+{: .prompt-tip }</p>
+</blockquote>
+<p>接下来设置触摸板手势：</p>
+<p>安装 <code>fusuma</code> （AUR中<a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/ruby-fusuma">ruby-fusuma</a>）包和插件（AUR中<a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/ruby-fusuma-plugin-sendkey">ruby-fusuma-plugin-sendkey</a>）用来捕获手势和发送按键。</p>
+<p>这是我的配置 ： <code>~/.config/fusuma/config.yml</code></p>
+<figure><div class="code-wrapper"><pre class="language-yaml" data-language="yaml"><code class="language-yaml">swipe:
+  3: 
+    left: 
+      sendkey: &#39;LeftMeta+LeftShift+Left&#39;
+    right: 
+      sendkey: &#39;LeftMeta+LeftShift+Right&#39;
+    up: 
+      sendkey: &#39;LeftMeta+LeftShift+Up&#39;
+    down: 
+      sendkey: &#39;LeftMeta+LeftShift+Down&#39;
+  4: 
+    up: 
+      sendkey: &#39;LeftMeta+F&#39;
+pinch:
+  in:
+    sendkey: &#39;LeftCtrl+Minus&#39;
+  out:
+    sendkey: &#39;LeftCtrl+Equal&#39;
+
+threshold:
+  swipe: 0.6
+  pinch: 0.2
+
+interval:
+  swipe: 0.3
+  pinch: 0.3</code></pre></div></figure>
+<p>其中 <code>3</code>   <code>4</code>  表示几根手指， <code>swipe</code>   <code>pinch</code>  表示 “扫” 和 “捏” 两个手势，至于按键绑定根据自己偏好，这里是用作切换窗口位置和放大/缩小。</p>
+<p>启动服务：</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo systemctl start fusuma
+sudo systemctl enable fusuma</code></pre></div></figure>
+<h4 id="功耗控制">功耗控制</h4>
+<p>根据<a target="_blank" rel="noopener" href="https://arch.icekylin.online/guide/advanced/power-ctl.html">参考</a></p>
+<p>安装  <code>TLP</code>  包和 ui</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S tlp tlp-rdw</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">yay -S tlpui</code></pre></div></figure>
+<p>启动服务</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo systemctl enable tlp.service
+sudo systemctl enable NetworkManager-dispatcher.service
+sudo systemctl mask systemd-rfkill.service # 屏蔽以下服务以避免冲突，确保 TLP 无线设备的开关选项可以正确运行
+sudo systemctl mask systemd-rfkill.socket
+
+sudo tlp start</code></pre></div></figure>
+<p><code>tlpui</code>  打开UI控制台，我这里把  <code>CPU_MAX_PERF_ON_BAT</code>  设置为  <code>30</code>  提高续航，还有其他诸如降低cpu电压暂时没有搞。</p>
+<h4 id="系统快照">系统快照</h4>
+<p>根据<a target="_blank" rel="noopener" href="https://aprilzz.com/archives/%E5%9C%A8arch%E4%B8%AD%E4%BD%BF%E7%94%A8timeshift%E4%BF%9D%E7%B3%BB%E7%BB%9F%E5%B9%B3%E5%AE%89">参考</a></p>
+<p>使用 <a target="_blank" rel="noopener" href="https://archlinux.org/packages/extra/x86_64/timeshift/">timeshift</a></p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S timeshift # 安装Timeshift
+sudo systemctl enable --now cronie.service # 启用Crond服务，启用该服务后Timeshift才能定期自动创建快照</code></pre></div></figure>
+<p>运行  <code>timeshift-gtk</code>  启动UI，我选择了rsync备份，在1T的windows盘中分了128G的EXT4分区来备份。备份可以自动定时进行，每次仅仅占用1G左右，可以选择时时候复制用户文件。</p>
+<h4 id="截屏">截屏</h4>
+<p>在i3配置中添加</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"># @@Screenshots
+bindsym Print exec --no-startup-id maim &quot;&#x2F;home&#x2F; $USER&#x2F;Pictures&#x2F;$ (date)&quot;
+bindsym $mod+Print exec --no-startup-id maim --window$ (xdotool getactivewindow) &quot;&#x2F;home&#x2F; $USER&#x2F;Pictures&#x2F;$ (date)&quot;
+bindsym Shift+Print exec --no-startup-id maim --select &quot;&#x2F;home&#x2F; $USER&#x2F;Pictures&#x2F;$ (date)&quot;
+
+# @@Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image&#x2F;png
+bindsym Ctrl+ $mod+Print exec --no-startup-id maim --window$ (xdotool getactivewindow) | xclip -selection clipboard -t image&#x2F;png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image&#x2F;png</code></pre></div></figure>
+<p>并且安装相应  <code>xclip</code> ， <code>xdotool</code> ， <code>maim</code> 包</p>
+<p>分别作为<strong>复制/保存 全屏/窗口/区域截图</strong>的功能。</p>
+<h4 id="删除i3窗口边框">删除i3窗口边框</h4>
+<p>在i3配置中添加</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"># @@remove border
+default_border none
+default_floating_border none</code></pre></div></figure>
+<h4 id="鼠标指针">鼠标指针</h4>
+<p>下载指针主题，在 <code>lxappearance</code> 中启用即可。<br>
+如果无法正常显示鼠标指针：</p>
+<p>试着创建一个将 <code>~/.icons/default/cursors</code>{: .filepath}(假设为指定用户安装)指向 <code>.local/share/icons/cursor_theme_name/cursors</code>{: .filepath}的符号链接然后再次重启 X。</p>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%85%89%E6%A0%87%E4%B8%BB%E9%A2%98">参考</a></p>
+<p>问题排查</p>
+<ul>
+<li>如果在i3桌面上鼠标指针一直显示忙，在配置中所有<code>exec</code>加上<code>--no-startup-id</code>参数</li>
+</ul>
+<h2 id="软件包列表">软件包列表</h2>
+<h3 id="编辑器">编辑器</h3>
+<p><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/visual-studio-code-bin">Visual Studio Code</a></p>
+<h3 id="网络浏览器">网络浏览器</h3>
+<p><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/google-chrome">Google Chrome</a></p>
+<h3 id="pdf阅读器">pdf阅读器</h3>
+<p><a target="_blank" rel="noopener" href="https://archlinux.org/packages/extra/x86_64/okular/">Okular</a></p>
+<h3 id="Office套件">Office套件</h3>
+<p><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/onlyoffice-bin">Onlyoffice</a></p>
+<h3 id="远程桌面">远程桌面</h3>
+<p><a target="_blank" rel="noopener" href="https://archlinux.org/packages/extra/x86_64/remmina/">Remmina</a></p>
+<h3 id="局域网文件分享">局域网文件分享</h3>
+<p><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/landrop">Landrop</a></p>
+<h3 id="bittorrent客户端">bittorrent客户端</h3>
+<p><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/qbittorrent-enhanced">Qbittorrent Enhanced Edition</a></p>
+<h3 id="剪贴板历史">剪贴板历史</h3>
+<p><a target="_blank" rel="noopener" href="https://archlinux.org/packages/extra/x86_64/parcellite/">parcellite</a></p>
+<h3 id="蓝牙">蓝牙</h3>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E8%93%9D%E7%89%99">https://wiki.archlinuxcn.org/wiki/蓝牙</a></p>
+<p>驱动和实用程序</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://archlinux.org/packages/extra/x86_64/bluez/">bluez</a></li>
+<li><a target="_blank" rel="noopener" href="https://archlinux.org/packages/extra/x86_64/bluez-utils/">bluez-utils</a></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo systemctl start bluetooth
+sudo systemctl enable bluetooth</code></pre></div></figure>
+<p>图形界面</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://archlinux.org/packages/extra/x86_64/blueman/">blueman</a></li>
+</ul>
+<p>在 <code>~/.config/i3/config</code>{: .filepath}:</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">exec_always --no-startup-id blueman-applet</code></pre></div></figure>
+<h3 id="自动锁定">自动锁定</h3>
+<p><a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/xidlehook">xidlehook</a></p>
+<p><code>~/.config/i3/config</code>{: .filepath}:</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">set $time_lock 300
+exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer $time_lock$ lock &#39;&#39;</code></pre></div></figure>
+<h3 id="桌面通知">桌面通知</h3>
+<p><a target="_blank" rel="noopener" href="https://archlinux.org/packages/extra/x86_64/dunst/">dunst</a></p>
+<p>i3配置</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">exec_always --no-startup-id dunst</code></pre></div></figure>
+<p>测试通知</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">$ notify-send &quot;title&quot; &quot;test notification&quot;</code></pre></div></figure>
+<h3 id="桌面组件">桌面组件</h3>
+<p><a target="_blank" rel="noopener" href="https://archlinux.org/packages/extra/x86_64/conky/">Conky</a></p>
+<p>i3中：</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">exec_always --no-startup-id conky</code></pre></div></figure>
+<p>配置 <code>~/.config/conky/conky.conf</code>{: .filepath}</p>
+<figure><div class="code-wrapper"><pre class="language-lua" data-language="lua"><code class="language-lua">conky.config &#x3D; &#123;
+    -- Conky窗口设置
+    own_window &#x3D; true,
+    own_window_type &#x3D; &#39;override&#39;,  -- 使Conky显示在桌面上
+    own_window_class &#x3D; &#39;Conky&#39;,
+    background &#x3D; true,
+    own_window_transparent &#x3D; true,  -- 透明窗口
+    own_window_argb_visual &#x3D; true,  -- 开启真正的透明效果
+    own_window_argb_value &#x3D; 0,  -- 透明度设置，0是完全透明
+
+    -- 文字设置
+    use_xft &#x3D; true,
+    font &#x3D; &#39;DejaVu Sans Mono:size&#x3D;11&#39;,
+    xftalpha &#x3D; 0.8,
+    alignment &#x3D; &#39;top_right&#39;,  -- 窗口在屏幕上的位置
+
+    -- 尺寸和颜色
+    gap_x &#x3D; 30,
+    gap_y &#x3D; 60,
+    minimum_width &#x3D; 200,
+    default_color &#x3D; &#39;white&#39;,
+
+    -- 更新间隔
+    update_interval &#x3D; 1,
+
+    -- 其他设置
+    double_buffer &#x3D; true,
+    draw_shades &#x3D; false,
+    draw_outline &#x3D; false,
+    draw_borders &#x3D; false,
+    draw_graph_borders &#x3D; false,
+    override_utf8_locale &#x3D; false,
+    no_buffers &#x3D; true,
+    uppercase &#x3D; false,
+    cpu_avg_samples &#x3D; 2,
+&#125;;
+
+conky.text &#x3D; [[
+$&#123;user_names&#125; @ $&#123;nodename&#125;
+$&#123;distribution&#125; $&#123;kernel&#125;
+
+$&#123;color grey&#125;Net
+$&#123;color&#125; $&#123;wireless_essid wlan0&#125; @$ &#123;wireless_freq wlan0&#125;
+$&#123;addrs wlan0&#125; $&#123;wireless_ap wlan0&#125;
+
+$&#123;color grey&#125;Time
+$&#123;color&#125;$time
+
+$&#123;color grey&#125;Up time
+$&#123;color&#125;$uptime
+
+$&#123;color grey&#125;CPU Usage
+$&#123;color&#125; $cpu% @$ &#123;freq&#125;Mhz
+$&#123;cpugraph 50,320 000000 ffffff&#125;
+
+$&#123;color grey&#125;RAM Usage
+$&#123;color&#125;$&#123;memperc&#125;%
+$&#123;memgraph 50,320 000000 ffffff&#125;
+$&#123;membar 4&#125;
+$&#123;color&#125; $&#123;mem&#125;$ &#123;alignr&#125;$&#123;memavail&#125;
+
+$&#123;color grey&#125;File Systems
+$&#123;color&#125;&#x2F; $&#123;fs_type &#x2F;&#125;$ &#123;fs_free_perc &#x2F;&#125;% $&#123;fs_size &#x2F;&#125; 
+
+$color $&#123;fs_bar &#x2F;&#125;
+$&#123;fs_used &#x2F;&#125; $&#123;alignr&#125;$ &#123;fs_free &#x2F;&#125;
+
+$&#123;color grey&#125;Disk IO
+$&#123;color grey&#125;read $&#123;color&#125;$ &#123;diskio_read&#125; $&#123;color grey&#125;write$ &#123;color&#125;$&#123;diskio_write&#125;
+$&#123;diskiograph 50,320 000000 ffffff&#125;
+
+$&#123;color grey&#125;Top
+
+$&#123;color&#125;Process           CPU%  Mem%
+$&#123;color grey&#125;$&#123;hr&#125;
+$&#123;color&#125; $&#123;top name 1&#125;$ &#123;top cpu 1&#125;$&#123;top mem 1&#125;
+$&#123;top name 2&#125; $&#123;top cpu 2&#125;$ &#123;top mem 2&#125;
+$&#123;top name 3&#125; $&#123;top cpu 3&#125;$ &#123;top mem 3&#125;
+$&#123;top name 4&#125; $&#123;top cpu 4&#125;$ &#123;top mem 4&#125;
+$&#123;top name 5&#125; $&#123;top cpu 5&#125;$ &#123;top mem 5&#125;
+]];
+</code></pre></div></figure>
+<p>see also:</p>
+<p><a target="_blank" rel="noopener" href="https://conky.cc/variables#diskio">https://conky.cc/variables#diskio</a></p>
+<p><a target="_blank" rel="noopener" href="https://conky.cc/config_settings">https://conky.cc/config_settings</a></p>
+<h3 id="自动休眠和合上盖子功能">自动休眠和合上盖子功能</h3>
+<p><code>/etc/systemd/logind.conf</code>{:.filepath}</p>
+<figure><div class="code-wrapper"><pre class="language-ini" data-language="ini"><code class="language-ini">[login]
+...
+HandlePowerKey&#x3D;suspend
+HandleLidSwitch&#x3D;suspend
+IdleAction&#x3D;suspend
+IdleActionSec&#x3D;10min
+...</code></pre></div></figure>
+<p>这里不同的电源模式可以<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate">参考</a>，可能不是每种该模式都被硬件支持。</p>
+<p>最后</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo systemctl restart systemd-logind</code></pre></div></figure>
+<h3 id="图片查看器">图片查看器</h3>
+<p><a target="_blank" rel="noopener" href="https://archlinux.org/packages/extra/x86_64/ristretto/">ristretto</a></p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">xdg-mime default org.xfce.ristretto.desktop image&#x2F;png
+xdg-mime default org.xfce.ristretto.desktop image&#x2F;jpeg</code></pre></div></figure>
+<h3 id="鼠标设置">鼠标设置</h3>
+<p>使用xinput，<a href="../manjaro-i3wm/#%E6%8C%87%E9%92%88%E7%81%B5%E6%95%8F%E5%BA%A6">参考</a></p>
+<p>或者使用<a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/xinput-gui">xinput-gui</a>包。</p>
+<h2 id="to-do-list">to-do list</h2>
+<ul>
+<li><s>剪贴板历史</s></li>
+<li><s>蓝牙（blueman）</s></li>
+<li>视频硬件解码</li>
+<li><s>自动锁定</s></li>
+<li><s>合上盖子</s></li>
+<li>主题颜色</li>
+<li><s>桌面组件</s></li>
+<li><s>桌面通知</s></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Archlinux + I3wm 从0配置指南</div>
+      <div>https://yzzzf.xyz/2023/11/12/archlinux-with-i3wm/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Zifan Ying</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 12, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - Share-alike">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/17/sagemath-KaTex-error/" title="解决Sagemath Latex输出渲染错误">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">解决Sagemath Latex输出渲染错误</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/09/ECE391/" title="ECE391 Course Notes">
+                        <span class="hidden-mobile">ECE391 Course Notes</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'photon-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'pluto0x0/pluto0x0.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'comment');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

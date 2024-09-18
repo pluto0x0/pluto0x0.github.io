@@ -1,0 +1,2126 @@
+
+
+<!DOCTYPE html>
+<html lang="en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zifan Ying">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="0 intro fuck you ans kiss my ass. 9 Programmable interrupt controller (PIC) Motivation Connect (more then 1)    devices to processor’s interrupt input.  Why not use a OR gate? no way to tell which dev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECE391 Course Notes">
+<meta property="og:url" content="https://yzzzf.xyz/2023/11/09/ECE391/index.html">
+<meta property="og:site_name" content="flayed blog">
+<meta property="og:description" content="0 intro fuck you ans kiss my ass. 9 Programmable interrupt controller (PIC) Motivation Connect (more then 1)    devices to processor’s interrupt input.  Why not use a OR gate? no way to tell which dev">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-1.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-2.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-3.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-4.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-5.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-6.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-7.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-10.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-11.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-12.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-13.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-15.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-14.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-16.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-9.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-17.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-18.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-19.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-httpatomoreillycomsourceoreillyimages9181.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-httpatomoreillycomsourceoreillyimages9183.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-20.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-22.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-httpatomoreillycomsourceoreillyimages9189.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-23.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-24.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-httpatomoreillycomsourceoreillyimages9191.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-25.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-25.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-26.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-26.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-27.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-27.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-28.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-28.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-29.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-29.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-30.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-30.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-31.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-31.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-32.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-32.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-33.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-34.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-34.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-35.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-35.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-36.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-36.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-37.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-37.png">
+<meta property="og:image" content="https://yzzzf.xyz/img/post/ECE391-38.png">
+<meta property="og:image" content="https://yzzzf.xyz/2023/11/09/img/post/ECE391-38.png">
+<meta property="article:published_time" content="2023-11-09T02:41:49.000Z">
+<meta property="article:modified_time" content="2024-09-18T11:03:46.738Z">
+<meta property="article:author" content="Zifan Ying">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yzzzf.xyz/img/post/ECE391.png">
+<meta name="twitter:creator" content="@flayed__">
+  
+  
+  
+  <title>ECE391 Course Notes - flayed blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yzzzf.xyz","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 40vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>flayed</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ECE391 Course Notes"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-08 20:41" pubdate>
+          November 8, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">ECE391 Course Notes</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>0 intro</h1>
+<p>fuck you ans kiss my ass.</p>
+<h1>9 Programmable interrupt controller (PIC)</h1>
+<h2 id="Motivation">Motivation</h2>
+<p>Connect (more then 1)    devices to processor’s interrupt input.</p>
+<blockquote>
+<p>Why not use a OR gate?</p>
+<p>no way to tell which device<br>
+{: .prompt-tip }</p>
+</blockquote>
+<h2 id="Overview">Overview</h2>
+<p><img src="/img/post/ECE391.png" srcset="/img/loading.gif" lazyload alt="PIC" width="750"></p>
+<ul>
+<li><code>A</code> = address match for ports</li>
+<li><code>CS’</code> = chip select (does processor want PIC to read/write?)</li>
+<li><code>RD’</code> and <code>WR’</code> defined from processor’s point of view
+<ul>
+<li><code>RD’</code> = processor will read data (vector #) from PIC</li>
+<li><code>WR’</code> = processor will write data (command, EOI) to PIC</li>
+</ul>
+</li>
+</ul>
+<p>Ports: <code>0x20</code> &amp; <code>0x21</code></p>
+<ul>
+<li><code>0x20</code>: command port</li>
+<li><code>0x21</code>: data port</li>
+</ul>
+<p><img src="/img/post/ECE391-1.png" srcset="/img/loading.gif" lazyload alt="prot" width="500"></p>
+<p>i.e. <code>CS'</code> only enabled when <code>ADDR</code> is <code>0x20</code> or <code>0x21</code>.</p>
+<p>prioritization on 8259A: 0 is high, 7 is low</p>
+<h2 id="Steps">Steps</h2>
+<p>When a device <strong>raises an interrupt</strong>…</p>
+<ul>
+<li>check if priority is higher than those of in service interrupts</li>
+<li>if not, do nothing</li>
+<li>if so
+<ul>
+<li>report the highest priority raised to the processor</li>
+<li>mark that device as being in service</li>
+</ul>
+</li>
+</ul>
+<p>When processor reports <code>EOI</code> (end of interrupt) for<br>
+some interrupt…</p>
+<ul>
+<li>remove the interrupt from the in service mask</li>
+<li>check for raised interrupt lines that should be reported to processor</li>
+</ul>
+<p>How to report a interrupt?</p>
+<ul>
+<li>PIC raises <code>INTR</code></li>
+<li>processor strobes <code>INTA’</code> (active low) repeatedly
+<ul>
+<li>creates cycles for PIC to write <strong>vector</strong> to data bus</li>
+<li>(must follow spec timing! PIC is not infinitely fast.)</li>
+</ul>
+</li>
+<li>processor sends <code>EOI</code> with specific combinations of A &amp; D inputs (A is from address bus, D is from data bus)</li>
+</ul>
+<h2 id="Cascading">Cascading</h2>
+<p><img src="/img/post/ECE391-2.png" srcset="/img/loading.gif" lazyload alt="cascade" width="500"></p>
+<p>Up to 8x8=64 devices with cascading.</p>
+<p><img src="/img/post/ECE391-3.png" srcset="/img/loading.gif" lazyload alt="Cascade" width="500"></p>
+<h3 id="Architecture">Architecture</h3>
+<p>secondary 8259A: ports <code>0xA0</code> &amp; <code>0xA1</code></p>
+<p>secondary PIC &amp; primary PIC:</p>
+<ul>
+<li>share <code>D</code> and <code>INTA'</code></li>
+<li>secondary PIC connects to <code>IR2</code> on primary PIC.</li>
+<li><code>SP'</code>: low -&gt; secondary PIC; 1 -&gt; primary PIC.</li>
+<li><code>CAS</code> 3bit, indicate which secondary PIC (8 PIC’s max) to respond on data bus.</li>
+</ul>
+<!-- <details markdown="1">
+  <summary>Linux 8259A Initialization Code</summary> -->
+<p><img src="/img/post/ECE391-4.png" srcset="/img/loading.gif" lazyload alt="code">{:. w-50}</p>
+<ol>
+<li>What is the auto_eoi parameter? always = 0</li>
+<li>Four initialization control words to set up primary 8259A</li>
+<li>Four initialization control words to set up secondary 8259A</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>ICW</th>
+<th>port(A=?)</th>
+<th>info contained in Initialization Control Word</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICW1</td>
+<td>0</td>
+<td>start init, edge triggered inputs, cascade mode, 4 ICWs</td>
+</tr>
+<tr>
+<td>ICW2</td>
+<td>1</td>
+<td>high bits of vector #</td>
+</tr>
+<tr>
+<td>ICW3</td>
+<td>1</td>
+<td>primary PIC: bit vector of secondary PIC<br>secondary PIC: input pin on primary PIC</td>
+</tr>
+<tr>
+<td>ICW4</td>
+<td>1</td>
+<td>ISA=x86, normal/auto EOI</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Other details</p>
+<p><img src="/img/post/ECE391-5.png" srcset="/img/loading.gif" lazyload alt="" width="500"></p>
+</blockquote>
+<!-- </details> -->
+<h1>10 Linux abstraction of PIC</h1>
+<p>Linux use a <strong>jump table</strong> (NOT IDT) <code>hw_irq_controller</code> for each vector number.</p>
+<p>The table is used to interact with appropriate PIC.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><code>hw_irq_controller</code></th>
+<th style="text-align:left">function</th>
+<th style="text-align:left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">human readable name</td>
+<td style="text-align:left"><code>const char* name;</code></td>
+<td style="text-align:left">e.g. “XTPIC” PIC”; see <code>/proc/interrupts</code>{: .filepath}</td>
+</tr>
+<tr>
+<td style="text-align:left">startup function</td>
+<td style="text-align:left"><code>unsigned int (*startup)(unsigned int irq);</code></td>
+<td style="text-align:left">called when first handler is <code>installed</code> for an interrupt; change the corresponding <code>mask bit</code> in 8259A</td>
+</tr>
+<tr>
+<td style="text-align:left">shutdown function</td>
+<td style="text-align:left"><code>void (*shutdown)(unsigned int irq);</code></td>
+<td style="text-align:left">called after last handler is <code>removed</code> for an interrupt; change the corresponding <code>mask bit</code> in 8259A</td>
+</tr>
+<tr>
+<td style="text-align:left">enable function</td>
+<td style="text-align:left"><code>void (*enable)...</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">disable function</td>
+<td style="text-align:left"><code>void (*disable)...</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">mask function</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">mask_ack function</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">unmask function</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">(+ several others…)</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p>Also</p>
+<ul>
+<li><code>void (*ack) ...</code>, called at start of interrupt handling to ack receipt of the interrupt (sends EOI to PIC).</li>
+<li><code>void (*end)...</code>, called at end of interrupt handling (on 8259, enables interrupt (unmasks it) on PIC).</li>
+</ul>
+<p>*Initially, all 8259A interrupts are masked out using mask on 8259A (then use startup / shutdown function…).</p>
+<h1>General interrupt abstractions</h1>
+<h2 id="Interrupt-Chaining">Interrupt Chaining</h2>
+<h3 id="Motivation-2">Motivation</h3>
+<p>Problems:</p>
+<ul>
+<li>may have &gt; 15 devices.</li>
+<li>1 deivce may be reponded by &gt;1 hendler.</li>
+</ul>
+<h3 id="One-approach"><s>One approach</s></h3>
+<p>Form a linked list for handlers.</p>
+<p><img src="/img/post/ECE391-6.png" srcset="/img/loading.gif" lazyload alt="linking" width="500"></p>
+<p>bad:</p>
+<ul>
+<li>no way to remove self unless you’re first in list</li>
+</ul>
+<h3 id="Solution">Solution</h3>
+<p>interrupt chaining with linked list data structure.</p>
+<p><img src="/img/post/ECE391-7.png" srcset="/img/loading.gif" lazyload alt="chaining" width="500"></p>
+<h3 id="Drawbacks-of-chaining">Drawbacks of chaining</h3>
+<ul>
+<li>for &gt; 1 device: must query devices to see if they raised interrupt</li>
+<li>for 1 device: must avoid stealing data/confusing device</li>
+</ul>
+<h2 id="Soft-Interrupts">Soft Interrupts</h2>
+<p><strong>software</strong> generated (soft) interrupt. runs at priority <strong>between program and hard interrupts</strong>, <strong>has no access to INTR pin!</strong></p>
+<p>Usually generated by hard interrupt handlers to do work not involving device</p>
+<blockquote>
+<p>hardware interrupt (1st stage) need to be fast</p>
+<p>tasklet (2nd stage) can be triggered by hardware interrupt handlers and do tasks that not involving the device.</p>
+</blockquote>
+<p>Linux version is called <strong>tasklets</strong>.</p>
+<p>example: network encryption/decryption, decrypter want to interrupt program.</p>
+<p>See <a href="#13-soft-interrupts-in-linux">Soft Interrupts in Linux</a></p>
+<h2 id="irq-desc-irqaction-Structures"><code>irq_desc</code> / <code>irqaction</code> Structures</h2>
+<details markdown="1">
+   <summary>Code</summary>
+<p><strong><code>irq_desc</code></strong></p>
+<figure><div class="code-wrapper"><pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+ * struct irq_desc - interrupt descriptor
+ * @irq_data:  per irq and chip data passed down to chip functions
+ * @timer_rand_state: pointer to timer rand state struct
+ * @kstat_irqs:  irq stats per cpu
+ * @handle_irq:  highlevel irq-events handler [if NULL, __do_IRQ()]
+ * @action:  the irq action chain
+ * @status:  status information
+ * @core_internal_state__do_not_mess_with_it: core internal status information
+ * @depth:  disable-depth, for nested irq_disable() calls
+ * @wake_depth:  enable depth, for multiple set_irq_wake() callers
+ * @irq_count:  stats field to detect stalled irqs
+ * @last_unhandled: aging timer for unhandled count
+ * @irqs_unhandled: stats field for spurious unhandled interrupts
+ * @lock:  locking for SMP
+ * @affinity_notify: context for notification of affinity changes
+ * @pending_mask: pending rebalanced interrupts
+ * @threads_oneshot: bitfield to handle shared oneshot threads
+ * @threads_active: number of irqaction threads currently running
+ * @wait_for_threads: wait queue for sync_irq to wait for threaded handlers
+ * @dir:  &#x2F;proc&#x2F;irq&#x2F; procfs entry
+ * @name:  flow handler name for &#x2F;proc&#x2F;interrupts output
+ *&#x2F;
+struct irq_desc &#123;
+ struct irq_data  irq_data;
+ struct timer_rand_state *timer_rand_state;
+ unsigned int __percpu *kstat_irqs;
+ irq_flow_handler_t handle_irq;
+#ifdef CONFIG_IRQ_PREFLOW_FASTEOI
+ irq_preflow_handler_t preflow_handler;
+#endif
+ struct irqaction *action; &#x2F;* IRQ action list *&#x2F;
+ unsigned int  status_use_accessors;
+ unsigned int  core_internal_state__do_not_mess_with_it;
+ unsigned int  depth;  &#x2F;* nested irq disables *&#x2F;
+ unsigned int  wake_depth; &#x2F;* nested wake enables *&#x2F;
+ unsigned int  irq_count; &#x2F;* For detecting broken IRQs *&#x2F;
+ unsigned long  last_unhandled; &#x2F;* Aging timer for unhandled count *&#x2F;
+ unsigned int  irqs_unhandled;
+ raw_spinlock_t  lock;
+#ifdef CONFIG_SMP
+ const struct cpumask *affinity_hint;
+ struct irq_affinity_notify *affinity_notify;
+#ifdef CONFIG_GENERIC_PENDING_IRQ
+ cpumask_var_t  pending_mask;
+#endif
+#endif
+ unsigned long  threads_oneshot;
+ atomic_t  threads_active;
+ wait_queue_head_t       wait_for_threads;
+#ifdef CONFIG_PROC_FS
+ struct proc_dir_entry *dir;
+#endif
+ const char  *name;
+&#125; ____cacheline_internodealigned_in_smp;</code></pre></div></figure>
+<p><strong><code>irqaction</code></strong></p>
+<figure><div class="code-wrapper"><pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+ * struct irqaction - per interrupt action descriptor
+ * @handler: interrupt handler function
+ * @flags: flags (see IRQF_* above)
+ * @name: name of the device
+ * @dev_id: cookie to identify the device
+ * @next: pointer to the next irqaction for shared interrupts
+ * @irq: interrupt number
+ * @dir: pointer to the proc&#x2F;irq&#x2F;NN&#x2F;name entry
+ * @thread_fn: interrupt handler function for threaded interrupts
+ * @thread: thread pointer for threaded interrupts
+ * @thread_flags: flags related to @thread
+ * @thread_mask: bitmask for keeping track of @thread activity
+ *&#x2F;
+struct irqaction &#123;
+ irq_handler_t handler;
+ unsigned long flags;
+ void *dev_id;
+ struct irqaction *next;
+ int irq;
+ irq_handler_t thread_fn;
+ struct task_struct *thread;
+ unsigned long thread_flags;
+ unsigned long thread_mask;
+ const char *name;
+ struct proc_dir_entry *dir;
+&#125; ____cacheline_internodealigned_in_smp;</code></pre></div></figure>
+</details>
+<h2 id="request-irq-function"><code>request_irq</code> function</h2>
+<details markdown="1">
+<summary>Code</summary>
+<figure><div class="code-wrapper"><pre class="language-c" data-language="c"><code class="language-c">extern int __must_check
+request_irq(unsigned int irq, irq_handler_t handler, unsigned long flags,
+     const char *name, void *dev);</code></pre></div></figure>
+<p><img src="/img/post/ECE391-10.png" srcset="/img/loading.gif" lazyload alt="request_irq"></p>
+</details>
+<details markdown="1">
+<summary>Comments</summary>
+<ul>
+<li><code>irq</code> - irq # (0-15 for PIC)
+<ul>
+<li><code>handler</code> - pointer to interrupt handler with following arguments
+<ul>
+<li>irq #</li>
+<li>dev_id pointer (type void*)</li>
+<li>handlers should return 1 if handled, 0 if not</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>irqflags</code> - bit vector
+<ul>
+<li><code>IRQF_SHARED</code> - interrupt chaining is allowed</li>
+<li><code>IRQF_DISABLED</code> - execute handlers with IF=0</li>
+<li><code>IRQF_SAMPLE_RANDOM</code> - use device timing as source of random numbers</li>
+</ul>
+</li>
+<li><code>devname</code> - human-readable device name (visible in /proc/interrupts)</li>
+<li><code>dev_id</code> - pointer to device-specific data (returned to handler when called)</li>
+</ul>
+<hr>
+<ul>
+<li>Start by checking values<br>
+(two checks from the shown code)</li>
+<li>Dynamically allocate new action structure for linked list of actions</li>
+<li>Fill in the new action structure</li>
+<li>Try to add it
+<ul>
+<li>using <code>setup_irq</code></li>
+<li>if call fails, free the action structure</li>
+</ul>
+</li>
+</ul>
+</details>
+<details markdown="1">
+<summary>Comments GPT</summary>
+<p>In Linux, <code>request_irq</code> is a kernel function that is called when a driver <strong>wants to register an interrupt handler with the kernel.</strong> It is typically called during the initialization phase of a device driver, after the device has been set up and is ready to handle int errupts.</p>
+<p>Here is what <code>request_irq</code> does:</p>
+<ol>
+<li>
+<p><strong>Registration</strong>: It registers a new interrupt handler for the specified interrupt line with the kernel. The interrupt line is usually associated with a hardware device that generates interrupts.</p>
+</li>
+<li>
+<p><strong>Handler Function</strong>: The function expects the interrupt number, a pointer to the interrupt handler function that should be called when the interrupt occurs, interrupt flags that control the behavior of the interrupt, a name for the interrupt (for identification in <code>/proc/interrupts</code>), and a device ID that is passed to the interrupt handler (usually a pointer to the device-specific structure).</p>
+</li>
+<li>
+<p><strong>Flags</strong>: The flags can include various options such as:</p>
+<ul>
+<li><code>IRQF_SHARED</code>: Allows the interrupt line to be shared among multiple drivers.</li>
+<li><code>IRQF_DISABLED</code>: This flag is now deprecated but was used to keep the interrupt line disabled while the handler is running.</li>
+<li><code>IRQF_TRIGGER_*</code>: Specifies trigger conditions for the interrupt, such as rising edge or level high.</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Handling</strong>: If the request is successful, <code>request_irq</code> returns zero. If it fails, it will return a negative error code indicating the reason for failure.</p>
+</li>
+<li>
+<p><strong>Resource Management</strong>: By calling <code>request_irq</code>, the driver claims the interrupt line, and it’s the driver’s responsibility to release the interrupt line by calling <code>free_irq</code> when the device is removed or the driver is unloaded. This ensures that the interrupt line is properly freed for other devices to use.</p>
+</li>
+<li>
+<p><strong>Concurrency Control</strong>: Registering an interrupt handler also involves specifying how to handle concurrency (such as with spinlocks) if the interrupt handler can be re-entered or if it can run simultaneously on different processors in a multiprocessing environment.</p>
+</li>
+</ol>
+<p>In summary, <code>request_irq</code> is a critical function for interrupt handling in device drivers, allowing the setup of a handler that responds to hardware interrupts, which is essential for reactive and real-time device communication within the kernel.</p>
+</details>
+<h2 id="setup-irq-function"><code>setup_irq</code> function</h2>
+<details markdown="1">
+<summary>Code</summary>
+<p><img src="/img/post/ECE391-11.png" srcset="/img/loading.gif" lazyload alt="setup_irq"></p>
+<blockquote>
+<p>Note: <code>irq_chip_set_defaults(desc-&gt;chip);</code></p>
+</blockquote>
+</details>
+<details markdown="1">
+<summary>Comments</summary>
+<ul>
+<li>Start with a couple of sanity checks</li>
+<li>If random sampling flag is set
+<ul>
+<li>initialize as source of random numbers</li>
+<li>good random numbers are hard to find!</li>
+<li>devices such as disks can be used because of “random”<br>
+rotational latency to read data (for example)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>Critical section (most of function)
+<ul>
+<li>blocks other activity on descriptor</li>
+<li>uses irqsave/restore to allow handlers to be added from any context</li>
+</ul>
+</li>
+<li>Note that new action goes at the <strong>end</strong> of the linked list, not the start</li>
+<li>Interrupt chaining only allowed
+<ul>
+<li>if all handlers agree to it</li>
+<li>otherwise only first handler is successfully added</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>If this handler is the first
+<ul>
+<li>make sure that PIC jump table has proper default functions</li>
+<li>clear some status flags</li>
+<li>clear any previous software disablement (depth)</li>
+<li>call the PIC startup function</li>
+</ul>
+</li>
+<li>After critical section
+<ul>
+<li>create <code>/proc/irq/&lt;irq#&gt;</code> directory if necessary</li>
+<li>add handler subdirectory in <code>/proc/irq/&lt;irq#&gt;/&lt;action name&gt;</code></li>
+</ul>
+</li>
+</ul>
+</details>
+<h2 id="free-irq-function"><code>free_irq</code> function</h2>
+<details markdown="1">
+<summary>Code</summary>
+<p><img src="/img/post/ECE391-12.png" srcset="/img/loading.gif" lazyload alt="free_irq"></p>
+</details>
+<details markdown="1">
+<summary>Comments</summary>
+<ul>
+<li>
+<p>Arguments</p>
+<ul>
+<li>irq - irq # (0-15 for PIC)</li>
+<li>dev_id - MUST match pointer value used in request_irq call</li>
+</ul>
+</li>
+<li>
+<p>Start by checking arguments</p>
+</li>
+<li>
+<p>Critical section starts to prevent manipulations of descriptor</p>
+<ul>
+<li>blocks interrupt from starting to execute</li>
+<li>(interrupt may already be executing on another processor)</li>
+</ul>
+</li>
+<li>
+<p>Search for action in list</p>
+<ul>
+<li>based on dev_id pointer</li>
+<li>hence need for matching pointer</li>
+<li>passing NULL dev_id not allowed with chained interrupts</li>
+</ul>
+</li>
+<li>
+<p>Once found (notice that most of the loop executes exactly once)</p>
+<ul>
+<li>remove the action</li>
+<li>if this action/handler was the last for this interrupt,
+<ul>
+<li>turn on software disablement</li>
+<li>(doing so signals interrupts waiting for descriptor lock to abort once they obtain the lock)</li>
+<li>call the PIC shutdown function</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Remove the <code>/proc/irq/&lt;irq #&gt;/&lt;action name&gt;</code> entry</p>
+</li>
+<li>
+<p>On an SMP</p>
+<ul>
+<li>interrupt may be executing on another processor</li>
+<li>need to wait for it to finish after releasing descriptor lock</li>
+</ul>
+</li>
+<li>
+<p>Finally, free the action structure</p>
+</li>
+</ul>
+</details>
+<h2 id="Interrupt-Invocation">Interrupt Invocation</h2>
+<p><img src="/img/post/ECE391-13.png" srcset="/img/loading.gif" lazyload alt="interrupt Invocation" width="750"></p>
+<pre><code class="mermaid">flowchart LR
+    IDT --&gt;|&quot;interrupt[4]-&gt;offset_lowerbits&quot;| ISR[&quot;ISR:\nPUSHL\nJUMP&quot;]
+    ISR --&gt; ...</code></pre>
+<p>see <a href="#irq_desc-array">irq_desc Array</a></p>
+<p><strong>ISR : Interrupt Service Routine</strong></p>
+<blockquote>
+<dl>
+<dt>Why funnel all IRQs into one piece of code(instead of producing one function per IRQ) ?</dt>
+<dd>Kernel code/size versus speed tradeoff<br>
+{: .prompt-tip }</dd>
+</dl>
+</blockquote>
+<h3 id="Stack-View">Stack View</h3>
+<p><img src="/img/post/ECE391-15.png" srcset="/img/loading.gif" lazyload alt="" width="750"></p>
+<blockquote>
+<p>NOTE: registers pushed before the IRQ# are done by processor in <code>INT</code>, and is used together with <code>IRET</code>.</p>
+</blockquote>
+<h2 id="IDT">IDT</h2>
+<p><img src="/img/post/ECE391-14.png" srcset="/img/loading.gif" lazyload alt="IDT" width="750"></p>
+<figure><div class="code-wrapper"><pre class="language-c" data-language="c"><code class="language-c">struct idt_entry &#123;
+    unsigned short int offset_lowerbits; &#x2F;&#x2F; ISR的低16位偏移量
+    unsigned short int selector;        &#x2F;&#x2F; GDT段选择子
+    unsigned char zero;                 &#x2F;&#x2F; 置零字段
+    unsigned char type_attr;            &#x2F;&#x2F; 类型和属性
+    unsigned short int offset_higherbits; &#x2F;&#x2F; ISR的高16位偏移量
+&#125; __attribute__((packed));</code></pre></div></figure>
+<ul>
+<li>Associates the interrupt line with the int. handler routine.</li>
+<li>256 entries (descriptors) (each 8 bytes)
+<ul>
+<li>hardware <strong>interrupt</strong>: <strong>vectors 0x20 to 0x2F</strong></li>
+</ul>
+</li>
+<li>interrupt gates &lt;-&gt; descriptor</li>
+<li><strong>IF=0</strong> when interrupt gate is invoked</li>
+<li>use <code>lidt</code> instruction to load</li>
+<li>init IDT in <code>setup_idt()</code></li>
+</ul>
+<h1>12 Linux interrupt system</h1>
+<h2 id="irq-desc-Array"><code>irq_desc</code> Array</h2>
+<p><img src="/img/post/ECE391-16.png" srcset="/img/loading.gif" lazyload alt="irq" width="500"></p>
+<ul>
+<li><strong>Every interrupt vector</strong> has its own <code>irq_desc_t</code> <strong>descriptor</strong></li>
+<li>Descriptors are grouped together in <code>irq_desc</code> <strong>array</strong>, a data structure supported by Linux</li>
+<li>When a device driver calls the <code>request_irq()</code> <a href="#request_irq-function">function</a> a new structure to represent the handler is allocated and initialized</li>
+</ul>
+<details markdown="1">
+<summary>FYI</summary>
+<p><strong>IRQ descriptor array</strong> (irq_desc): 这是一个数组，每个条目对应一个中断号（IRQ）。它是内核用来快速索引每个中断服务例程的中心数据结构。</p>
+<p><strong>PIC jump table</strong>: 这通常指的是可编程中断控制器（Programmable Interrupt Controller）的跳转表，它决定了硬件中断信号如何映射到CPU中断线。</p>
+<p><strong>struct irqaction</strong>: 这是一个结构体，描述了中断的处理程序（handler），以及处理程序的属性（如flags），相关的IRQ号，设备名，设备ID，以及其他可能的irqaction结构体形成的链表（next指针）。</p>
+<p><strong>handler</strong>: 这个部分指向处理该中断的具体函数。</p>
+<p><strong>code</strong>: 这表示实际执行的中断处理代码。</p>
+<p><strong>linked list</strong>: 如果有多个处理程序与同一个IRQ号关联，它们会通过一个链表连接起来。</p>
+<p><strong>status, chip, action list, disable depth, lock, flow handler</strong>: 这些字段是irq_desc结构体的一部分，包含了中断的状态、关联的硬件芯片信息、行为列表、禁用深度（中断可以被禁用多次，每次调用disable都会增加这个计数）、锁定机制和流控制处理函数。</p>
+<p><img src="/img/post/ECE391-9.png" srcset="/img/loading.gif" lazyload alt="Linux IRQ structure" width="500"></p>
+</details>
+<p><img src="/img/post/ECE391-17.png" srcset="/img/loading.gif" lazyload alt="interrupt" width="250"></p>
+<p>Kernel maintains one <strong>global array of function pointers</strong> (<code>interrupt[NR_IRQS]</code>) in which it stores pointers to <strong>interrupt stubs</strong> (<code>NR_IRQS</code> is <code>16</code> if we use the <strong>PIC</strong>).</p>
+<p>See <a href="#interrupt-invocation">Interrupt Invocation</a></p>
+<h2 id="Initialization-of-Interrupt-Gates">Initialization of Interrupt Gates</h2>
+<p>During initialization <code>init_IRQ ()</code> sets the status field of each<br>
+IRQ descriptor to <code>IRQ_DISABLED</code>.</p>
+<p>Then <code>init_IRQ ()</code> do:</p>
+<figure><div class="code-wrapper"><pre class="language-c" data-language="c"><code class="language-c">for (i &#x3D; 0; i &lt; NR_IRQS; i++)
+  if (i+32 !&#x3D; 128)
+    set_intr_gate(i+32, interrupt[i]);</code></pre></div></figure>
+<h1>13 Soft Interrupts in Linux</h1>
+<ul>
+<li>When are soft interrupts executed?
+<ul>
+<li><strong>after</strong> a <strong>hard interrupt</strong> completes</li>
+<li>periodically by a <strong>daemon</strong> in the kernel</li>
+</ul>
+</li>
+<li>How?
+<ul>
+<li>seven or eight <strong>prioritized types</strong>, including high and low tasklet<br>
+priorities</li>
+<li><strong>linked list</strong> for each tasklet priority</li>
+<li>run on processor on which interrupt is scheduled</li>
+<li>each handler <strong>atomic</strong> with respect to itself (only)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Declaring-a-handler">Declaring a handler</h2>
+<figure><div class="code-wrapper"><pre class="language-c" data-language="c"><code class="language-c">DECLARE_TASKLET (name, func , data);</code></pre></div></figure>
+<ul>
+<li><code>name</code>: name of <code>tasklet_struct</code> to be declared</li>
+<li><code>data</code>: an <code>unsigned long</code></li>
+<li><code>func</code>: <code>void (*func) (unsigned long);</code></li>
+</ul>
+<p>the <code>tasklet_struct</code> structure:</p>
+<figure><div class="code-wrapper"><pre class="language-c" data-language="c"><code class="language-c">struct tasklet_struct &#123;
+    struct tasklet_struct *next;  &#x2F;&#x2F; next tasklet
+    unsigned long state;          &#x2F;&#x2F; status of tasklet: TASKLET_STATE_SCHED, TASKLET_STATE_RUN
+    atomic_t count;               &#x2F;&#x2F; # of disables
+    void (*func)(unsigned long);  &#x2F;&#x2F; pointer to the tasklet function
+    unsigned long data;           &#x2F;&#x2F; integer which can be used by the tasklet function
+&#125;;</code></pre></div></figure>
+<p>The following two calls schedule a tasklet for execution:</p>
+<figure><div class="code-wrapper"><pre class="language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; schedules tasklet at low priority on the executing processor
+void tasklet_schedule (struct tasklet_struct* t);
+&#x2F;&#x2F; schedules at high priority
+void tasklet_hi_schedule (struct tasklet_struct* t);</code></pre></div></figure>
+<h2 id="Tasklet-Execution">Tasklet Execution</h2>
+<p>The <code>do_softirq call</code> call</p>
+<ul>
+<li>checks per-processor bit vector of pending priorities (high, low, etc.)</li>
+<li>executes action for each priority (<code>softirq_vec</code>)</li>
+<li><code>tasklet_action</code> walks through linked list<br>
+<br><code>tasklet_hi_action</code> walks through high-priority list</li>
+<li>repeats up to 10 times or until no softirqs are raised</li>
+</ul>
+<h3 id="Atomicity">Atomicity</h3>
+<p>Two bits in state changed atomically</p>
+<ul>
+<li><code>TASKLET_STATE_SCHED</code> tasklet <strong>scheduled</strong> for execution</li>
+<li><code>TASKLET_STATE_RUN</code> tasklet <strong>executing</strong> on some processor</li>
+</ul>
+<p>When scheduling</p>
+<ul>
+<li>set <code>TASKLET_STATE_SCHED</code> atomically<br>
+<br>if already set, schedule call <strong>does nothing</strong></li>
+</ul>
+<details markdown="1">
+<summary>Execution Graph</summary>
+<p><img src="/img/post/ECE391-18.png" srcset="/img/loading.gif" lazyload alt="" width="750"></p>
+</details>
+<h1>14 Virtual Memory</h1>
+<p>What is virtual memory?</p>
+<ul>
+<li><strong>indirection</strong> between memory addresses seen by software and those<br>
+used by hardware</li>
+<li>typically done with <strong>large blocks</strong>, e.g., <strong>4kB</strong> or <strong>4MB</strong> in x86</li>
+</ul>
+<p><img src="/img/post/ECE391-19.png" srcset="/img/loading.gif" lazyload alt="Virtual Memory Graph" width="500"></p>
+<p>Why use virtual memory? <em>(in decreasing order of importance)</em></p>
+<ul>
+<li>
+<p><strong>protection</strong></p>
+<ul>
+<li>one program <strong>cannot</strong> accidentally or deliberately <strong>destroy</strong> another’s data</li>
+<li>the memory is simply <strong>not accessible</strong></li>
+</ul>
+</li>
+<li>
+<p>more effective <strong>sharing</strong></p>
+<ul>
+<li>two (or more) programs that share library code can <strong>share a single copy<br>
+of the code</strong> in physical memory</li>
+<li>code and data not actively used by a program
+<ul>
+<li>can be <strong>pushed out to disk</strong> to make room for other programs’ active data</li>
+<li>provides the illusion of a much larger physical memory</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>no fragmentation</p>
+</li>
+<li>
+<p>simplifies program loading and execution: no relocation of code</p>
+</li>
+</ul>
+<h2 id="x86-Protection-Model">x86 Protection Model</h2>
+<table>
+<thead>
+<tr>
+<th>level</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPL</td>
+<td><strong>current privilege level</strong> (of executing code)</td>
+</tr>
+<tr>
+<td>RPL</td>
+<td><strong>requestor’s</strong> privilege level;<br>when code at high privilege level executes on behalf of code at lower level, some accesses may voluntarily lower privilege to that of caller/beneficiary</td>
+</tr>
+<tr>
+<td>DPL</td>
+<td><strong>descriptor privilege level</strong>; level <strong>necessary</strong> to execute code/data</td>
+</tr>
+</tbody>
+</table>
+<p>if <code>MAX(CPL,RPL) &gt; DPL</code> (privilege too low), processor generates an <strong>exception</strong> (<code>general protection fault</code>)</p>
+<h2 id="Segmentation">Segmentation</h2>
+<pre><code class="mermaid">flowchart LR
+    A[logical address]
+    B[linear address]
+    C[physical address]
+    A --&gt;|segmentation unit| B
+    B --&gt;|paging unit| C</code></pre>
+<p>Two levels of indirection. Segmentation is <strong>unused</strong>.</p>
+<p>x86 in <strong>protected mode</strong> always uses segmentation.</p>
+<h2 id="Segment-Selectors">Segment Selectors</h2>
+<p>A <strong>logical address</strong> consists of two parts:</p>
+<ul>
+<li>(<strong>16-bits</strong>) A <strong>segment selector</strong><br><img src="/img/post/ECE391-httpatomoreillycomsourceoreillyimages9181.png" srcset="/img/loading.gif" lazyload alt="segment selector" width="250"><br> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>13</mn></msup><mo>=</mo><mn>8192</mn></mrow><annotation encoding="application/x-tex">2^{13}=8192</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">13</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">8192</span></span></span></span> entries max.</li>
+<li>(<strong>32-bits</strong>) An <strong>offset</strong> that specifies the relative address <strong>within the segment</strong>.</li>
+</ul>
+<!-- segmentation register (16-bits length):
+
+![segmentation register](/img/post/ECE391-21.png =500x) -->
+<h3 id="Segmentation-Registers-store-Segment-Selectors">Segmentation Registers store Segment Selectors</h3>
+<table>
+<thead>
+<tr>
+<th>register</th>
+<th>segment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CS</td>
+<td><strong>code</strong> segment register (includes a 2-bit field that specifies the Current Privilege Level (<strong>CPL</strong>) of the CPU)</td>
+</tr>
+<tr>
+<td>DS</td>
+<td><strong>data</strong> segment register</td>
+</tr>
+<tr>
+<td>SS</td>
+<td><strong>stack</strong> segment register</td>
+</tr>
+<tr>
+<td>ES</td>
+<td>extra data segment register</td>
+</tr>
+<tr>
+<td>FS</td>
+<td>extra data segment register</td>
+</tr>
+<tr>
+<td>GS</td>
+<td>extra data segment register</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Each segment register has <strong>16 bits visible</strong> + <strong>~64 bits shadow</strong> (not accessible via ISA) that cache the <strong>description of the segment #</strong> referenced by the visible 16 bits.<br>
+{: .prompt-tip }</p>
+</blockquote>
+<h2 id="Segment-Descriptors">Segment Descriptors</h2>
+<p>Each segment is represented by an 8-byte Segment Descriptor that describes the segment characteristics.</p>
+<ul>
+<li>Code Segment Descriptor</li>
+<li>Data Segment Descriptor</li>
+<li>Task State Segment Descriptor (TSSD)</li>
+</ul>
+<details markdown="1">
+<summary>Different Types</summary>
+<p><img src="/img/post/ECE391-httpatomoreillycomsourceoreillyimages9183.png" srcset="/img/loading.gif" lazyload alt="segment descriptors" width="750"></p>
+</details>
+<h3 id="Global-descriptor-table-GDT">Global descriptor table (GDT)</h3>
+<p><img src="/img/post/ECE391-20.png" srcset="/img/loading.gif" lazyload alt="GPT" width="500"></p>
+<details markdown="1">
+<summary>Segment Descriptor fields</summary>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>Contains the linear address of the first byte of the segment.</td>
+</tr>
+<tr>
+<td>G</td>
+<td>Granularity flag: if it is cleared (equal to 0), the segment size is expressed in bytes; otherwise, it is expressed in multiples of 4096 bytes.</td>
+</tr>
+<tr>
+<td>Limit</td>
+<td>Holds the offset of the last memory cell in the segment, thus binding the segment length. When G is set to 0, the size of a segment may vary between 1 byte and 1 MB; otherwise, it may vary between 4 KB and 4 GB.</td>
+</tr>
+<tr>
+<td>S</td>
+<td>System flag: if it is cleared, the segment is a system segment that stores critical data structures such as the Local Descriptor Table; otherwise, it is a normal code or data segment.</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Characterizes the segment type and its access rights (see the text that follows this table).</td>
+</tr>
+<tr>
+<td>DPL</td>
+<td>Descriptor Privilege Level: used to restrict accesses to the segment. It represents the minimal CPU privilege level requested for accessing the segment. Therefore, a segment with its DPL set to 0 is accessible only when the CPL is 0 — that is, in Kernel Mode — while a segment with its DPL set to 3 is accessible with every CPL value.</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Segment-Present flag : is equal to 0 if the segment is not stored currently in main memory. Linux always sets this flag (bit 47) to 1, because it never swaps out whole segments to disk.</td>
+</tr>
+<tr>
+<td>D or B</td>
+<td>Called D or B depending on whether the segment contains code or data. Its meaning is slightly different in the two cases, but it is basically set (equal to 1) if the addresses used as segment offsets are 32 bits long, and it is cleared if they are 16 bits long (see the Intel manual for further details).</td>
+</tr>
+<tr>
+<td>AVL</td>
+<td>May be used by the operating system, but it is ignored by Linux.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h4 id="gdtr-register-48-bits-in-total"><code>gdtr</code> register: 48 bits in total</h4>
+<ul>
+<li>32-bits: base address of GDT</li>
+<li>16 bits: limit (in Byte) (max = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>16</mn></msup></mrow><annotation encoding="application/x-tex">2^{16}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">16</span></span></span></span></span></span></span></span></span></span></span></span> Bytes)</li>
+</ul>
+<h3 id="Local-Descriptor-Table-LDT">Local Descriptor Table (LDT)</h3>
+<p>LDT originally meant to be per task segment tables</p>
+<p><code>LDTR</code> points to current LDT</p>
+<h2 id="Segmentation-Unit">Segmentation Unit</h2>
+<p><img src="/img/post/ECE391-22.png" srcset="/img/loading.gif" lazyload alt="Segmentation Unit" width="500"></p>
+<h2 id="Segmentation-in-Linux">Segmentation in Linux</h2>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Base</th>
+<th>G</th>
+<th>Limit</th>
+<th>S</th>
+<th>Type</th>
+<th>DPL</th>
+<th>D/B</th>
+<th>P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user code</td>
+<td><code>0x00000000</code></td>
+<td>1</td>
+<td><code>0xfffff</code></td>
+<td>1</td>
+<td>10</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>user data</td>
+<td><code>0x00000000</code></td>
+<td>1</td>
+<td><code>0xfffff</code></td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>kernel code</td>
+<td><code>0x00000000</code></td>
+<td>1</td>
+<td><code>0xfffff</code></td>
+<td>1</td>
+<td>10</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>kernel data</td>
+<td><code>0x00000000</code></td>
+<td>1</td>
+<td><code>0xfffff</code></td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="The-Linux-GDT">The Linux GDT</h3>
+<p><img src="/img/post/ECE391-httpatomoreillycomsourceoreillyimages9189.png" srcset="/img/loading.gif" lazyload alt="linux gdt" width="750"></p>
+<p><img src="/img/post/ECE391-23.png" srcset="/img/loading.gif" lazyload alt="" width="750"></p>
+<h3 id="The-Linux-LDT">The Linux LDT</h3>
+<p>Mostly do not use.</p>
+<h3 id="Privilege-Check-for-Data-Access">Privilege Check for Data Access</h3>
+<p><img src="/img/post/ECE391-24.png" srcset="/img/loading.gif" lazyload alt="Privilege Check" width="500"></p>
+<p>Code can read data iff <strong>max(CPL, RPL) &lt; DPL</strong>.</p>
+<h2 id="Paging">Paging</h2>
+<p><img src="/img/post/ECE391-httpatomoreillycomsourceoreillyimages9191.png" srcset="/img/loading.gif" lazyload alt="paging" width="500"></p>
+<blockquote>
+<p>The page table is just another 4kB page, it holds 4096 / 4 = 1024 PTEs<br>
+{: .prompt-tip }</p>
+</blockquote>
+<hr>
+<hr>
+<hr>
+<h1>24 signals</h1>
+<p>Signals are the user level analogue of interrupts</p>
+<p>Similarities</p>
+<ul>
+<li><strong>asynchronous</strong> w.r.t . program execution</li>
+<li><strong>not queued</strong> like a physical line; sending twice may cause<br>
+handler to execute once or twice</li>
+<li>can be <strong>ignored</strong>, blocked, or caught</li>
+<li>but has some <strong>NMIs</strong> (<code>SIGKILL</code>, <code>SIGSTOP</code>)</li>
+<li><strong>handler</strong> can be changed from default</li>
+<li>only data given to handler is <strong>signal #</strong> (traditional model)</li>
+<li>signal is <strong>(by default) blocked</strong> while handler executes.</li>
+</ul>
+<p>Differences</p>
+<ul>
+<li>generated by software (kernel or a program via a <strong>system call</strong>)</li>
+<li>no “device” associated with signal; only software with permission<br>
+can send a signal (single permission allows <strong>any</strong> signal to be sent)</li>
+<li>further differences with POSIX (Portable Operating System Interface)<br>
+model (as opposed to traditional model)
+<ul>
+<li>new real time signals are queued</li>
+<li>can be sent to threads or processes (to any thread in a process)</li>
+<li><code>siginfo</code> structure contains additional information about the signal<br>
+(e.g., address of exception)</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Signal Name</th>
+<th>Default Action</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIGINT</td>
+<td>Terminate</td>
+<td>Interrupt from keyboard, Control-C</td>
+</tr>
+<tr>
+<td>SIGABRT</td>
+<td>Dump</td>
+<td>Abnormal termination</td>
+</tr>
+<tr>
+<td>SIGKILL</td>
+<td>Terminate</td>
+<td>Forced-process termination</td>
+</tr>
+<tr>
+<td>SIGSEGV</td>
+<td>Dump</td>
+<td>Invalid memory reference</td>
+</tr>
+<tr>
+<td>SIGPIPE</td>
+<td>Terminate</td>
+<td>Write to pipe with no readers</td>
+</tr>
+<tr>
+<td>SIGALRM</td>
+<td>Terminate</td>
+<td>Real-timer clock</td>
+</tr>
+<tr>
+<td>SIGTERM</td>
+<td>Terminate</td>
+<td>Process termination</td>
+</tr>
+<tr>
+<td>SIGSTOP</td>
+<td>Stop</td>
+<td>Stop process execution, Ctrl-Z</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Signal-Behavior">Signal Behavior</h2>
+<ul>
+<li>Set to default by kernel</li>
+<li>Controlled by user program</li>
+<li>Stored in kernel (data struct <code>sigaction</code>)</li>
+<li>Used by kernel</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="language-c" data-language="c"><code class="language-c">struct sigaction &#123;
+  void (*sa_handler)(int); &#x2F;&#x2F; traditional
+  void (*sa_sigaction)(int, siginfo_t*, void*); &#x2F;&#x2F; POSIX
+  sigset_t sa_mask; &#x2F;&#x2F; signals to mask while executing
+  int sa_flags;
+&#125;;</code></pre></div></figure>
+<h3 id="Signal-Behavior-Control-API">Signal Behavior Control API</h3>
+<p><code>int sigaction (int signum, struct sigaction* newact, struct sigaction* oldact);</code> read/replace signal behavior</p>
+<p><code>int sigprocmask (int how, sigset_t* set, sigset_t* oldset);</code> set bit vector of blocked signals</p>
+<h3 id="Kernel-side-Data-Structures-for-Signals">Kernel side Data Structures for Signals</h3>
+<p><code>k_sigaction</code> a wrapper for <code>sigaction</code>.</p>
+<p><img src="/img/post/ECE391-25.png" srcset="/img/loading.gif" lazyload alt="" width="750"></p>
+<!-- <img src="../img/post/ECE391-25.png" srcset="/img/loading.gif" lazyload width="60%"><br> -->
+<h3 id="Signal-Generation">Signal Generation</h3>
+<ul>
+<li>
+<p>in user,<br>
+<code>int kill (pid_t pid, int signal);</code><br>
+, 0 on success.</p>
+</li>
+<li>
+<p>in kernel,<br>
+<code>int send_sig_info (int sig, struct siginfo* info, task_t* t);</code><br>
+, 0 on success. <code>info</code> can be</p>
+<ul>
+<li>an actual pointer</li>
+<li><code>(void*)0</code> for traditional signals sent from users</li>
+<li><code>(void*)1</code> for traditional signals sent from within the kernel</li>
+<li><code>(void*)2</code> for forced signals (ignore masking)</li>
+</ul>
+</li>
+<li>
+<p>wrapper function for traditional signals<br>
+<code>int send_sig (int sig, task_t* t, int priv);</code></p>
+</li>
+<li>
+<p>force signal (forcibly reset an ignored signal to default behavior, then call <code>then call send_sig_info</code>, e.g. exception must override the block to avoid deadlock [instruction stuck]):<br>
+<code>int force_sig_info (int sig, struct siginfo* info, task_t* t);</code><br>
+wrapper of it:<br>
+<code>void force_sig (int sig, task_t* t);</code></p>
+</li>
+</ul>
+<p>Permission:</p>
+<ul>
+<li>kernel / Privileged / process with same user id can always send</li>
+<li>process with same login session can send <code>SIGCONT</code>.</li>
+</ul>
+<p>generated genreated (not ignored), added to pending signals.</p>
+<h3 id="Signal-Delivery">Signal Delivery</h3>
+<p>check <code>sigpending</code> (in task structure) when returning from</p>
+<ul>
+<li>any interrupt</li>
+<li>any exception</li>
+<li>any system call</li>
+</ul>
+<p>current <code>sigaction</code> for the signal shows:</p>
+<ul>
+<li>default: signal handled by kernel directly</li>
+<li>or executed program-defined handlers:
+<ul>
+<li>adding a new stack frame to the user stack</li>
+<li>transferring machine state context to the user stack</li>
+<li>returning to the user mode</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/post/ECE391-26.png" srcset="/img/loading.gif" lazyload alt="" width="250"></p>
+<!-- <img src="../img/post/ECE391-26.png" srcset="/img/loading.gif" lazyload width="15%"><br> -->
+<p><img src="/img/post/ECE391-27.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-27.png" srcset="/img/loading.gif" lazyload width="65%"><br> -->
+<h1>25 Linux abstraction on device drivers</h1>
+<h2 id="Device-Drivers">Device Drivers</h2>
+<p>Kernel interacts with I/O devices.</p>
+<p>Advantages: device code encapsulated in a module; hide the details on device dynamic load/unload of device drivers;</p>
+<ul>
+<li>graphics do not use drivers (r/w to device for performance)</li>
+<li>others (network / disk …) use file descriptor abstraction.</li>
+</ul>
+<h2 id="Kernel-Abstraction-Device-Files">Kernel Abstraction: Device Files</h2>
+<p>I/O devices are treated as device files. (Inode includes an identifier of the hardware device)</p>
+<p>Devices identified by major and minor numbers: #type(hda, tty…) + #instant number</p>
+<p>2 types of device:</p>
+<h3 id="block-device">block device</h3>
+<p>disks, CD ROM, DVD, …</p>
+<ul>
+<li>data in blocks of fixed size (can be addressed randomly)</li>
+<li>transfers are usually buffered (to) and cached (from) for performance</li>
+</ul>
+<h3 id="character-device">character device</h3>
+<p>keyboard, terminal, printers, …</p>
+<ul>
+<li>contiguous space (or spaces) of bytes</li>
+<li>some allow random access or only sequentially</li>
+</ul>
+<p><img src="/img/post/ECE391-28.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-28.png" srcset="/img/loading.gif" lazyload width="20%"><br> -->
+<p>A device driver statically compiled in the kernel (registered when kernel init) / as a module (registered when loaded)</p>
+<p>register a device</p>
+<p><code>int register_chrdev (unsigned int major, const char* name, struct file_operations* fops);</code></p>
+<p><code>major</code>: to request a specific major #, Or 0 if a dynamically assigned major #.</p>
+<p><code>int unregister_chrdev (unsigned int major, const char* name);</code></p>
+<p>in <code>open</code> function,</p>
+<ul>
+<li><code>inode-&gt;i_rdev</code> stores major and minor #.</li>
+<li><code>inode-&gt;i_fop</code> field points to <code>def_blk_fops</code> or <code>def_chr_fops</code>.</li>
+</ul>
+<p>Operations concerns <strong>file operations</strong>, <strong>file structure</strong>, and <strong>inode</strong>.</p>
+<h1>26 Example: I-mail: instant messaging within the Linux kernel</h1>
+<ul>
+<li>read: <code>Imail_read</code></li>
+<li>write: <code>Imail_write</code></li>
+<li>poll: <code>Imail_poll</code></li>
+<li>ioctl: <code>Imail_ioctl</code></li>
+<li>release: <code>Imail_release</code></li>
+<li>fsync: <code>Imail_fsync</code></li>
+</ul>
+<p>and kernel module defines <code>module_init(Imail_init)</code>, <code>module_exit(Imail_exit)</code></p>
+<p>Design I-mail:  f_op’s / date structure / locks</p>
+<table>
+<thead>
+<tr>
+<th>operations</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>read message (<strong>read</strong>)</td>
+<td>get data from first message in user’s list; block until message arrives if necessary</td>
+</tr>
+<tr>
+<td>write message (<strong>write</strong>)</td>
+<td>write data into message being written</td>
+</tr>
+<tr>
+<td>wait for message (<strong>poll</strong>)</td>
+<td>check status of message list (empty/not empty); block until message arrives if necessary</td>
+</tr>
+<tr>
+<td>end session (<strong>release</strong>)</td>
+<td>send the message being written; remove file association from user data</td>
+</tr>
+<tr>
+<td>send message (<strong>fsync</strong>)</td>
+<td>send the message being written</td>
+</tr>
+</tbody>
+</table>
+<p>authenticate (associate file with user data) / set password (change authentication data) / start write message / delete message / add new user / delete user …</p>
+<h2 id="data-structure">data structure</h2>
+<p>head of the user list: <strong>user admin</strong>.</p>
+<p><img src="/img/post/ECE391-29.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-29.png" srcset="/img/loading.gif" lazyload width="50%"><br> -->
+<p>for user list, use a reader/writer semaphore.</p>
+<p><img src="/img/post/ECE391-30.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-30.png" srcset="/img/loading.gif" lazyload width="50%"><br> -->
+<p><img src="/img/post/ECE391-31.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-31.png" srcset="/img/loading.gif" lazyload width="42%"><br> -->
+<p>lock order</p>
+<ol>
+<li>user list r/w semaphore</li>
+<li>user data semaphore</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>operations</th>
+<th>lock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>read</strong></td>
+<td>user data sem</td>
+</tr>
+<tr>
+<td><strong>write</strong></td>
+<td>user data sem</td>
+</tr>
+<tr>
+<td><strong>poll</strong></td>
+<td>user data sem</td>
+</tr>
+<tr>
+<td><strong>release</strong></td>
+<td>user data sem (Delivery: read user list r/w sem. &amp; recipient’s user data sem.)</td>
+</tr>
+<tr>
+<td><strong>fsync</strong></td>
+<td>user data sem</td>
+</tr>
+<tr>
+<td><strong>authenticate</strong></td>
+<td>read user list, user data sem</td>
+</tr>
+<tr>
+<td><strong>set password</strong></td>
+<td>write user list, no user data sem</td>
+</tr>
+<tr>
+<td><strong>write(send) message</strong></td>
+<td>sender’s user data sem.</td>
+</tr>
+<tr>
+<td><strong>delete message</strong></td>
+<td>user data sem.</td>
+</tr>
+<tr>
+<td><strong>add new user</strong></td>
+<td>no user data sem.</td>
+</tr>
+<tr>
+<td><strong>delete user</strong></td>
+<td>write user list, user data sem, synchronize with all ops</td>
+</tr>
+</tbody>
+</table>
+<h1>27 I-mail Design</h1>
+<p>is task cannot progress, put itself to <strong>sleep</strong> (task puts itself into queue and tells scheduler to run<br>
+something else). Race conditions: task checking sleep condition and putting itself to sleep.</p>
+<p>wait queues: <code>wait_queue_head_t</code>: doubly linked list. Use marco to wake up: <code>int wait_event_interruptible (wait_queue_head_t* wq, &lt;C expression&gt; condition);</code> return 0 on true condition, others when recieved a signal.</p>
+<p>Process:</p>
+<ol>
+<li>add to wait queue &amp; make task Interruptable (can get signal)</li>
+<li>check condition? ture -&gt; return</li>
+<li>no signal pending -&gt; call <code>schedule (); // sleep</code></li>
+</ol>
+<p>wake up: <code>void wake_up (wait_queue_head_t* wq);</code> / <code>void wake_up_all (wait_queue_head_t* wq);</code> / <code>void wake_up_interruptible(wait_queue_head_t* wq);</code> / <code>void wake_up_interruptible_all(wait_queue_head_t* wq);</code></p>
+<p>Imail block at: read/write/poll</p>
+<p>Imail reader/poller wake at: new message delivered / user is deleted.</p>
+<p>Imail Sleep</p>
+<ul>
+<li>release all locks</li>
+<li>check conditions without locks (<strong>!</strong> condition <strong>must</strong> be <strong>atomically safe</strong>)</li>
+<li>go to sleep</li>
+<li>when awoken: reacquire locks / recheck <strong>all</strong> validity requirements for waking.</li>
+</ul>
+<p>Imail_read()：</p>
+<ol>
+<li>check permission; begin loop</li>
+<li>acquire lock <code>down()</code></li>
+<li>message found -&gt; <strong>break</strong> (with lock)</li>
+<li>release lock <code>up()</code></li>
+<li>check I/O flag of this file, error -&gt; <strong>break</strong></li>
+<li><code>wait_event_interruptible</code> (conditions to wakeup) get&lt;0 means <strong>a signal</strong>, <strong>break</strong>; otherwise means <strong>condition is true</strong>, <strong>continue</strong> the loop (to check message).</li>
+<li>loop is ended here. do write and release semaphore (<code>up()</code>).</li>
+</ol>
+<p><strong>QA</strong>: Why not finish state check before acquiring lock：prevent race in which user deletion occurs<br>
+between check and use.</p>
+<p>Why check in the loop：locks must be released to sleep, thus user may be deleted<br>
+between loop iterations (as desired admin should not have to<br>
+wait for user program to run!)</p>
+<p>Why dereference OK? User data cant be freed during it.</p>
+<h2 id="Dynamic-Allocation">Dynamic Allocation</h2>
+<p>no spin lock, use so <code>GFP_KERNEL</code>.</p>
+<p>Message allocated by <strong>write</strong>; allocated by <strong>add user</strong></p>
+<p>When freeing, user data can be in use. Solution: remove but not free, free them on <strong>release</strong> call, set <code>active_file</code> to <code>NULL</code> if user is authorized. (lock prevents a user to just after check)</p>
+<h3 id="Sub-function-Synchronization">Sub function Synchronization</h3>
+<p>List lock</p>
+<h1>28 Review</h1>
+<h2 id="Task-Structure">Task Structure</h2>
+<p><img src="/img/post/ECE391-32.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-32.png" srcset="/img/loading.gif" lazyload width="40%" style="">\<br> -->
+<p>Each process stores: <strong>PID, Parent Process, …</strong> Kernel stack : 8kb.</p>
+<ul>
+<li><code>task_struct</code> doubly linked list, Quick access by PID hash.</li>
+<li>context switch: switch user to kernel; switch <code>task_struct</code>; switch to the new statck</li>
+<li>start a new program: <code>fork</code>: copy (<strong>!Copy on write</strong>); <code>exec</code>: replace current program.</li>
+<li>Different kinds of jobs: Interactive, Batch, real-time;</li>
+</ul>
+<h2 id="Scheduling">Scheduling</h2>
+<ul>
+<li>Goals: Fair; Efficient; Responsive;</li>
+<li>Implementation: time slice; priority</li>
+</ul>
+<p>Each processor have a runqueue, 2 double buffered priority arrays (avtive &amp; expired) in it.</p>
+<p>Priority Array Structure: Real Time tasks from 0-99, Standard tasks 100-139; each priority have 1 list &amp; 1 bitmap.</p>
+<p>Scheduler Policies</p>
+<ul>
+<li>FIFO: First In, First Out (in the same priority); 2 flavors: when new task arrive, switch to it / not?</li>
+<li>Round Robin: (in the same priority) even time slices assignment.</li>
+<li>Normal: task priority rescheduled, and use RR in each  .</li>
+</ul>
+<h1>20 Memory Allocation</h1>
+<ul>
+<li>a few small items → <strong>kmalloc</strong></li>
+<li>a lot of items, repeatedly → <strong>slab allocator</strong></li>
+<li>a big, physically contiguous region → <strong>free pages allocator</strong></li>
+<li>a big area of virtual memory → <strong>vmalloc</strong> (not necessarily physically contiguous)</li>
+</ul>
+<h2 id="kmalloc-flags">kmalloc flags</h2>
+<ul>
+<li>
+<p><code>GFP_ATOMIC</code>: do not wait for pages</p>
+</li>
+<li>
+<p><code>GFP_KERNEL</code>, <code>GFP_USER</code>, … ： wait</p>
+</li>
+<li>
+<p><code>void* kmalloc (size_t size, gfp_t flags);</code>: uses exponentially sized slab caches from 8B; each allocation is contiguous in physical memory</p>
+</li>
+<li>
+<p>creste private slab cache: <code>kmem_cache* kmem_cache_create</code>: return a page handle.</p>
+</li>
+</ul>
+<h2 id="allocate-pages">allocate pages</h2>
+<figure><div class="code-wrapper"><pre class="language-c" data-language="c"><code class="language-c">unsigned long get_zeroed_page (gfp_t flags);
+unsigned long   get_free_page (gfp_t flags);
+unsigned long   get_free_pages (gfp_t flags, unsigned int order);
+void free_page (unsigned long);
+void free_pages (unsigned long, int order); &#x2F;&#x2F; order: log2(#pages)</code></pre></div></figure>
+<p>External fragmentation: fragmentations. / Internal fragmentation: request <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\ne</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span> allocated</p>
+<h2 id="The-Buddy-System">The Buddy System</h2>
+<p><strong>partially busy bitmap</strong> (Partially busy bit (1 bit per pair): exactly 1 of 2 in use).</p>
+<p>Allocation</p>
+<ul>
+<li>try the correct size free list</li>
+<li>if empty, try the next larger size and break up a chunk</li>
+<li>if free, split it up recursively, check (&amp; flip) buddy bit.</li>
+</ul>
+<!-- E.g. Allocate 1KB. 8KB are viewed in 4 levels. -->
+<!-- ![](/img/post/ECE391-33.png) -->
+<!-- <img src="../img/post/ECE391-33.png" srcset="/img/loading.gif" lazyload width="66%" style=""> --><br>
+<p><img src="/img/post/ECE391-34.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-34.png" srcset="/img/loading.gif" lazyload width="46%" style=""><br> -->
+<h2 id="Slab">Slab</h2>
+<ul>
+<li>
+<p>Allow allocation of small blocks of memory to help<br>
+eliminate internal fragmentation that would be otherwise<br>
+caused by the buddy system. (one cache per object type!)</p>
+</li>
+<li>
+<p>Have caches of commonly used objects kept in an<br>
+initialised state available for use by the kernel.</p>
+</li>
+<li>
+<p>allocate: check in cache first</p>
+</li>
+<li>
+<p>free: no destruction, simply return to init state.</p>
+</li>
+<li>
+<p>kmalloc: When kmalloc is called, it uses one of the dedicated slab<br>
+caches to fulfill the request.</p>
+</li>
+</ul>
+<h2 id="systemcall">systemcall</h2>
+<p><img src="/img/post/ECE391-35.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-35.png" srcset="/img/loading.gif" lazyload width="35%" style=""><br> -->
+<h2 id="Memory-Maps">Memory Maps</h2>
+<p><img src="/img/post/ECE391-36.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-36.png" srcset="/img/loading.gif" lazyload width="33%" style=""><br> -->
+<p><img src="/img/post/ECE391-37.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-37.png" srcset="/img/loading.gif" lazyload width="60%" style=""><br> -->
+<p>starting and ending virtual addr / permissions / #pages / inode / file</p>
+<p>C libs are shared. heaps / stack / executable are not shared.</p>
+<p>Copy-on-write</p>
+<h2 id="TLB">TLB</h2>
+<p>translation lookaside buffers (TLBs)</p>
+<ul>
+<li>keep translations of first 20 bits around and reuse them</li>
+<li>only walk tables when necessary</li>
+<li>x86 provides separate TLBs for 4kB &amp; 4MB translations</li>
+<li>global page: TLB not flushed when changing to new program.</li>
+</ul>
+<p><img src="/img/post/ECE391-38.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <img src="../img/post/ECE391-38.png" srcset="/img/loading.gif" lazyload width="50%" style=""><br> -->
+<h2 id="TSS">TSS</h2>
+<p>esp / esp0 (ring 0); when switching to kernel: use esp0</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/course-notes/" class="category-chain-item">Course Notes</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/course-notes/ece-391/" class="category-chain-item">ECE 391</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ECE391 Course Notes</div>
+      <div>https://yzzzf.xyz/2023/11/09/ECE391/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Zifan Ying</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 8, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - Share-alike">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/11/12/archlinux-with-i3wm/" title="Archlinux + I3wm 从0配置指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Archlinux + I3wm 从0配置指南</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/04/ECE313/" title="ECE313 Course Notes">
+                        <span class="hidden-mobile">ECE313 Course Notes</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'photon-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'pluto0x0/pluto0x0.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'comment');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/10.9.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"dark"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

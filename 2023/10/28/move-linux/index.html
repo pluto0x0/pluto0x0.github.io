@@ -1,0 +1,1027 @@
+
+
+<!DOCTYPE html>
+<html lang="en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zifan Ying">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="笔记本有一个2280和一个2240硬盘位，因此要把原来2280的盘迁移到2240的上。 {: .prompt-info }  硬盘上只有两个分区：UEFI引导分区（FAT32）和 &#x2F; 挂载点（EXT4），因此迁移就比较容易 步骤 具体来说，   同时挂载原硬盘和新硬盘，我这次是在原硬盘上的系统里挂载了新硬盘在&#x2F;mnt&#x2F;，并非使用live CD等，不过原理大同小异。 这里原硬盘是&#x2F;dev&#x2F;nvme">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一次Linux迁移的记录">
+<meta property="og:url" content="https://yzzzf.xyz/2023/10/28/move-linux/index.html">
+<meta property="og:site_name" content="flayed blog">
+<meta property="og:description" content="笔记本有一个2280和一个2240硬盘位，因此要把原来2280的盘迁移到2240的上。 {: .prompt-info }  硬盘上只有两个分区：UEFI引导分区（FAT32）和 &#x2F; 挂载点（EXT4），因此迁移就比较容易 步骤 具体来说，   同时挂载原硬盘和新硬盘，我这次是在原硬盘上的系统里挂载了新硬盘在&#x2F;mnt&#x2F;，并非使用live CD等，不过原理大同小异。 这里原硬盘是&#x2F;dev&#x2F;nvme">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2023/10/29/gsdNaP2FreuOxLB.png">
+<meta property="og:image" content="https://s2.loli.net/2023/10/29/nXyuU9xJRLcfpe8.png">
+<meta property="article:published_time" content="2023-10-28T05:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-18T11:03:47.134Z">
+<meta property="article:author" content="Zifan Ying">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/10/29/gsdNaP2FreuOxLB.png">
+<meta name="twitter:creator" content="@flayed__">
+  
+  
+  
+  <title>一次Linux迁移的记录 - flayed blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yzzzf.xyz","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 40vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>flayed</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="一次Linux迁移的记录"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-28 00:00" pubdate>
+          October 28, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">一次Linux迁移的记录</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>笔记本有一个2280和一个2240硬盘位，因此要把原来2280的盘迁移到2240的上。<br>
+{: .prompt-info }</p>
+</blockquote>
+<p>硬盘上只有两个分区：UEFI引导分区（FAT32）和 <code>/</code> 挂载点（EXT4），因此迁移就比较容易</p>
+<h2 id="步骤">步骤</h2>
+<p>具体来说，</p>
+<ol>
+<li>
+<p>同时挂载原硬盘和新硬盘，我这次是在原硬盘上的系统里挂载了新硬盘在<code>/mnt/</code>，并非使用live CD等，不过原理大同小异。<br>
+这里原硬盘是<code>/dev/nvme1n1</code>，新硬盘是<code>/dev/nvme0n1</code></p>
+</li>
+<li>
+<p>分区。使用了图形化的<code>gparted</code>，仿照原硬盘在新硬盘上分出300MB的UEFI引导分区<code>/dev/nvme0n1p1</code>和剩余的 <code>/</code> 挂载点<code>/dev/nvme0n1p3</code>，注意要把引导区的<code>boot</code>标志勾选。<br>
+<img src="https://s2.loli.net/2023/10/29/gsdNaP2FreuOxLB.png" srcset="/img/loading.gif" lazyload alt="忽略swap"><br>
+<img src="https://s2.loli.net/2023/10/29/nXyuU9xJRLcfpe8.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+</li>
+<li>
+<p>复制原硬盘的 <code>/</code> 到新硬盘的 <code>/</code> 挂载点<code>/dev/nvme0n1p3</code>，注意要忽略：</p>
+ <figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">&#39;&#x2F;dev&#x2F;*&#39;,&#39;&#x2F;proc&#x2F;*&#39;,&#39;&#x2F;sys&#x2F;*&#39;,&#39;&#x2F;tmp&#x2F;*&#39;,&#39;&#x2F;run&#x2F;*&#39;,&#39;&#x2F;mnt&#x2F;*&#39;,&#39;&#x2F;lost+found&#x2F;*&#39;,&#39;&#x2F;media&#x2F;*&#39;</code></pre></div></figure>
+<p>这些文件。<br>
+我用的是<code>rsync</code>，具体命令见后面脚本。<code>dd</code>等命令更底层，还要涉及到文件系统resize的问题，<code>rsync</code>就不会。</p>
+</li>
+<li>
+<p>挂载 <code>/dev</code> <code>/sys/</code> … 等关键目录，否则无法进入新系统。这相当于新硬盘的系统和老硬盘的系统公用这些路径，为后面chroot准备。</p>
+ <figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">   mount --bind &#x2F;dev&#x2F; &#x2F;mnt&#x2F;dev&#x2F;
+   mount --bind &#x2F;sys&#x2F; &#x2F;mnt&#x2F;sys&#x2F;
+# 具体命令见后面脚本。</code></pre></div></figure>
+<p>同时也要挂载新硬盘的引导分区到新硬盘的<code>/boot/efi</code>，从而能安装grub引导。</p>
+ <figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">mount &#x2F;dev&#x2F;nvme0n1p1 &#x2F;mnt&#x2F;boot&#x2F;efi</code></pre></div></figure>
+</li>
+<li>
+<p>进入chroot环境。<br>
+chroot就是更改当前Linux的root目录，此时相当于在新硬盘的系统中执行命令。</p>
+ <figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">chroot &#x2F;mnt</code></pre></div></figure>
+</li>
+<li>
+<p>修改<code>/etc/fstab</code>里的UUID为当前新盘的UUID。grub是靠UUID找对应的盘的，这也是全盘克隆无法启动的原因，因为两个盘的UUID不一样。</p>
+ <figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">blkid &#x2F;dev&#x2F;nvme0n1p3 # 查看UUID</code></pre></div></figure>
+</li>
+<li>
+<p>修复grub引导</p>
+ <figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">grub-install --target&#x3D;x86_64-efi --efi-directory&#x3D;&#x2F;boot&#x2F;efi --bootloader&#x3D;Manjaro --recheck</code></pre></div></figure>
+<p>切记这是在chroot环境，因此路径是<code>/boot/efi</code>。<br>
+最后写入grub</p>
+ <figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">grub-update</code></pre></div></figure>
+<p>在执行<code>grub-update</code>前可以安装<code>os-prober</code>，这样<code>grub-update</code>能检测所有硬盘中的引导区。当然现在电脑里有两个一样的Linux，需要把老的硬盘卸载、插入新的硬盘（比如win10）的，再进入新的Linux安装一遍<code>os-prober</code>后执行<code>grub-update</code>。</p>
+</li>
+</ol>
+<p>现在新的Linux就好了。</p>
+<h2 id="grub2">grub2</h2>
+<p>grub2可以安装主题进行美化，我用的是<a target="_blank" rel="noopener" href="https://github.com/jacksaur/Gorgeous-GRUB">Gorgeous-GRUB</a>里挑选的<a target="_blank" rel="noopener" href="https://github.com/Patato777/dotfiles/tree/main/grub">Virtuaverse</a>，执行安装脚本即可。</p>
+<h2 id="自动脚本">自动脚本</h2>
+<p>脚本对于单个或多个挂载点的情况可以处理，至于有逻辑分区等等复杂的情况不知道行不行。</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">#!&#x2F;bin&#x2F;bash
+
+# Regular Colors
+BLACK&#x3D;&#39;\033[0;30m&#39;
+RED&#x3D;&#39;\033[0;31m&#39;
+GREEN&#x3D;&#39;\033[0;32m&#39;
+YELLOW&#x3D;&#39;\033[0;33m&#39;
+BLUE&#x3D;&#39;\033[0;34m&#39;
+PURPLE&#x3D;&#39;\033[0;35m&#39;
+CYAN&#x3D;&#39;\033[0;36m&#39;
+WHITE&#x3D;&#39;\033[0;37m&#39;
+
+# Bold Colors (加粗)
+BBLACK&#x3D;&#39;\033[1;30m&#39;
+BRED&#x3D;&#39;\033[1;31m&#39;
+BGREEN&#x3D;&#39;\033[1;32m&#39;
+BYELLOW&#x3D;&#39;\033[1;33m&#39;
+BBLUE&#x3D;&#39;\033[1;34m&#39;
+BPURPLE&#x3D;&#39;\033[1;35m&#39;
+BCYAN&#x3D;&#39;\033[1;36m&#39;
+BWHITE&#x3D;&#39;\033[1;37m&#39;
+
+# Underlined Colors (下划线)
+UBLACK&#x3D;&#39;\033[4;30m&#39;
+URED&#x3D;&#39;\033[4;31m&#39;
+UGREEN&#x3D;&#39;\033[4;32m&#39;
+UYELLOW&#x3D;&#39;\033[4;33m&#39;
+UBLUE&#x3D;&#39;\033[4;34m&#39;
+UPURPLE&#x3D;&#39;\033[4;35m&#39;
+UCYAN&#x3D;&#39;\033[4;36m&#39;
+UWHITE&#x3D;&#39;\033[4;37m&#39;
+
+# Background Colors (背景色)
+BG_BLACK&#x3D;&#39;\033[40m&#39;
+BG_RED&#x3D;&#39;\033[41m&#39;
+BG_GREEN&#x3D;&#39;\033[42m&#39;
+BG_YELLOW&#x3D;&#39;\033[43m&#39;
+BG_BLUE&#x3D;&#39;\033[44m&#39;
+BG_PURPLE&#x3D;&#39;\033[45m&#39;
+BG_CYAN&#x3D;&#39;\033[46m&#39;
+BG_WHITE&#x3D;&#39;\033[47m&#39;
+
+# No Color
+NC&#x3D;&#39;\033[0m&#39;
+
+# &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+
+
+efi_mnt&#x3D;&#x2F;boot&#x2F;efi	# constant
+mnt&#x3D;&#x2F;mnt&#x2F;targetOS	# constant
+mnt_source&#x3D;&#x2F;mnt&#x2F;sourceOS	# constant
+
+efi&#x3D;0
+declare -a from
+declare -a to
+declare -a point
+
+ischroot&#x3D;0
+
+function error() &#123;
+    echo -e  &quot; $&#123;BRED&#125;ERROR:$ 1\nSee &#39;--help&#39;$&#123;NC&#125; &quot;
+    exit 1
+&#125;
+
+if [ &quot;$UID&quot; -ne 0 ]; then
+    error &quot;This script must be run as root.&quot;
+    exit 1
+fi
+
+function color_echo() &#123;
+    local input&#x3D;&quot;$1&quot;
+	# Replace words with colored words
+    for colori in &quot;$&#123;!from[@]&#125;&quot;; do
+	    input&#x3D;&quot; $&#123;input&#x2F;&#x2F;$ &#123;from[colori]&#125;&#x2F; $&#123;BRED&#125;$ &#123;from[colori]&#125;$&#123;NC&#125;&#125;&quot;
+	    input&#x3D;&quot; $&#123;input&#x2F;&#x2F;$ &#123;to[colori]&#125;&#x2F; $&#123;BGREEN&#125;$ &#123;to[colori]&#125;$&#123;NC&#125;&#125;&quot;
+		# input&#x3D;&quot; $&#123;input&#x2F;&#x2F;$ &#123;point[ $i]&#125;&#x2F;$ &#123;BCYAN&#125; $&#123;point[$ i]&#125;$&#123;NC&#125;&#125;&quot;
+    done
+    input&#x3D;&quot; $&#123;input&#x2F;&#x2F;$ &#123;efi&#125;&#x2F; $&#123;BBLUE&#125;$ &#123;efi&#125;$&#123;NC&#125;&#125;&quot;
+    input&#x3D;&quot; $&#123;input&#x2F;&#x2F;$ &#123;mnt&#125;&#x2F; $&#123;BYELLOW&#125;$ &#123;mnt&#125;$&#123;NC&#125;&#125;&quot;
+    input&#x3D;&quot; $&#123;input&#x2F;&#x2F;$ &#123;mnt_source&#125;&#x2F; $&#123;BPURPLE&#125;$ &#123;mnt_source&#125;$&#123;NC&#125;&#125;&quot;
+    input&#x3D;&quot; $&#123;input&#x2F;&#x2F;$ &#123;efi_mnt&#125;&#x2F; $&#123;BCYAN&#125;$ &#123;efi_mnt&#125;$&#123;NC&#125;&#125;&quot;
+    echo -e -n &quot;$input&quot;
+&#125;
+
+# read arguments
+while [[ &quot;$#&quot; -gt 0 ]]; do
+    case $1 in
+		--chroot)
+		    ischroot&#x3D;1
+		    shift 1
+			;;
+		--efi)
+		    efi&#x3D;&quot;$2&quot;
+		    shift 2
+			;;
+		--move)
+		    if [[ &quot;$#&quot; -le 3 ]]; then
+			    error &quot;--move requires 3 arguments&quot;
+		    fi
+		    point+&#x3D;(&quot;$2&quot;)
+		    from+&#x3D;(&quot;$3&quot;)
+		    to+&#x3D;(&quot;$4&quot;)
+		    shift 4
+			;;
+		--help)
+		    echo sudo $0 --efi &quot;&#123;efi&#125; [--move &#x2F; &#123;from&#125; &#123;to&#125; [--move &#123;point&#125; &#123;from&#125; &#123;to&#125; [...]]]&quot;
+		    echo
+		    echo &quot;&#123;efi&#125; &#123;from&#125; &#123;to&#125; are partitions like &#x2F;dev&#x2F;nvme0n1&quot;
+		    echo &quot;&#123;point&#125; are mount points of the corresponding partition&quot;
+		    echo &quot;note that the first mount point given must be &#39;&#x2F;&#39;&quot;
+		    exit 0
+			;;
+		*)
+		    error &quot;Unknown parameter passed: $1&quot;
+			;;
+    esac
+done
+
+function run_cmd() &#123;
+    local cmd&#x3D;&quot;$1&quot;
+    echo -n -e &quot; $&#123;BCYAN&#125; &gt;$ &#123;NC&#125;&quot;
+    color_echo &quot;$2&quot;
+    echo -n -e &quot; $&#123;BG_WHITE&#125;$ &#123;UBLACK&#125;[Y&#x2F;n]$&#123;NC&#125;:&quot;
+    read -r response &lt; &#x2F;dev&#x2F;tty
+    if [[ &quot; $response&quot; &#x3D;&#x3D; &quot;&quot; || &quot;$ response&quot; &#x3D;&#x3D; &quot;y&quot; || &quot;$response&quot; &#x3D;&#x3D; &quot;y&quot; ]]; then
+	    eval &quot;$cmd&quot;
+    else
+	    if [ -z &quot;$3&quot; ]; then
+		    echo -e &quot; $&#123;BRED&#125;Command aborted.$ &#123;NC&#125;&quot;
+	    else
+		    eval &quot;$3&quot;
+	    fi
+    fi
+&#125;
+
+get_uuid() &#123;
+    local device&#x3D;&quot;$1&quot;
+	# Use blkid to fetch the UUID
+    local uuid&#x3D; $(blkid &quot;$ device&quot; | sed -n &#39;s&#x2F;.* UUID&#x3D;&quot;\([^&quot;]*\)&quot;.*&#x2F;\1&#x2F;p&#39;)
+	# Check if the UUID is empty
+    if [[ -z &quot;$uuid&quot; ]]; then
+	    echo &quot;No UUID found for device $device&quot;
+	    return 1
+    fi
+    echo &quot;$uuid&quot;
+&#125;
+
+if [[ ischroot -eq 0 ]]; then
+	# check valid
+    if [[ -z &quot;$efi&quot; ]]; then
+	    error &quot;No EFI device assigned&quot;
+    fi
+    if [ $&#123;#from[@]&#125; -eq 0 ]; then
+	    error &quot;--move missing&quot;
+    fi
+    if [[ $&#123;point[0]&#125; !&#x3D; &quot;&#x2F;&quot; ]]; then
+	    error &quot;First mouont point must be &#39;&#x2F;&#39;&quot;
+    fi
+	# output arguments
+    color_echo &quot;EFI partition: $efi\n&quot;
+    for i in &quot;$&#123;!from[@]&#125;&quot;; do
+	    color_echo &quot;Move from: $&#123;from[$ i]&#125; (mount point $&#123;BCYAN&#125;$ &#123;point[ $i]&#125;$ &#123;NC&#125;) to: $&#123;to[$ i]&#125;\n&quot;
+    done
+	# double check from uesr
+    run_cmd &quot;&quot; &quot;Continue?&quot; &quot;exit&quot;
+
+    mkdir -p $mnt 2&gt; &#x2F;dev&#x2F;null
+    mkdir -p $mnt_source 2&gt; &#x2F;dev&#x2F;null
+
+    for i in &quot;$&#123;!from[@]&#125;&quot;; do
+	    run_cmd &lt;&lt;-EOF &quot;
+	    mount $&#123;to[$ i]&#125; $&#123;mnt&#125;
+	    mount $&#123;from[$ i]&#125; $&#123;mnt_source&#125;
+		&quot; &quot;Mounting $&#123;to[$ i]&#125; to $&#123;mnt&#125;,$ &#123;from[ $i]&#125; to$ &#123;mnt_source&#125;&quot;
+	    EOF
+
+	    run_cmd &lt;&lt;-EOF &quot;
+	    rm -rf $mnt&#x2F;*
+		&quot; &quot;Clearing $mnt (where$ &#123;to[$i]&#125; is mounted)&quot;
+	    EOF
+
+	    if [[ $i -eq 0 ]]; then
+		    run_cmd &lt;&lt;-EOF &quot;
+		    rsync -aAX --stats $mnt_source&#x2F;$ mnt&#x2F; --exclude&#x3D;&#123;&#39;&#x2F;dev&#x2F;*&#39;,&#39;&#x2F;proc&#x2F;*&#39;,&#39;&#x2F;sys&#x2F;*&#39;,&#39;&#x2F;tmp&#x2F;*&#39;,&#39;&#x2F;run&#x2F;*&#39;,&#39;&#x2F;mnt&#x2F;*&#39;,&#39;&#x2F;lost+found&#x2F;*&#39;,&#39;&#x2F;media&#x2F;*&#39;&#125;
+			&quot; &quot;Copying from $&#123;from[$ i]&#125; to $mnt (where$ &#123;to[$i]&#125; is mounted) via rsync, with &#x2F;dev&#x2F;,&#x2F;proc&#x2F;,etc. excluded&quot;
+		    EOF
+	    else
+		    echo $i iii
+		    run_cmd &lt;&lt;-EOF &quot;
+		    rsync -aAX --stats $mnt_source&#x2F;$ mnt&#x2F;
+			&quot; &quot;Copying from $&#123;from[$ i]&#125; to $mnt (where$ &#123;to[$i]&#125; is mounted) via rsync&quot;
+		    EOF
+	    fi
+
+
+	    umount $mnt 2&gt; &#x2F;dev&#x2F;null # always unmount
+	    umount $mnt_source 2&gt; &#x2F;dev&#x2F;null # always unmount
+    done
+
+    run_cmd &lt;&lt;-EOF &quot;
+    for i in &quot;\$&#123;!from[@]&#125;&quot;; do
+	    mkdir -p \ $&#123;mnt&#125;\$ &#123;point[\$i]&#125;
+	    mount \ $&#123;to[\$ i]&#125; \ $&#123;mnt&#125;\$ &#123;point[\$i]&#125;
+    done&quot; &quot;Mount all partitions to $mnt&quot;
+    EOF
+
+    run_cmd &lt;&lt;-EOF &quot;
+    mount $&#123;from[0]&#125;$ mnt_source
+    for dir in &#x2F;dev &#x2F;dev&#x2F;pts &#x2F;proc &#x2F;sys &#x2F;sys&#x2F;firmware&#x2F;efi&#x2F;efivars &#x2F;run; do
+	    color_echo \&quot;mounting $mnt_source\$ dir to $mnt\$ dir;\\n\&quot;
+	    mount --bind $mnt_source\$ dir $mnt\$ dir
+    done&quot; &quot;Mounting necessary points to $mnt from source OS&quot;
+    EOF
+
+    run_cmd &lt;&lt;-EOF &quot;
+    mount $efi$ mnt$efi_mnt
+	&quot; &quot;Mounting EFI partition in $mnt$ efi_mnt&quot;
+    EOF
+
+    run_cmd &lt;&lt;-EOF &quot;
+    chroot $mnt &#x2F;bin&#x2F;bash$ (realpath $0) --chroot$ *
+	&quot; &quot;Doing chroot (This will enter chroot environment)&quot;
+    EOF
+
+    run_cmd &lt;&lt;-EOF &quot;
+    echo Press ENTER again to reboot!
+    read
+    reboot
+	&quot; &quot;Ready to reboot&quot;
+    EOF
+
+else
+    echo &quot;I am in chroot environment now!&quot;
+    old_uuid&#x3D; $(get_uuid$ from)
+    uuid&#x3D; $(get_uuid$ to)
+    color_echo &quot;UUID of (from) $from is$ old_uuid&quot;
+    echo
+    color_echo &quot;UUID of (to) $to is$ uuid&quot;
+    echo
+
+    run_cmd &lt;&lt;-EOF &quot;
+    sudo sed -i &#39;s@ $old_uuid@$ uuid@g&#39; &#x2F;etc&#x2F;fstab
+	&quot; &quot;Now change UUID in &#x2F;etc&#x2F;fstab:\nreplace $old_uuid to$ uuid&quot;
+    EOF
+
+    run_cmd &lt;&lt;-EOF &quot;
+    grub-install --target&#x3D;x86_64-efi --efi-directory&#x3D;$efi_mnt --bootloader&#x3D;Manjaro --recheck
+	&quot; &quot;Intalling GRUB&quot;
+    EOF
+
+    run_cmd &lt;&lt;-EOF &quot;
+    update-grub
+	&quot; &quot;Updating GRUB&quot;
+    EOF
+
+    run_cmd &lt;&lt;-EOF &quot;
+    exit
+	&quot; &quot;exit chroot!&quot;
+    EOF
+
+fi
+
+echo &quot;Quitting.&quot;</code></pre></div></figure>
+<p>脚本还有待测试。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>一次Linux迁移的记录</div>
+      <div>https://yzzzf.xyz/2023/10/28/move-linux/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Zifan Ying</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 28, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - Share-alike">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/28/jekyll-on-github/" title="Jekyll+github Action搭建不完全指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Jekyll+github Action搭建不完全指南</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/24/Codeforces-1553F/" title="Codeforces 1553F: Pairwise Modulo">
+                        <span class="hidden-mobile">Codeforces 1553F: Pairwise Modulo</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'photon-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'pluto0x0/pluto0x0.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'comment');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

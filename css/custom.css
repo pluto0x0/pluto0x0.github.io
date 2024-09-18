@@ -1,0 +1,4 @@
+/* transparent background for mermaid blocks */
+.markdown-body pre {
+    background-color: initial;
+}

@@ -1,0 +1,954 @@
+
+
+<!DOCTYPE html>
+<html lang="en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zifan Ying">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Manjaro + i3wm 使用总结 Manjaro + i3wm是社区版，下载 .iso 镜像安装即可。 安装 安装介质中的简体中文有显示问题。先使用英文。 如果使用中文安装，用户目录下的Desktop &#x2F; Downloads 等目录名称会变成中文。 使用 使用镜像源 sudo pacman-mirrors -i -c China -m rank 参考 更新系统 sudo pacman -Sy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manjaro + I3wm 使用总结 [Archived]">
+<meta property="og:url" content="https://yzzzf.xyz/2023/05/04/manjaro-i3wm/index.html">
+<meta property="og:site_name" content="flayed blog">
+<meta property="og:description" content="Manjaro + i3wm 使用总结 Manjaro + i3wm是社区版，下载 .iso 镜像安装即可。 安装 安装介质中的简体中文有显示问题。先使用英文。 如果使用中文安装，用户目录下的Desktop &#x2F; Downloads 等目录名称会变成中文。 使用 使用镜像源 sudo pacman-mirrors -i -c China -m rank 参考 更新系统 sudo pacman -Sy">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-04T05:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-18T11:03:47.122Z">
+<meta property="article:author" content="Zifan Ying">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@flayed__">
+  
+  
+  
+  <title>Manjaro + I3wm 使用总结 [Archived] - flayed blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yzzzf.xyz","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 40vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>flayed</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Manjaro + I3wm 使用总结 [Archived]"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-04 00:00" pubdate>
+          May 4, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Manjaro + I3wm 使用总结 [Archived]</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>Manjaro + i3wm 使用总结</h1>
+<p>Manjaro + i3wm是社区版，下载 <code>.iso</code> 镜像安装即可。</p>
+<h2 id="安装">安装</h2>
+<p>安装介质中的简体中文有显示问题。先使用英文。</p>
+<p>如果使用中文安装，用户目录下的<code>Desktop</code> / <code>Downloads</code> 等目录名称会变成中文。</p>
+<h2 id="使用">使用</h2>
+<h3 id="使用镜像源">使用镜像源</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman-mirrors -i -c China -m rank</code></pre></div></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38883889/article/details/116722348">参考</a></p>
+<h3 id="更新系统">更新系统</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -Syyu</code></pre></div></figure>
+<p><a href="#pacman%E7%94%A8%E6%B3%95">pacman用法</a></p>
+<h3 id="设置时区">设置时区</h3>
+<p>列出所有时区</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">timedatectl list-timezones</code></pre></div></figure>
+<p>设置时区</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">timedatectl set-timezone Asia&#x2F;Shanghai</code></pre></div></figure>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/422288980">参考</a></p>
+<h3 id="安装基础工具">安装基础工具</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -Sy git base-devel</code></pre></div></figure>
+<p><code>base-devel</code> 是常用编译和链接工具，类似Ubuntu中的 <code>build-essential</code>。</p>
+<h3 id="安装-yay（Arch-用户软件仓库，AUR）">安装 <code>yay</code>（Arch 用户软件仓库，AUR）</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -Sy yay</code></pre></div></figure>
+<h3 id="设置中文">设置中文</h3>
+<ul>
+<li><code>$mod + d</code> 打开<code>dmenu</code>, 打开<code>manjaro-settings-manager</code></li>
+<li>locale sttings? （本地化设定）-&gt; 添加中文（<code>zh_CN.UTF-8</code>）</li>
+</ul>
+<p>中文可能会显示为空白，需要安装字体</p>
+<h3 id="解决桌面-conky-乱码（待定）">解决桌面 <code>conky</code> 乱码（待定）</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo vim &#x2F;usr&#x2F;share&#x2F;conky&#x2F;conky_maia</code></pre></div></figure>
+<p>进行字体设置的替换</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"># vim中
+：%s&#x2F;Bitstream Vera&#x2F;anti&#x2F;</code></pre></div></figure>
+<h3 id="安装中文字体">安装中文字体</h3>
+<p>选择一种中文字体安装</p>
+<p>文泉驿</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei</code></pre></div></figure>
+<p>思源字体</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts</code></pre></div></figure>
+<p>其他</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S ttf-roboto noto-fonts ttf-dejavu</code></pre></div></figure>
+<h3 id="安装google-chrome">安装google chrome</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">yay -Sy google-chorome-stable</code></pre></div></figure>
+<p>修改 <code>~/.config/mimeapps.list</code> , 将默认浏览器改为 <code>google-chrome-stable.desktop</code>。</p>
+<h3 id="安装clash">安装clash</h3>
+<p>采用<code>clash-for-windows</code>的Linux版</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">yay -Sy clash-for-windows-bin</code></pre></div></figure>
+<p>加入i3自启动：</p>
+<p><code>~/.i3/config</code> 添加</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">exec_always --no-startup-id cfw</code></pre></div></figure>
+<p>使用 <code>cfw</code> 命令打开。</p>
+<h3 id="安装vscode">安装vscode</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">yay -Sy visual-studio-code-bin</code></pre></div></figure>
+<h3 id="触摸板设置">触摸板设置</h3>
+<p>配置文件 <code>/usr/share/X11/xorg.conf.d/40-libinput.conf</code>。</p>
+<p>在包含 <code>touchpad</code> 的 <code>Section</code> 中</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">Option &quot;NaturalScrolling&quot; &quot;true&quot;
+Option &quot;TappingDragLock&quot; &quot;true&quot;</code></pre></div></figure>
+<p><code>NaturalScrolling</code> 调整滚动方向。</p>
+<p><a href="#%E6%8C%87%E9%92%88%E7%81%B5%E6%95%8F%E5%BA%A6">设置指针灵敏度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> </a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45104776/article/details/107349627">参考</a></p>
+<h3 id="安装中文输入法">安装中文输入法</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">pacman -S fcitx fcitx-im fcitx-configtool
+yay -S fcitx-sogoupinyin</code></pre></div></figure>
+<p>加入i3自启动：</p>
+<p><code>~/.i3/config</code> 添加</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">exec_always --no-startup-id fcitx-autostart</code></pre></div></figure>
+<h3 id="文件管理器">文件管理器</h3>
+<p>名称</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">pcmanfm</code></pre></div></figure>
+<p><a target="_blank" rel="noopener" href="https://forum.manjaro.org/t/open-directory-on-file-manager/113488">参考</a></p>
+<h3 id="feh设置壁纸"><code>feh</code>设置壁纸</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S feh</code></pre></div></figure>
+<p>加入i3自启动：</p>
+<p><code>~/.i3/config</code> 添加</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">exec_always --no-startup-id feh --randomize --bg-fill ~&#x2F;Pictures&#x2F;*</code></pre></div></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43372529/article/details/106712115">参考</a></p>
+<h2 id="其他软件的安装">其他软件的安装</h2>
+<h3 id="svn">svn</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S subversion</code></pre></div></figure>
+<h3 id="remmina-远程桌面连接">remmina 远程桌面连接</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S remmina</code></pre></div></figure>
+<p>对于 RDP 支持，还要安装可选的 <code>freerdp</code>。</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S freerdp</code></pre></div></figure>
+<p>可以设置sooth font和window drag等提高画面质量或者速度。</p>
+<h2 id="进一步美化和其他项目">进一步美化和其他项目</h2>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/600673025">https://zhuanlan.zhihu.com/p/600673025</a></p>
+<p><a target="_blank" rel="noopener" href="https://godliuyang.wang/2019/08/24/manjaro-i3wm-huan-jing-pei-zhi-pian/">https://godliuyang.wang/2019/08/24/manjaro-i3wm-huan-jing-pei-zhi-pian/</a></p>
+<h3 id="安装终端模拟器">安装终端模拟器</h3>
+<p>安装 <code>alacritty</code></p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -Sy alacritty</code></pre></div></figure>
+<p>编辑 <code>~/.config/alacritty/alacritty.yml</code>（需要创建文件）</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"># 原来tabspaces是8
+tabspaces: 4
+# 字体使用Soure Code Pro
+family: Source Code Pro
+# 不透明度：
+#background_opacity: 0.6
+window:
+  opacity: 0.75</code></pre></div></figure>
+<p>设置默认终端：</p>
+<p><code>~/.i3/config</code>：将<code>$mod+Return</code>的选项改为<code>alacritty</code>。</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"># start a terminal
+#bindsym $mod+Return exec terminal
+bindsym $mod+Return exec alacritty</code></pre></div></figure>
+<h2 id="指针灵敏度">指针灵敏度</h2>
+<h3 id="查看xinput指针设备">查看xinput指针设备</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">$ xinput list</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="language-none"><code class="language-none">⎡ Virtual core pointer                        id&#x3D;2	[master pointer  (3)]
+⎜   ↳ Virtual core XTEST pointer                  id&#x3D;4	[slave  pointer  (2)]
+⎜   ↳ MOSART Semi. 2.4G RF Keyboard &amp; Mouse Consumer Control    id&#x3D;10	[slave  pointer  (2)]
+⎜   ↳ MOSART Semi. 2.4G RF Keyboard &amp; Mouse       id&#x3D;12	[slave  pointer  (2)]
+⎜   ↳ Synaptics TM3289-021                        id&#x3D;14	[slave  pointer  (2)]
+⎜   ↳ TPPS&#x2F;2 Elan TrackPoint                      id&#x3D;15	[slave  pointer  (2)]
+⎣ Virtual core keyboard                       id&#x3D;3	[master keyboard (2)]
+    ↳ Virtual core XTEST keyboard                 id&#x3D;5	[slave  keyboard (3)]
+    ↳ Power Button                                id&#x3D;6	[slave  keyboard (3)]
+    ↳ Video Bus                                   id&#x3D;7	[slave  keyboard (3)]
+    ↳ Sleep Button                                id&#x3D;8	[slave  keyboard (3)]
+    ↳ MOSART Semi. 2.4G RF Keyboard &amp; Mouse       id&#x3D;9	[slave  keyboard (3)]
+    ↳ MOSART Semi. 2.4G RF Keyboard &amp; Mouse System Control    id&#x3D;11	[slave  keyboard (3)]
+    ↳ Integrated Camera: Integrated C             id&#x3D;13	[slave  keyboard (3)]
+    ↳ AT Translated Set 2 keyboard                id&#x3D;16	[slave  keyboard (3)]
+    ↳ ThinkPad Extra Buttons                      id&#x3D;17	[slave  keyboard (3)]
+    ↳ MOSART Semi. 2.4G RF Keyboard &amp; Mouse Consumer Control    id&#x3D;18	[slave  keyboard (3)]</code></pre></div></figure>
+<p>找到设备（这里是<code>id=12</code>）</p>
+<p>查看设备的properties</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">$ xinput list-props 12</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="language-none"><code class="language-none">Device &#39;MOSART Semi. 2.4G RF Keyboard &amp; Mouse&#39;:
+    Device Enabled (189):    1
+    Coordinate Transformation Matrix (191):    1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000
+    libinput Natural Scrolling Enabled (318):    0
+    libinput Natural Scrolling Enabled Default (319):    0
+    libinput Scroll Methods Available (323):    0, 0, 1
+    libinput Scroll Method Enabled (324):    0, 0, 0
+    libinput Scroll Method Enabled Default (325):    0, 0, 0
+    libinput Button Scrolling Button (326):    2
+    libinput Button Scrolling Button Default (327):    2
+    libinput Button Scrolling Button Lock Enabled (328):    0
+    libinput Button Scrolling Button Lock Enabled Default (329):    0
+    libinput Middle Emulation Enabled (330):    0
+    libinput Middle Emulation Enabled Default (331):    0
+    libinput Accel Speed (332):    0.000000
+    libinput Accel Speed Default (333):    0.000000
+    libinput Accel Profiles Available (334):    1, 1
+    libinput Accel Profile Enabled (335):    1, 0
+    libinput Accel Profile Enabled Default (336):    1, 0
+    libinput Left Handed Enabled (337):    0
+    libinput Left Handed Enabled Default (338):    0
+    libinput Send Events Modes Available (303):    1, 0
+    libinput Send Events Mode Enabled (304):    0, 0
+    libinput Send Events Mode Enabled Default (305):    0, 0
+    Device Node (306):	&quot;&#x2F;dev&#x2F;input&#x2F;event7&quot;
+    Device Product ID (307):    14648, 4146
+    libinput Drag Lock Buttons (320):	&lt;no items&gt;
+    libinput Horizontal Scroll Enabled (321):    1
+    libinput Scrolling Pixel Distance (339):    15
+    libinput Scrolling Pixel Distance Default (340):    15
+    libinput High Resolution Wheel Scroll Enabled (322):    1</code></pre></div></figure>
+<p>设置灵敏度（加速度）</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">$ xinput set-prop 12 &quot;libinput Accel Speed&quot; -0.7 </code></pre></div></figure>
+<p>这里的加速度值范围在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-1,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></p>
+<h2 id="设置默认file-manager">设置默认file manager</h2>
+<p>问题：打开目录时（比如chrome）默认使用vscode</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">xdg-mime default pcmanfm.desktop inode&#x2F;directory</code></pre></div></figure>
+<p>将相应的<code>mime</code>格式的默认应用设置成<code>pcmanfm</code>或者其他。</p>
+<h2 id="Todo">Todo</h2>
+<p>硬件解码</p>
+<p><s>cider</s></p>
+<hr>
+<h2 id="附录">附录</h2>
+<h3 id="pacman用法">pacman用法</h3>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">sudo pacman -S #安装软件
+sudo pacman -Sy #获取最新打软件情况，如果已经是最新了，直接会提示已经更新到最新了。
+sudo pacman -Syy #强行更新你的应用的软件库（源）
+sudo pacman -Su #更新所有软件
+sudo pacman -Syu #更新软件源并更新你的软件
+sudo pacman -Syyu #强行更新一遍，再更新软件</code></pre></div></figure>
+<p>多个（相似的）包：：</p>
+<figure><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">pacman -S plasma-&#123;desktop,mediacenter,nm&#125;
+pacman -S plasma-&#123;workspace&#123;,-wallpapers&#125;,pa&#125;</code></pre></div></figure>
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/zh-hans/Pacman">参考</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41601836/article/details/106515744">参考</a></p>
+<h3 id="i3-快捷键">i3 快捷键</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>快捷键</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>打开终端</td>
+<td><code>mod+enter</code></td>
+</tr>
+<tr>
+<td>打开菜单</td>
+<td><code>mod+d</code></td>
+</tr>
+<tr>
+<td>横向排列窗口</td>
+<td><code>mod+h</code></td>
+</tr>
+<tr>
+<td>纵向排列窗口</td>
+<td><code>mod+v</code></td>
+</tr>
+<tr>
+<td>将某个窗口全屏</td>
+<td><code>mod+f</code></td>
+</tr>
+<tr>
+<td>模式选择</td>
+<td><code>mod+e</code>默认（水平竖直）<br> <code>mod+s</code>层叠 <br> <code>mod+w</code>标签形式显示</td>
+</tr>
+<tr>
+<td>选择窗口是浮动的还是平铺式</td>
+<td><code>mod+shift+space</code></td>
+</tr>
+<tr>
+<td>退出窗口</td>
+<td><code>mod+shift+q</code></td>
+</tr>
+<tr>
+<td>重启i3</td>
+<td><code>mod+shift+r</code></td>
+</tr>
+<tr>
+<td>关闭i3</td>
+<td><code>mod+shift+e</code></td>
+</tr>
+<tr>
+<td>在两个窗口中移动</td>
+<td><code>mod+</code>方向/<code>jkl</code>;</td>
+</tr>
+<tr>
+<td>打开工作区</td>
+<td><code>mod+num</code></td>
+</tr>
+<tr>
+<td>将当前窗口移动到某工作区</td>
+<td><code>mod+shift+num</code></td>
+</tr>
+</tbody>
+</table>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tongyan/archive/2012/10/04/2711550.html">参考</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/linux/" class="print-no-link">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Manjaro + I3wm 使用总结 [Archived]</div>
+      <div>https://yzzzf.xyz/2023/05/04/manjaro-i3wm/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Zifan Ying</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 4, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - Share-alike">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/17/rdp-on-cloudflare-tunnel/" title="Couldflare Tunnel穿透远程桌面服务（RDP）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Couldflare Tunnel穿透远程桌面服务（RDP）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/16/MIT16.08-lec6/" title="MIT18.06 Linear Algebra (6)">
+                        <span class="hidden-mobile">MIT18.06 Linear Algebra (6)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'photon-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'pluto0x0/pluto0x0.github.io');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'comment');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
